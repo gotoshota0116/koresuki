@@ -140,4 +140,4 @@
 https://www.figma.com/design/2hNmSXSAEm3FbNaea3VSJd/koresuki?node-id=0-1&t=cbmcmoRIGQeZywTh-1
 
 ## ER図系
-[![Image from Gyazo](https://i.gyazo.com/e4a78d2466df91699e73b2e3db536749.png)](https://gyazo.com/e4a78d2466df91699e73b2e3db536749)
+[![Image from Gyazo](https://i.gyazo.com/1f80e8193d65a4bc4f8817982e20ad16.png)](https://gyazo.com/1f80e8193d65a4bc4f8817982e20ad16)

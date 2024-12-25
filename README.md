@@ -130,10 +130,13 @@
 ・投稿絞り込み機能(form object)  
 ・いいね機能（中間テーブル使用）  
 ・通知機能（ポリモーフィック関連づけ）  
-・画像のアップロード機能(Active Storage)  
+・画像のアップロード機能(carrierwave)  
 ・Xシェア機能（gem meta-tags,mini_magick,）  
 ・利用規約・プライバシーポリシー（gem 'high_voltage'）  
 ・Google　Analytics(Googleアナリティクスタグ（GA4）  
 
 ## 画面遷移図
 https://www.figma.com/design/2hNmSXSAEm3FbNaea3VSJd/koresuki?node-id=0-1&t=cbmcmoRIGQeZywTh-1
+
+## ER図系
+[![Image from Gyazo](https://i.gyazo.com/3935c3bf6104cba5e3adc51393e4f0d2.png)](https://gyazo.com/3935c3bf6104cba5e3adc51393e4f0d2)

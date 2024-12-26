@@ -106,6 +106,7 @@
 　-好きなことの魅力  
 　-まずはこれから！（他の人に勧めるまずはこれからやってみて的な意味合いです）（任意）  
 　-好きなことの画像のアップロード機能  
+　-タグ作成
 　-参考URL（検討中）  
 ・Xシェア機能（動的OGP）  
 　好きなことを投稿した時に、その投稿をXシェアできる  
@@ -130,10 +131,13 @@
 ・投稿絞り込み機能(form object)  
 ・いいね機能（中間テーブル使用）  
 ・通知機能（ポリモーフィック関連づけ）  
-・画像のアップロード機能(Active Storage)  
+・画像のアップロード機能(carrierwave)  
 ・Xシェア機能（gem meta-tags,mini_magick,）  
 ・利用規約・プライバシーポリシー（gem 'high_voltage'）  
 ・Google　Analytics(Googleアナリティクスタグ（GA4）  
 
 ## 画面遷移図
 https://www.figma.com/design/2hNmSXSAEm3FbNaea3VSJd/koresuki?node-id=0-1&t=cbmcmoRIGQeZywTh-1
+
+## ER図系
+[![Image from Gyazo](https://i.gyazo.com/c6955ffce59018b538f8c28a1d8d6140.png)](https://gyazo.com/c6955ffce59018b538f8c28a1d8d6140)

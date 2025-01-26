@@ -1,0 +1,17 @@
+<p>こんにちは、<%= @resource.email %> さん</p>
+
+<p>KORESUKIをご利用いただきありがとうございます。</p>
+
+<p>以下のリンクをクリックすると、メールアドレスの登録が完了します。</p>
+
+<hr>
+
+<p>
+  <%= link_to 'メールアドレスを登録する', confirmation_url(@resource, confirmation_token: @token) %>
+</p>
+
+<hr>
+
+<p>※このメールに心当たりがない場合は、破棄してください。</p>
+
+<p>今後とも KORESUKI をよろしくお願いいたします。</p>

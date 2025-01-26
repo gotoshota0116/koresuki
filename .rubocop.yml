@@ -1,0 +1,70 @@
+# 全体の設定
+AllCops:
+  NewCops: enable  # 新しいCopを自動で有効化
+  TargetRubyVersion: 3.2 # Rubyのバージョンを指定
+  SuggestExtensions: false # rubocop-rails, rubocop-rspecの警告を非表示
+  Exclude:
+    - "bin/*"
+    - "db/schema.rb"
+    - "db/migrate/*"
+    - "config/*.rb"
+    - "node_modules/**/*" # Node.js のファイルを無視
+
+# 有効にする拡張機能
+require:
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-rspec
+
+Rails/I18nLocaleTexts:
+  Enabled: false  # I18n のルールは一時的に無効にしている！！！！！！！！！！！！
+
+# ルールを無効化・調整
+Style/Documentation:
+  Enabled: false # クラス・モジュールのドキュメント強制を無効化
+
+Style/FrozenStringLiteralComment:
+  Enabled: false # frozen_string_literal: true の強制を無効化
+
+Metrics/MethodLength:
+  Max: 20  # メソッドの長さ制限を20行に緩和（デフォルト: 10）
+
+Metrics/AbcSize:
+  Max: 26  # メソッドの複雑度の上限を緩和（デフォルト: 17）
+
+Metrics/CyclomaticComplexity:
+  Max: 10  # 複雑度の上限を10に緩和（デフォルト: 7）
+
+Metrics/BlockLength:
+  Exclude:
+    - "spec/**/*.rb"  # RSpecのテストファイルでは長いブロックを許容
+    - "config/environments/*.rb" # 環境設定ファイルの長いブロックを許容
+
+Layout/LineLength:
+  Max: 160 # 1行160文字まで許容
+
+Style/ClassAndModuleChildren:
+  Enabled: false # A::B の記述スタイルを変更しない
+
+Style/MutableConstant:
+  Enabled: false # FOO = "bar" に freeze を強制しない
+
+Style/GlobalStdStream:
+  Enabled: false # $stdout, $stderr の使用を許可
+
+# Rails向け設定 (rubocop-rails)
+Rails/Output:
+  Enabled: false # Railsのコンソール出力 (putsなど) を許可
+
+Rails/SkipsModelValidations:
+  Enabled: false # `update_all` などのバリデーションスキップを許可
+
+# RSpec向け設定 (rubocop-rspec)
+RSpec/ExampleLength:
+  Max: 15 # RSpec の `it` ブロックの行数制限を15に緩和
+
+RSpec/MultipleExpectations:
+  Max: 3 # 1つのテストで3つまで `expect` を許可
+
+RSpec/NestedGroups:
+  Max: 3 # `describe` や `context` のネストを3段階まで許可

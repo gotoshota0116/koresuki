@@ -1,0 +1,20 @@
+<header>
+  <div class="navbar bg-base-50">
+    <div class="flex-1">
+      <a><%= link_to "KORESUKI", root_path, class: "btn btn-ghost text-xl text-gray-900" %></a>
+    </div>
+    <div class="flex-none gap-2">
+      <div class="form-control" style="margin-left: 1rem;">
+        <%= link_to I18n.t('header.login', default: "新規登録"), "#" %>
+      </div>
+    </div>
+	<div class="flex-none gap-2">
+      <div class="form-control" style="margin-left: 1rem;">
+        <%= link_to I18n.t('header.login', default: "ログイン"), "#" %>
+    </div>
+    </div>
+  </div>
+  <div class="text-red-500 bg-blue-200 p-2">
+  Tailwind Debug: このテキストが **赤色** で、背景が **青色** なら Tailwind は適用されています！
+  </div>
+</header>

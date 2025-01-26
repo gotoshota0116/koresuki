@@ -1,0 +1,17 @@
+<header>
+  <div class="navbar">
+    <div class="flex-1">
+      <a><%= link_to "KORESUKI", root_path %></a>
+    </div>
+    <div class="flex-none flex space-x-6">
+      <%= link_to t('header.all_suki', default: "みんなのSUKI"), "#", class: "px-4 py-2" %>
+      <%= link_to t('header.post_suki', default: "SUKI投稿"), "#", class: "px-4 py-2" %>
+      <%= link_to t('header.mypage', default: "マイページ"), "#", class: "px-4 py-2" %>
+      <%= link_to t('header.logout', default: "ログアウト"), "#", class: "px-4 py-2" %>
+    </div>
+  </div>
+
+  <div class="text-red-500 bg-blue-200 p-2">
+    Tailwind Debug: このテキストが **赤色** で、背景が **青色** なら Tailwind は適用されています！
+  </div>
+</header>

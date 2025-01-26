@@ -6,15 +6,15 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+    <%= stylesheet_link_tag 'application', 'data-turbo-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbo-track': 'reload', type: 'module' %>
   </head>
 
   <body>
     <% if user_signed_in? %>
-      <%= render "shared/header" %>
+      <%= render 'shared/header' %>
     <% else %>
-      <%= render "shared/header_before_login" %>
+      <%= render 'shared/header_before_login' %>
     <% end %>
 
       <% if notice.present? %>
@@ -25,6 +25,6 @@
       <% end %>
 
     <%= yield %>
-    <%= render "shared/footer" %>
+    <%= render 'shared/footer' %>
   </body>
 </html>

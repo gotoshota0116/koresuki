@@ -65,6 +65,8 @@ group :development do
 
   gem 'erb_lint', require: false
 
+  gem 'letter_opener_web'
+
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
 

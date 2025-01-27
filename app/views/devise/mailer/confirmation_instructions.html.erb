@@ -1,17 +1,23 @@
-<p>こんにちは、<%= @resource.email %> さん</p>
+<p>KORESUKIをご利用いただき、誠にありがとうございます。</p>
 
-<p>KORESUKIをご利用いただきありがとうございます。</p>
+<p>以下のリンクから、メールアドレスの確認をお願いいたします。</p>
 
-<p>以下のリンクをクリックすると、メールアドレスの登録が完了します。</p>
-
-<hr>
+<p>---------------------------------</p>
 
 <p>
-  <%= link_to 'メールアドレスを登録する', confirmation_url(@resource, confirmation_token: @token) %>
+  <%= link_to 'メールアドレスを確認する', confirmation_url(@resource, confirmation_token: @token) %>
 </p>
 
-<hr>
+<p>---------------------------------</p>
 
-<p>※このメールに心当たりがない場合は、破棄してください。</p>
+<p>ご不明な点がございましたら、以下のサポートメールアドレスまでご連絡ください。</p>
+
+<p>
+  KORESUKIサポート: <a href="mailto:koresuki.info@gmail.com">koresuki.info@gmail.com</a>
+</p>
 
 <p>今後とも KORESUKI をよろしくお願いいたします。</p>
+
+<p>※本メールは KORESUKI にご登録いただいた方に自動送信されています。</p>
+
+<p>※本メールにお心当たりのない方は、お手数ですが削除をお願いいたします。</p>

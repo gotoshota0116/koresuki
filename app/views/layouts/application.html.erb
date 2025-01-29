@@ -17,12 +17,9 @@
       <%= render 'shared/header_before_login' %>
     <% end %>
 
-      <% if notice.present? %>
-        <p class="notice"><%= notice %></p>
-      <% end %>
-      <% if alert.present? %>
-        <p class="alert"><%= alert %></p>
-      <% end %>
+    <% flash.each do |key, message| %>
+    <p class="<%= flash_class(key) %>"><%= message %></p>
+    <% end %>
 
     <%= yield %>
     <%= render 'shared/footer' %>

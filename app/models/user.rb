@@ -6,4 +6,6 @@ class User < ApplicationRecord
          :confirmable
 
   validates :name, presence: true, length: { maximum: 30 }
+
+  has_many :boards, dependent: :destroy
 end

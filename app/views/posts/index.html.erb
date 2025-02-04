@@ -1,0 +1,24 @@
+<div class="max-w-6xl mx-auto pt-3">
+  <div class="flex justify-center">
+    <div class="w-full lg:w-10/12">
+      <!-- 検索フォーム -->
+      <form>
+        <div class="flex mb-3">
+          <input type="search" placeholder="検索ワード" class="flex-grow px-4 py-2 border rounded-l"/>
+          <input type="submit" value="検索" class="px-4 py-2 border rounded-r"/>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 掲示板一覧 -->
+  <div class="mt-6">
+    <% if @posts.present? %>
+      <div class="space-y-4">
+        <%= render @posts %>
+      </div>
+    <% else %>
+      <div class="text-center">掲示板がありません</div>
+    <% end %>
+  </div>
+</div>

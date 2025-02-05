@@ -133,6 +133,8 @@ GEM
       rubocop (>= 1)
       smart_properties
     erubi (1.13.1)
+    faker (3.5.1)
+      i18n (>= 1.8.11, < 2)
     globalid (1.2.1)
       activesupport (>= 6.1)
     i18n (1.14.6)
@@ -351,6 +353,7 @@ DEPENDENCIES
   devise (~> 4.9)
   devise-i18n
   erb_lint
+  faker
   jbuilder
   jsbundling-rails
   letter_opener_web

@@ -4,8 +4,8 @@
       <!-- 検索フォーム -->
       <form>
         <div class="flex mb-3">
-          <input type="search" placeholder="検索ワード" class="flex-grow px-4 py-2 border rounded-l"/>
-          <input type="submit" value="検索" class="px-4 py-2 border rounded-r"/>
+          <input type="search" placeholder="検索ワード" autocomplete="on" class="flex-grow px-4 py-2 border rounded-l">
+          <input type="submit" value="検索" class="px-4 py-2 border rounded-r">
         </div>
       </form>
     </div>
@@ -15,7 +15,7 @@
   <div class="mt-6">
     <% if @posts.present? %>
       <div class="space-y-4">
-        <div class="flex flex-wrap -mx-2"> <!-- Flexbox とマイナスマージン -->
+        <div class="flex flex-wrap -mx-2"> <!-- 投稿を3列表示にする -->
           <%= render @posts %>
         </div>
       </div>

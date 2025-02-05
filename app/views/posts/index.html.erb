@@ -15,7 +15,9 @@
   <div class="mt-6">
     <% if @posts.present? %>
       <div class="space-y-4">
-        <%= render @posts %>
+        <div class="flex flex-wrap -mx-2"> <!-- Flexbox とマイナスマージン -->
+          <%= render @posts %>
+        </div>
       </div>
     <% else %>
       <div class="text-center">掲示板がありません</div>

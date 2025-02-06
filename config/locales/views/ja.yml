@@ -1,0 +1,21 @@
+ja:
+  # ビューファイル
+  views:
+    posts:
+      index:
+        title: "投稿一覧"
+      new:
+        title: "新規投稿"
+      edit:
+        title: "投稿を編集"
+  # ヘルパーメソッド
+  helpers:
+    submit:
+      create: SUKIを投稿
+      update: SUKIを更新
+  defaults:
+    flash_message:
+      created: "%{item}を作成しました"
+      not_created: "%{item}を作成出来ませんでした"
+      require_login: ログインしてください
+

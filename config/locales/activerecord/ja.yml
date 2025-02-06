@@ -1,0 +1,14 @@
+ja:
+  activerecord:
+    # モデル名
+    models:
+      user: ユーザー
+      post: 
+    # モデルの属性
+    attributes:
+      post:
+        title: SUKIのタイトル
+        body: SUKIの理由！
+    # errors.models: バリデーションエラー
+    errors:
+      models:

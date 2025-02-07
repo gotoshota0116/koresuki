@@ -1,0 +1,20 @@
+<div>
+  <h2><%= @post.user.name %> さんの SUKI</h2>
+
+  <h1>「<%= @post.title %>」</h1>
+
+  <% if @post.image.present? %>
+    <img src="<%= @post.image %>" alt="投稿画像">
+  <% else %>
+    <div style="width: 300px; height: 200px; background-color: lightgray; text-align: center; line-height: 200px;">
+      写真
+    </div>
+  <% end %>
+
+  <p><%= @post.body %></p>
+
+  <div>
+    <%= link_to '✏️ 編集', "#", class: 'btn btn-primary' %>
+    <%= link_to '🗑️ 削除', "#", method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger' %>
+  </div>
+</div>

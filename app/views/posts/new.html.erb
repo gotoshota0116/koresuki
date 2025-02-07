@@ -1,5 +1,5 @@
 <div class="max-w-3xl mx-auto mt-8">
-  <h1 class="text-2xl font-bold mb-6"><%= t('.title') %></h1>
+  <h1 class="text-2xl font-bold mb-6"><%= t("#{controller_path}.#{action_name}.title") %></h1>
   <%= form_with model: @post, class: "space-y-4" do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
     <div>

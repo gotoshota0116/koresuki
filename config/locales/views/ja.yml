@@ -1,13 +1,12 @@
 ja:
   # ビューファイル
-  views:
-    posts:
-      index:
-        title: "投稿一覧"
-      new:
-        title: "新規投稿"
-      edit:
-        title: "投稿を編集"
+  posts:
+    index:
+      title: 投稿一覧
+    new:
+      title: 新規投稿
+    edit:
+      title: 投稿を編集
   # ヘルパーメソッド
   helpers:
     submit:

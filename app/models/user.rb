@@ -8,4 +8,8 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
 
   validates :name, presence: true, length: { maximum: 30 }
+
+  def own?(object)
+    id == object&.user_id
+  end
 end

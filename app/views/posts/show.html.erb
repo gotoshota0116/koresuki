@@ -14,7 +14,7 @@
   <p><%= @post.body %></p>
 
   <div>
-    <%= link_to '✏️ 編集', "#", class: 'btn btn-primary' %>
+    <%= link_to '✏️ 編集', edit_post_path(@post), class: 'btn btn-primary' %>
     <%= link_to '🗑️ 削除', "#", method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger' %>
   </div>
 </div>

@@ -5,8 +5,16 @@ class PostsController < ApplicationController
     @posts = Post.includes(:user)
   end
 
+  def show
+    @post = Post.find(params[:id])
+  end
+
   def new
     @post = Post.new
+  end
+
+  def edit
+    @post = current_user.posts.find(params[:id])
   end
 
   def create
@@ -20,14 +28,6 @@ class PostsController < ApplicationController
     end
   end
 
-  def show
-    @post = Post.find(params[:id])
-  end
-
-  def edit
-    @post = current_user.posts.find(params[:id])
-  end
-
   def update
     @post = current_user.posts.find(params[:id])
     if @post.update(post_params)
@@ -38,7 +38,6 @@ class PostsController < ApplicationController
       render :edit, status: :unprocessable_entity
     end
   end
-
 
   private
 

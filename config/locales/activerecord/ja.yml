@@ -3,7 +3,7 @@ ja:
     # モデル名
     models:
       user: ユーザー
-      post: 
+      post: 投稿
     # モデルの属性
     attributes:
       post:

@@ -383,6 +383,7 @@ DEPENDENCIES
   jbuilder
   jsbundling-rails
   letter_opener_web
+  mini_magick
   pg (~> 1.1)
   puma (>= 5.0)
   rails (~> 7.1.5, >= 7.1.5.1)

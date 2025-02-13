@@ -16,8 +16,8 @@
   <% if user_signed_in? && current_user.own?(@post) %>
     <div>
       <%= link_to '✏️ 編集', edit_post_path(@post), class: 'btn btn-primary' %>
-      <%= link_to '🗑️ 削除', post_path(@post),data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, 
-    class: 'btn btn-danger' %>
+      <%= link_to '🗑️ 削除', post_path(@post), data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' },
+                                             class: 'btn btn-danger' %>
     </div>
   <% end %>
 </div>

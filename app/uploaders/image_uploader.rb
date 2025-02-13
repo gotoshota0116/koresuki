@@ -1,5 +1,5 @@
 class ImageUploader < CarrierWave::Uploader::Base
-include CarrierWave::MiniMagick
+  include CarrierWave::MiniMagick
 
   if Rails.env.production?
     storage :fog # 本番環境ではS3に保存
@@ -12,10 +12,10 @@ include CarrierWave::MiniMagick
   end
 
   def extension_allowlist
-    %w(jpg jpeg gif png heic)
+    %w[jpg jpeg gif png heic]
   end
 
-  process resize_to_fit: [600,600]
+  process resize_to_fit: [600, 600]
   process :convert_heic_to_jpg, if: :heic?
 
   version :mini do
@@ -23,7 +23,7 @@ include CarrierWave::MiniMagick
     process :convert_heic_to_jpg, if: :heic?
   end
 
-private
+  private
 
   def heic?(file)
     file.extension.downcase == 'heic'
@@ -38,11 +38,10 @@ private
 
   # 内部的に呼び出されるメソッド,filenameをオーバーライドしている
   def filename
-    if super.present?  # CarrierWave のデフォルトの filename が存在するか確認
-      base_name = File.basename(super, '.*')
-      extension = File.extname(super).downcase == '.heic' ? 'jpg' : File.extname(super).downcase.delete('.')
-      "#{base_name}.#{extension}"
-    end
-  end
+    return if super.brank? # CarrierWave のデフォルトの filename が存在するか確認
 
+    base_name = File.basename(super, '.*')
+    extension = File.extname(super).downcase == '.heic' ? 'jpg' : File.extname(super).downcase.delete('.')
+    "#{base_name}.#{extension}"
+  end
 end

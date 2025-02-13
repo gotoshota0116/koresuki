@@ -11,7 +11,19 @@ include CarrierWave::MiniMagick
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
+  def extension_allowlist
+    %w(jpg jpeg gif png heic)
+  end
+
+  process resize_to_fit: [600,600]
   process :convert_heic_to_jpg, if: :heic?
+
+  version :mini do
+    process resize_to_fill: [400, 350]
+    process :convert_heic_to_jpg, if: :heic?
+  end
+
+private
 
   def heic?(file)
     file.extension.downcase == 'heic'
@@ -24,19 +36,13 @@ include CarrierWave::MiniMagick
     end
   end
 
-  # メソッドをオーバーライドして、HEIC形式の画像をJPG形式に変換する
+  # 内部的に呼び出されるメソッド,filenameをオーバーライドしている
   def filename
-    if original_filename.present?
-      if file.extension.downcase == 'heic'
-        "#{File.basename(original_filename, '.*')}.jpg"
-      else
-        original_filename
-      end
+    if super.present?  # CarrierWave のデフォルトの filename が存在するか確認
+      base_name = File.basename(super, '.*')
+      extension = File.extname(super).downcase == '.heic' ? 'jpg' : File.extname(super).downcase.delete('.')
+      "#{base_name}.#{extension}"
     end
-  end
-
-  def extension_allowlist
-    %w(jpg jpeg gif png heic)
   end
 
 end

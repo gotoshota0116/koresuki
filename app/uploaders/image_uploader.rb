@@ -38,7 +38,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # 内部的に呼び出されるメソッド,filenameをオーバーライドしている
   def filename
-    return if super.brank? # CarrierWave のデフォルトの filename が存在するか確認
+    return if super.blank? # CarrierWave のデフォルトの filename が存在するか確認
 
     base_name = File.basename(super, '.*')
     extension = File.extname(super).downcase == '.heic' ? 'jpg' : File.extname(super).downcase.delete('.')

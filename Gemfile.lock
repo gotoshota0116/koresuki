@@ -140,6 +140,7 @@ GEM
       rubocop (>= 1)
       smart_properties
     erubi (1.13.1)
+    excon (1.2.3)
     faker (3.5.1)
       i18n (>= 1.8.11, < 2)
     ffi (1.17.1-aarch64-linux-gnu)
@@ -150,6 +151,23 @@ GEM
     ffi (1.17.1-x86_64-darwin)
     ffi (1.17.1-x86_64-linux-gnu)
     ffi (1.17.1-x86_64-linux-musl)
+    fog-aws (3.30.0)
+      base64 (~> 0.2.0)
+      fog-core (~> 2.6)
+      fog-json (~> 1.1)
+      fog-xml (~> 0.1)
+    fog-core (2.6.0)
+      builder
+      excon (~> 1.0)
+      formatador (>= 0.2, < 2.0)
+      mime-types
+    fog-json (1.2.0)
+      fog-core
+      multi_json (~> 1.10)
+    fog-xml (0.1.5)
+      fog-core
+      nokogiri (>= 1.5.11, < 2.0.0)
+    formatador (1.1.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
     i18n (1.14.6)
@@ -190,12 +208,17 @@ GEM
       net-smtp
     marcel (1.0.4)
     matrix (0.4.2)
+    mime-types (3.6.0)
+      logger
+      mime-types-data (~> 3.2015)
+    mime-types-data (3.2025.0204)
     mini_magick (5.1.2)
       benchmark
       logger
     mini_mime (1.1.5)
     minitest (5.25.4)
     msgpack (1.7.5)
+    multi_json (1.15.0)
     mutex_m (0.3.0)
     net-imap (0.5.5)
       date
@@ -380,6 +403,7 @@ DEPENDENCIES
   devise-i18n
   erb_lint
   faker
+  fog-aws
   jbuilder
   jsbundling-rails
   letter_opener_web

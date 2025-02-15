@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
-  before_action :set_post, only: %i[ edit update destroy]
+  before_action :set_post, only: %i[edit update destroy]
 
   def index
     @posts = Post.includes(:user)
@@ -15,8 +15,7 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @post = current_user.posts.build(post_params)
@@ -57,15 +56,15 @@ class PostsController < ApplicationController
 
   def prepare_meta_tags(post)
     image_url = if post.image.present?
-                  "#{post.image.url}"
+                  post.image.url.to_s
                 else
-                    "#{request.base_url}/ogp/ogp.png?text=#{CGI.escape(post.title)}"
+                  "#{request.base_url}/ogp/ogp.png?text=#{CGI.escape(post.title)}"
                 end
 
     set_meta_tags og: {
                     site_name: 'KORESUKI',
-                    title: "「#{post.title.to_s}」｜ KORESUKI",
-                    description: "「#{post.body.to_s}」",
+                    title: "「#{post.title}」｜ KORESUKI",
+                    description: "「#{post.body}」",
                     type: 'website',
                     url: request.original_url,
                     image: image_url,
@@ -74,11 +73,8 @@ class PostsController < ApplicationController
                   twitter: {
                     card: 'summary_large_image',
                     site: '@gshota_0116',
-                    title: "「#{post.title.to_s}」｜ KORESUKI",
-                    description: "「#{post.body.to_s}」",
+                    title: "「#{post.title}」｜ KORESUKI",
                     image: image_url
                   }
   end
 end
-
-

@@ -15,8 +15,13 @@ class ImageUploader < CarrierWave::Uploader::Base
     %w[jpg jpeg gif png heic]
   end
 
-  process resize_to_fit: [600, 600]
+  process resize_to_fit: [1200, 630]
   process :convert_heic_to_jpg, if: :heic?
+
+  # version :ogp do
+  #   process resize_to_fill: [1200, 630]
+  #   process :convert_heic_to_jpg, if: :heic?
+  # end
 
   version :mini do
     process resize_to_fill: [400, 350]

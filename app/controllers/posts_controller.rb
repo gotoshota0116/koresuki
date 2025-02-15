@@ -57,7 +57,7 @@ class PostsController < ApplicationController
 
   def prepare_meta_tags(post)
     image_url = if post.image.present?
-                  "#{request.base_url}#{post.image.mini.url}"
+                  "#{request.base_url}#{post.image.url}"
                 else
                     "#{request.base_url}/ogp/ogp.png?text=#{CGI.escape(post.title)}"
                 end
@@ -80,3 +80,5 @@ class PostsController < ApplicationController
                   }
   end
 end
+
+

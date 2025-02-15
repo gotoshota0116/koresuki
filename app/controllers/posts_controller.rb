@@ -56,22 +56,27 @@ class PostsController < ApplicationController
   end
 
   def prepare_meta_tags(post)
-    image_url = "#{request.base_url}/ogp/ogp.png?text=#{CGI.escape(post.title)}"
+    image_url = if post.image.present?
+                  "#{request.base_url}#{post.image.mini.url}"
+                else
+                    "#{request.base_url}/ogp/ogp.png?text=#{CGI.escape(post.title)}"
+                end
 
     set_meta_tags og: {
-                    title: 'KORESUKI',
-                    description: "〜わたしの好き「#{post.title.to_s}」を投稿しました〜",
+                    site_name: 'KORESUKI',
+                    title: "わたしの好き「#{post.title.to_s}」",
+                    description: "「#{post.body.to_s}」",
                     type: 'website',
                     url: request.original_url,
                     image: image_url,
                     locale: 'ja-JP'
                   },
-                  # twitter:は Twitter のシェアプレビュー用設定
                   twitter: {
                     card: 'summary_large_image',
                     site: '@gshota_0116',
-                    description: "〜わたしの好き「#{post.title.to_s}」を投稿しました〜\n#KORESUKI",
-                    image: image_url,
+                    title: "わたしの好き「#{post.title.to_s}」",
+                    description: "「#{post.body.to_s}」",
+                    image: image_url
                   }
   end
 end

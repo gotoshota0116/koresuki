@@ -14,11 +14,11 @@
   <p><%= @post.body %></p>
 
   <div class="text-gray-600">
-    <%#twitter_share_urlはtwitterが提供する機能%>
-  <% twitter_share_url = "https://twitter.com/share?url=#{CGI.escape(post_url(@post))}" %>
-    <%= link_to twitter_share_url, target: '_blank', class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded", title: "Xでシェア" do %>
-    <span>Share on X</span>
-  <% end %>
+    <% encode_text = URI.encode_www_form_component("【KORESUKI】\nわたしの好き「#{@post.title}」を投稿しました！") %>
+    <% twitter_share_url = "https://twitter.com/intent/tweet?url=#{CGI.escape(post_url(@post))}&text=#{encode_text}%0A%0A&hashtags=KORESUKI" %>
+      <%= link_to twitter_share_url, target: '_blank', class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded", title: "Xでシェア" do %>
+      <span>Share on X</span>
+    <% end %>
   </div>
 
   <% if user_signed_in? && current_user.own?(@post) %>

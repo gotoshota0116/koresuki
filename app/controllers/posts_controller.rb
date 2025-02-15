@@ -64,7 +64,7 @@ class PostsController < ApplicationController
 
     set_meta_tags og: {
                     site_name: 'KORESUKI',
-                    title: "わたしの好き「#{post.title.to_s}」",
+                    title: "「#{post.title.to_s}」｜ KORESUKI",
                     description: "「#{post.body.to_s}」",
                     type: 'website',
                     url: request.original_url,
@@ -74,7 +74,7 @@ class PostsController < ApplicationController
                   twitter: {
                     card: 'summary_large_image',
                     site: '@gshota_0116',
-                    title: "わたしの好き「#{post.title.to_s}」",
+                    title: "「#{post.title.to_s}」｜ KORESUKI",
                     description: "「#{post.body.to_s}」",
                     image: image_url
                   }

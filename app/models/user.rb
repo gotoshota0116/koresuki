@@ -6,6 +6,8 @@ class User < ApplicationRecord
          :confirmable
 
   has_many :posts, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :liked_posts, through: :likes, source: :post
 
   validates :name, presence: true, length: { maximum: 30 }
 

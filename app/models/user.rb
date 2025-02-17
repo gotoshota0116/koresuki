@@ -15,8 +15,9 @@ class User < ApplicationRecord
     id == object&.user_id
   end
 
+  # likesコントローラーで使用
   def like(post)
-    liked_posts << post
+    likes.create(post: post)
   end
   
   def unlike(post)

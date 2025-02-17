@@ -2,8 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
   root 'staticpages#top'
 
-  resources :posts
-  resources :likes, only: [:create, :destroy]
+  resources :posts do
+    resources :likes, only: [:create, :destroy]
+  end
 
   get 'ogp/ogp.png', to: 'ogp_images#show', as: :ogp_image
 

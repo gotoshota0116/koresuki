@@ -19,11 +19,11 @@ class User < ApplicationRecord
   def like(post)
     likes.create(post: post)
   end
-  
+
   def unlike(post)
     liked_posts.destroy(post)
   end
-  
+
   def like?(post)
     liked_posts.include?(post)
   end

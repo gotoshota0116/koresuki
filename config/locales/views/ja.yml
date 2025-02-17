@@ -7,6 +7,12 @@ ja:
       title: 新規投稿
     edit:
       title: 投稿を編集
+  profiles:
+    show:
+      title: さんのプロフィール
+      name: 名前
+      email: メールアドレス
+      edit: 編集
   # ヘルパーメソッド
   helpers:
     submit:

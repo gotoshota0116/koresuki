@@ -19,13 +19,8 @@
         </div>
       <% end %>
     </div>
-
     <div class="p-4">
-      <div class="ml-auto flex space-x-2">
-        <li class="flex items-center">
-          <span><%= post.body %></span>
-        </li>
-      </div>
+      <%= render 'likes/like_buttons', { post: post } %>
     </div>
   </div>
 </div>

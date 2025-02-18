@@ -4,7 +4,7 @@
     <span class="text-gray-500 text-sm"><%= l comment.created_at, format: :long %></span>
   </div>
   
-  <p class="text-gray-700"><%= comment.content %></p>
+  <p class="text-gray-700"><%= comment.body %></p>
   
   <% if current_user&.own?(comment) %>
     <div class="mt-2 text-right">

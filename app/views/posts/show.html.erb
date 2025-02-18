@@ -3,6 +3,7 @@
 
   <h1>「<%= @post.title %>」</h1>
 
+<!-- 投稿画像 -->
   <% if @post.image.present? %>
     <img src="<%= @post.image %>" alt="投稿画像">
   <% else %>
@@ -11,8 +12,8 @@
     </div>
   <% end %>
 
+  <!-- 投稿内容 -->
   <p><%= @post.body %></p>
-
 
   <!-- Xシェアボタン -->
   <div class="text-gray-600">
@@ -24,7 +25,7 @@
     <% end %>
   </div>
 
-  <!-- 編集・削除（投稿者の-->
+  <!-- 編集・削除（投稿者のみ)-->
   <% if user_signed_in? && current_user.own?(@post) %>
     <div>
       <%= link_to '✏️ 編集', edit_post_path(@post), class: 'btn btn-primary' %>
@@ -35,15 +36,13 @@
 
   <!-- コメントフォーム -->
   <div class="mt-8">
-    <h3 class="text-xl font-bold mb-4">コメント</h3>
-
+    <h3 class="text-xl font-bold mb-4"><%= t('comments.create.title') %></h3>
     <% if user_signed_in? %>
       <%= render 'comments/form', post: @post %>
     <% end %>
-
   <!-- コメント一覧 -->
     <div class="mt-6">
-      <%= render @post.comments %>
+      <%= render @comments %>
     </div>
   </div>
 </div>

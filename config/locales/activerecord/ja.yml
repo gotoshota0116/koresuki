@@ -4,6 +4,7 @@ ja:
     models:
       user: ユーザー
       post: 投稿
+      comment: コメント
     # モデルの属性
     attributes:
       post:

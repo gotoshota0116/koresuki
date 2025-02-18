@@ -4,10 +4,10 @@
       <a><%= link_to 'KORESUKI', root_path %></a>
     </div>
     <nav class="flex-none flex space-x-6">
-      <%= link_to t('header.all_suki', default: 'みんなのSUKI'), posts_path, class: 'px-4 py-2' %>
-      <%= link_to t('header.post_suki', default: 'SUKI投稿'), new_post_path, class: 'px-4 py-2' %>
-      <%= link_to t('header.mypage', default: 'マイページ'), '#', class: 'px-4 py-2' %>
-      <%= link_to t('header.logout', default: 'ログアウト'), destroy_user_session_path, data: { turbo_method: :delete }, class: 'px-4 py-2' %>
+      <%= link_to t('header.all_suki'), posts_path, class: 'px-4 py-2' %>
+      <%= link_to t('header.post_suki'), new_post_path, class: 'px-4 py-2' %>
+      <%= link_to t('header.mypage'), profile_path, class: 'px-4 py-2' %>
+      <%= link_to t('header.logout'), destroy_user_session_path, data: { turbo_method: :delete }, class: 'px-4 py-2' %>
     </nav>
   </div>
 

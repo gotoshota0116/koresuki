@@ -13,6 +13,8 @@
 
   <p><%= @post.body %></p>
 
+
+  <!-- Xシェアボタン -->
   <div class="text-gray-600">
     <% encode_text = URI.encode_www_form_component("【KORESUKI】\nわたしの好き「#{@post.title}」を投稿しました！") %>
     <% twitter_share_url = "https://twitter.com/intent/tweet?url=#{CGI.escape(post_url(@post))}&text=#{encode_text}%0A%0A&hashtags=KORESUKI" %>
@@ -22,6 +24,7 @@
     <% end %>
   </div>
 
+  <!-- 編集・削除（投稿者の-->
   <% if user_signed_in? && current_user.own?(@post) %>
     <div>
       <%= link_to '✏️ 編集', edit_post_path(@post), class: 'btn btn-primary' %>
@@ -29,4 +32,18 @@
                                              class: 'btn btn-danger' %>
     </div>
   <% end %>
+
+  <!-- コメントフォーム -->
+  <div class="mt-8">
+    <h3 class="text-xl font-bold mb-4">コメント</h3>
+
+    <% if user_signed_in? %>
+      <%= render 'comments/form', post: @post %>
+    <% end %>
+
+  <!-- コメント一覧 -->
+    <div class="mt-6">
+      <%= render @post.comments %>
+    </div>
+  </div>
 </div>

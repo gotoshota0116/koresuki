@@ -9,6 +9,8 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     prepare_meta_tags(@post)
+    # @comment = Comment.new
+    @comments = @post.comments.includes(:user).order(created_at: :desc)
   end
 
   def new

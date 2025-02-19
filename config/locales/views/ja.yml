@@ -5,24 +5,48 @@ ja:
     post_suki: SUKI投稿
     mypage: マイページ
     logout: ログアウト
+  footer:
+    contact: お問い合わせ
+    terms: 利用規約
+    privacy: プライバシーポリシー
   posts:
     index:
       title: 投稿一覧
+      no_posts: 掲示板がありません
+      search_placeholder: 検索ワード
+      search_submit: 検索
     new:
       title: 新規投稿
     edit:
-      title: 投稿を編集
+      title: 投稿編集
+    show:
+      title: さんのSUKI
   profiles:
     show:
       title: さんのプロフィール
       name: 名前
       email: メールアドレス
       edit: 編集
-  # ヘルパーメソッド
+  comments:
+    create:
+      title: コメント
+      success: 'コメントを投稿しました'
+      failure: 'コメントの投稿に失敗しました'
+    destroy:
+      success: 'コメントを削除しました'
+      title: 削除
+    placeholder:
+      body: コメントを入力
+  # 共通
   helpers:
     submit:
-      create: SUKIを投稿
-      update: SUKIを更新
+      create: 投稿
+      update: 更新
+      edit: 編集
+      delete: 削除
+      xshare: Xシェア
+    confirm:
+      delete: 本当に削除しますか？
   defaults:
     flash_message:
       created: "%{item}を作成しました"

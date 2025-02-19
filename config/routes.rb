@@ -6,10 +6,11 @@ Rails.application.routes.draw do
   root 'staticpages#top'
 
   resources :posts do
-    resources :likes, only: [:create, :destroy]
+    resources :likes, only: %i[create destroy]
+    resources :comments, only: %i[create edit update destroy]
   end
 
-  resource :profile, only: [:show, :edit, :update]
+  resource :profile, only: %i[show edit update]
 
   get 'ogp/ogp.png', to: 'ogp_images#show', as: :ogp_image
 

@@ -3,14 +3,14 @@
     <span class="font-bold"><%= comment.user.name %></span>
     <span class="text-gray-500 text-sm"><%= l comment.created_at, format: :long %></span>
   </div>
-  
+
   <p class="text-gray-700"><%= comment.body %></p>
-  
+
   <% if current_user&.own?(comment) %>
     <div class="mt-2 text-right">
-      <%= link_to "削除", post_comment_path(comment.post, comment),
-          data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" },
-          class: "text-red-500 hover:text-red-700" %>
+      <%= link_to t('comments.destroy.title'), post_comment_path(comment.post, comment),
+                  data: { turbo_method: :delete, turbo_confirm: t('helpers.confirm.delete') },
+                  class: 'text-red-500 hover:text-red-700' %>
     </div>
   <% end %>
 </div>

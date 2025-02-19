@@ -25,13 +25,16 @@ ja:
       failure: 'コメントの投稿に失敗しました'
     destroy:
       success: 'コメントを削除しました'
+      title: 削除
     placeholder:
       body: コメントを入力
-  # ヘルパーメソッド
+  # 共通
   helpers:
     submit:
       create: 投稿
       update: 更新
+    confirm:
+      delete: 本当に削除しますか？
   defaults:
     flash_message:
       created: "%{item}を作成しました"

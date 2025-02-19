@@ -9,7 +9,7 @@ ja:
     attributes:
       post:
         title: SUKIのタイトル
-        body: SUKIの理由！
+        body: SUKIの理由
+      comment:
+        body: コメント
     # errors.models: バリデーションエラー
-    errors:
-      models:

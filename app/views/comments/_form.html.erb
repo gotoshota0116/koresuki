@@ -1,7 +1,7 @@
-<%= form_with(model: [post, @comment], class: "mt-4") do |f| %>
+<%= form_with(model: [post, @comment], class: 'mt-4') do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <div class="mb-4">
-    <%= f.text_area :body, class: "w-full p-2 border rounded-lg", rows: 3, placeholder: t('comments.placeholder.body') %>
+    <%= f.text_area :body, class: 'w-full p-2 border rounded-lg', rows: 3, placeholder: t('comments.placeholder.body') %>
   </div>
-  <%= f.submit t('helpers.submit.create'), class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
+  <%= f.submit t('helpers.submit.create'), class: 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded' %>
 <% end %>

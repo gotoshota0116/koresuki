@@ -1,12 +1,14 @@
 class CommentsController < ApplicationController
 	def create
-	  comment = current_user.comments.build(comment_params)
-      if comment.save
+	# @post,@commentsはpots/showをレンダリングするために定義
+	  @post = Post.find(params[:post_id])
+	  @comments = @post.comments.includes(:user).order(created_at: :desc)
+	  @comment = current_user.comments.build(comment_params)
+      if @comment.save
 		flash[:notice] = t('defaults.flash_message.created', item: Comment.model_name.human)
-        redirect_to post_path(comment.post)
+        redirect_to post_path(@comment.post)
       else
-		flash[:alert] = t('defaults.flash_message.not_created', item: Comment.model_name.human)
-        redirect_to post_path(comment.post)
+        render 'posts/show', status: :unprocessable_entity
       end
 	end
   

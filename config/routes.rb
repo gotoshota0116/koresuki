@@ -5,8 +5,10 @@ Rails.application.routes.draw do
 
   root 'staticpages#top'
 
+  resources :likes, only: [:create]
+
   concern :likeable do
-    resources :likes, only: %i[create destroy], shallow: true
+    resources :likes, only: %i[destroy], shallow: true
   end
 
   resources :posts, concerns: :likeable do

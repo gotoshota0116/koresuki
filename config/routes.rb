@@ -5,9 +5,12 @@ Rails.application.routes.draw do
 
   root 'staticpages#top'
 
-  resources :posts do
-    resources :likes, only: %i[create destroy]
-    resources :comments, only: %i[create edit update destroy]
+  concern :likeable do
+    resources :likes, only: %i[create destroy], shallow: true
+  end
+
+  resources :posts, concerns: :likeable do
+    resources :comments, concerns: :likeable, only: %i[create edit update destroy]
   end
 
   resource :profile, only: %i[show edit update]

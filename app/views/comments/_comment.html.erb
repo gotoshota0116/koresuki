@@ -6,6 +6,10 @@
 
   <p class="text-gray-700"><%= comment.body %></p>
 
+    <div class="p-4">
+      <%= render 'likes/like_buttons', { likeable: comment } %>
+    </div>
+
   <% if current_user&.own?(comment) %>
     <div class="mt-2 text-right">
       <%= link_to t('comments.destroy.title'), post_comment_path(comment.post, comment),

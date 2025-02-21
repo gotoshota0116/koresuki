@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_02_20_114549) do
+ActiveRecord::Schema[7.1].define(version: 2025_02_21_095710) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -25,12 +25,12 @@ ActiveRecord::Schema[7.1].define(version: 2025_02_20_114549) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table "likes", force: :cascade do |t|
+  create_table "likes", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.uuid "likeable_id", null: false
     t.string "likeable_type", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["likeable_id", "likeable_type"], name: "index_likes_on_likeable"
     t.index ["user_id", "likeable_id", "likeable_type"], name: "index_likes_on_user_id_and_likeable", unique: true
     t.index ["user_id"], name: "index_likes_on_user_id"
@@ -66,6 +66,5 @@ ActiveRecord::Schema[7.1].define(version: 2025_02_20_114549) do
 
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
-  add_foreign_key "likes", "users"
   add_foreign_key "posts", "users"
 end

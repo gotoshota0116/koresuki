@@ -1,9 +1,9 @@
 <% if user_signed_in? %>
   <div class='ms-auto'>
     <% if current_user.like?(likeable) %>
-      <%= render 'likes/unlike', { likeable: likeable } %>
+      <%= render 'likes/unlike_icon', { likeable: likeable } %>
     <% else %>
-      <%= render 'likes/like', { likeable: likeable } %>
+      <%= render 'likes/like_icon', { likeable: likeable } %>
     <% end %>
   </div>
 <% end %>

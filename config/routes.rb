@@ -5,8 +5,11 @@ Rails.application.routes.draw do
 
   root 'staticpages#top'
 
+  # post,commentで共通のpathを使用するため、一番post,commentにそれぞれネストしない
+  # 共通のpathを使うのは、同じviewでpost,commentのlikeを表示するため
+  resources :likes, only: %i[create destroy]
+
   resources :posts do
-    resources :likes, only: %i[create destroy]
     resources :comments, only: %i[create edit update destroy]
   end
 

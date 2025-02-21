@@ -1,11 +1,19 @@
 class LikesController < ApplicationController
+  before_action :set_likeable, only: %i[create destroy]
+
   def create
-    @post = Post.find(params[:post_id])
-    current_user.like(@post)
+    current_user.like(@likeable)
+    # create.turbo_stream.erbで、like-button-#{@likeable.id}を更新する
   end
 
   def destroy
-    @post = current_user.likes.find(params[:id]).post
-    current_user.unlike(@post)
+    current_user.unlike(@likeable)
+    # destroy.turbo_stream.erbで、unlike-button-#{@likeable.id}を更新する
+  end
+
+  private
+
+  def set_likeable
+    @likeable = params[:likeable_type].constantize.find(params[:likeable_id])
   end
 end

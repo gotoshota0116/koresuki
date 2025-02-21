@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[edit update destroy]
 
   def index
-    @posts = Post.includes(:user)
+    @posts = Post.includes(:user, :likes)
   end
 
   def show
@@ -57,6 +57,7 @@ class PostsController < ApplicationController
   end
 
   def prepare_meta_tags(post)
+    # 投稿画像がない場合は、ogp.pngにアクセスして画像生成する
     image_url = if post.image.present?
                   post.image.url.to_s
                 else

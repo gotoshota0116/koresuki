@@ -8,7 +8,9 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
-  has_many :liked_posts, through: :likes, source: :post
+
+  has_many :liked_posts, through: :likes, source: :likeable, source_type: 'Post', dependent: :destroy
+  has_many :liked_comments, through: :likes, source: :likeable, source_type: 'Comment', dependent: :destroy
 
   validates :name, presence: true, length: { maximum: 30 }
 
@@ -17,15 +19,15 @@ class User < ApplicationRecord
   end
 
   # likesコントローラーで使用
-  def like(post)
-    likes.create(post: post)
+  def like(likeable)
+    likes.create(likeable: likeable)
   end
 
-  def unlike(post)
-    liked_posts.destroy(post)
+  def unlike(likeable)
+    likes.find_by(likeable: likeable)&.destroy
   end
 
-  def like?(post)
-    liked_posts.include?(post)
+  def like?(likeable)
+    likes.exists?(likeable: likeable)
   end
 end

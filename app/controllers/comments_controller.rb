@@ -5,6 +5,7 @@ class CommentsController < ApplicationController
     @comments = @post.comments.includes(:user).order(created_at: :desc)
     @comment = current_user.comments.build(comment_params)
     if @comment.save
+      @comment.create_notification(current_user)
       flash[:notice] = t('defaults.flash_message.created', item: Comment.model_name.human)
       redirect_to post_path(@comment.post)
     else

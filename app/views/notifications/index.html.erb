@@ -1,0 +1,15 @@
+<div class="container mx-auto px-4 py-8">
+  <h2 class="text-2xl font-bold mb-6"><%= t('.title') %></h2>
+
+  <% if @notifications.exists? %>
+    <div class="space-y-4">
+      <% @notifications.each do |notification| %>
+        <div class="bg-white p-4 rounded-lg shadow <%= notification.checked? ? 'opacity-75' : '' %>">
+          <%= render "notifications/#{notification.action}", notification: notification %>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <p class="text-gray-500"><%= t('.no_notifications') %></p>
+  <% end %>
+</div>

@@ -1,0 +1,13 @@
+<div class="flex items-center">
+  <span class="font-semibold"><%= notification.visitor.name %></span>
+  <span class="ml-2">
+    <% if notification.notifiable_type == 'Post' %>
+      があなたの投稿「<%= link_to notification.notifiable.title, post_path(notification.notifiable) %>」にいいねしました
+    <% else %>
+      があなたのコメントにいいねしました
+    <% end %>
+  </span>
+  <span class="text-gray-500 text-sm ml-2">
+    <%= l notification.created_at, format: :long %>
+  </span>
+</div>

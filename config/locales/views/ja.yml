@@ -5,6 +5,7 @@ ja:
     post_suki: SUKI投稿
     mypage: マイページ
     logout: ログアウト
+    notifications: 通知
   footer:
     contact: お問い合わせ
     terms: 利用規約
@@ -37,6 +38,10 @@ ja:
       title: 削除
     placeholder:
       body: コメントを入力
+  notifications:
+    index:
+      title: 通知
+      no_notifications: 通知がありません
   # 共通
   helpers:
     submit:

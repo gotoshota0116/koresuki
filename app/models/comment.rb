@@ -9,12 +9,16 @@ class Comment < ApplicationRecord
 
   validates :body, presence: true, length: { maximum: 300 }
 
-  def create_notification(visitor)
+  def create_notification(visitor, action)
     Notification.create!(
+      # visitorにはcurrent_user（コメントしたユーザー）が入る
       visitor_id: visitor.id,
+      # visitedにはpost.user（投稿者）が入る
       visited_id: post.user.id,
+      # notifiableにはself（コメント）が入る
       notifiable: self,
-      action: :commented
+      # actionにはaction（コメント）が入る
+      action: action
     )
   end
 end

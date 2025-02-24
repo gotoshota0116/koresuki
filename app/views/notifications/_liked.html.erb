@@ -2,9 +2,9 @@
   <span class="font-semibold"><%= notification.visitor.name %></span>
   <span class="ml-2">
     <% if notification.notifiable_type == 'Post' %>
-      があなたの投稿「<%= link_to notification.notifiable.title, post_path(notification.notifiable) %>」にいいねしました
-    <% else %>
-      があなたのコメントにいいねしました
+      があなたの投稿「<%= link_to notification.notifiable.title, post_path(notification.notifiable), class: "text-blue-600 hover:text-blue-800 hover:underline" %>」にいいねしました
+    <% elsif notification.notifiable_type == 'Comment' %>
+      があなたのコメント「<%= link_to notification.notifiable.body, post_path(notification.notifiable.post), class: "text-blue-600 hover:text-blue-800 hover:underline" %>」にいいねしました
     <% end %>
   </span>
   <span class="text-gray-500 text-sm ml-2">

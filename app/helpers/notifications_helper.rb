@@ -1,8 +1,4 @@
 module NotificationsHelper
-	def unread_notifications?
-	  current_user.passive_notifications.where(checked: false).exists?
-	end
-  
 	def notification_bell_icon
 	  if unread_notifications?
 		render_bell_icon(fill: 'yellow')
@@ -12,6 +8,10 @@ module NotificationsHelper
 	end
   
 	private
+
+	def unread_notifications?
+		current_user.passive_notifications.where(checked: false).exists?
+	end
   
 	def render_bell_icon(fill:)
 	  tag.svg(xmlns: "http://www.w3.org/2000/svg",

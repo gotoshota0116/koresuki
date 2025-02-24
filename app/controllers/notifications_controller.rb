@@ -6,6 +6,5 @@ class NotificationsController < ApplicationController
                                .includes(notifiable: [:post, :comment])
                                .order(created_at: :desc)
     @notifications.where(checked: false).update_all(checked: true)
- 
   end
 end

@@ -13,7 +13,10 @@ class Post < ApplicationRecord
   validates :body, presence: true
 
   def create_notification(visitor, action)
-    # 通知が存在しない場合は新しく作成,いいねを複数回押しても1回分の通知しか作成されないように
+    # いいね、コメントしたユーザーと投稿者が同じ場合は通知を作成しない
+    return if visitor.id == user.id
+    # find_or_initialize_by　既存のレコードを取得,存在しない場合は新しく作成
+    # いいねを複数回押しても1回分の通知しか作成されないように
     notification = Notification.find_or_initialize_by(
       visitor_id: visitor.id,
       visited_id: user.id,
@@ -21,6 +24,6 @@ class Post < ApplicationRecord
       action: action
     )
 
-    notification.save if notification.new_record?
+    notification.save
   end
 end

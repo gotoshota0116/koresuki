@@ -1,7 +1,7 @@
 <div class="container mx-auto px-4 py-8">
   <h2 class="text-2xl font-bold mb-6"><%= t('.title') %></h2>
   <% if @notifications.present? %>
-    <%= link_to "全削除",notification_path(@notifications), data: { turbo_method: :delete },class:"btn btn-light" %>
+    <%= link_to '全削除', notification_path(@notifications), data: { turbo_method: :delete }, class: 'btn btn-light' %>
     <div class="space-y-4">
       <%= render @notifications %>
     </div>

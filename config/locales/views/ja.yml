@@ -37,6 +37,10 @@ ja:
       title: 削除
     placeholder:
       body: コメントを入力
+  notifications:
+    index:
+      title: 通知
+      no_notifications: 通知がありません
   # 共通
   helpers:
     submit:

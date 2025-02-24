@@ -5,6 +5,7 @@ ja:
       user: ユーザー
       post: 投稿
       comment: コメント
+      notification: 通知
     # モデルの属性
     attributes:
       post:

@@ -3,6 +3,7 @@ class LikesController < ApplicationController
 
   def create
     current_user.like(@likeable)
+    @likeable.create_notification(current_user, :liked)
     # create.turbo_stream.erbで、like-button-#{@likeable.id}を更新する
   end
 

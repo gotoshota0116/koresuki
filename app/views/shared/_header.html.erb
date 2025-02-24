@@ -4,6 +4,9 @@
       <a><%= link_to 'KORESUKI', root_path %></a>
     </div>
     <nav class="flex-none flex space-x-6">
+      <%= link_to notifications_path, class: 'px-4 py-2 flex items-center gap-1' do %>
+        <%= notification_bell_icon %>
+      <% end %>
       <%= link_to t('header.all_suki'), posts_path, class: 'px-4 py-2' %>
       <%= link_to t('header.post_suki'), new_post_path, class: 'px-4 py-2' %>
       <%= link_to t('header.mypage'), profile_path, class: 'px-4 py-2' %>

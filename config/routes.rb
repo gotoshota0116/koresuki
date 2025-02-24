@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   resource :profile, only: %i[show edit update]
 
-  resources :notifications, only: %i[index]
+  resources :notifications, only: %i[index destroy]
 
   get 'ogp/ogp.png', to: 'ogp_images#show', as: :ogp_image
 

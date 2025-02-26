@@ -12,36 +12,28 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   def extension_allowlist
-    %w[jpg jpeg gif png heic]
+    %w[jpg jpeg gif png heic webp]
   end
 
   process resize_to_fit: [1200, 630]
-  process :convert_heic_to_jpg, if: :heic?
+  process :convert_to_webp
 
   version :mini do
     process resize_to_fill: [400, 350]
-    process :convert_heic_to_jpg, if: :heic?
+    process :convert_to_webp
   end
 
   private
 
-  def heic?(file)
-    file.extension.downcase == 'heic'
-  end
-
-  def convert_heic_to_jpg
+  def convert_to_webp
     manipulate! do |img|
-      img.format('jpg')
+      img.format('webp')
       img
     end
   end
 
   # 内部的に呼び出されるメソッド,filenameをオーバーライドしている
-  def filename
-    return if super.blank? # CarrierWave のデフォルトの filename が存在するか確認
-
-    base_name = File.basename(super, '.*')
-    extension = File.extname(super).downcase == '.heic' ? 'jpg' : File.extname(super).downcase.delete('.')
-    "#{base_name}.#{extension}"
+ def filename
+    super.chomp(File.extname(super)) + '.webp' if original_filename.present?
   end
 end

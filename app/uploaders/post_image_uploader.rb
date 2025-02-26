@@ -28,7 +28,7 @@ class PostImageUploader < CarrierWave::Uploader::Base
   end
 
   # 内部的に呼び出されるメソッド,filenameをオーバーライドしている
- def filename
-    super.chomp(File.extname(super)) + '.webp' if original_filename.present?
+  def filename
+    "#{super.chomp(File.extname(super))}.webp" if original_filename.present?
   end
 end

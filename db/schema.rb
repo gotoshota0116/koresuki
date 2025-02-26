@@ -16,7 +16,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_02_26_051325) do
   enable_extension "plpgsql"
 
   create_table "comments", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.text "body", null: false
+    t.text "content", null: false
     t.uuid "user_id", null: false
     t.uuid "post_id", null: false
     t.datetime "created_at", null: false

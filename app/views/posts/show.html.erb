@@ -3,9 +3,9 @@
 
   <h1>「<%= @post.title %>」</h1>
 
-<!-- 投稿画像 -->
+<!-- メイン画像 -->
   <% if @post.image.present? %>
-    <img src="<%= @post.image %>" alt="投稿画像">
+    <img src="<%= @post.image.url %>" alt="メイン画像">
   <% else %>
     <div style="width: 300px; height: 200px; background-color: lightgray; text-align: center; line-height: 200px;">
       写真
@@ -15,6 +15,16 @@
   <!-- 投稿内容 -->
   <p><%= @post.body %></p>
 
+  <!-- サブ画像 -->
+  <% if @post.post_images.present? %>
+    <% @post.post_images.each do |post_image| %>
+      <img src="<%= post_image.image.url %>" alt="サブ画像">
+      <% if post_image.caption.present? %>
+        <p><%= post_image.caption %></p>
+      <% end %>
+    <% end %>
+  <% end %>
+
   <!-- Xシェアボタン -->
   <div class="text-gray-600">
     <% encode_text = URI.encode_www_form_component("【KORESUKI】\nわたしの好き「#{@post.title}」を投稿しました！") %>
@@ -23,15 +33,6 @@
       <span><%= t('helpers.submit.xshare') %></span>
     <% end %>
   </div>
-
-  <!-- 編集・削除（投稿者のみ)-->
-  <% if user_signed_in? && current_user.own?(@post) %>
-    <div>
-      <%= link_to t('helpers.submit.edit'), edit_post_path(@post), class: 'btn btn-primary' %>
-      <%= link_to t('helpers.submit.delete'), post_path(@post), data: { turbo_method: :delete, turbo_confirm: t('helpers.confirm.delete') },
-                                                                class: 'btn btn-danger' %>
-    </div>
-  <% end %>
 
   <!-- コメントフォーム -->
   <div class="mt-8">
@@ -44,4 +45,13 @@
       <%= render @comments %>
     </div>
   </div>
+
+  <!-- 編集・削除（投稿者のみ)-->
+  <% if user_signed_in? && current_user.own?(@post) %>
+    <div>
+      <%= link_to t('helpers.submit.edit'), edit_post_path(@post), class: 'btn btn-primary' %>
+      <%= link_to t('helpers.submit.delete'), post_path(@post), data: { turbo_method: :delete, turbo_confirm: t('helpers.confirm.delete') },
+                                                                class: 'btn btn-danger' %>
+    </div>
+  <% end %>
 </div>

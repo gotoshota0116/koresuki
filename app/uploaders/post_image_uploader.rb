@@ -15,7 +15,7 @@ class PostImageUploader < CarrierWave::Uploader::Base
     %w[jpg jpeg gif png heic webp]
   end
 
-  process resize_to_fit: [1000, 750]
+  process resize_to_fit: [500, 500]
   process :convert_to_webp
 
   private

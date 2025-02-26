@@ -11,6 +11,10 @@ ja:
       post:
         title: SUKIのタイトル
         body: SUKIの理由
+        image: メイン画像（Xシェア、みんなのSUKIに反映されます）
       comment:
         body: コメント
+      post_image:
+        image: サブ画像
+        caption: サブ画像の説明文
     # errors.models: バリデーションエラー

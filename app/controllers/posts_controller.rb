@@ -18,7 +18,9 @@ class PostsController < ApplicationController
     @post.post_images.build
   end
 
-  def edit; end
+  def edit
+    @post.post_images.build
+  end
 
   def create
     @post = current_user.posts.build(post_params)
@@ -37,6 +39,7 @@ class PostsController < ApplicationController
       flash[:notice] = t('defaults.flash_message.updated', item: Post.model_name.human)
       redirect_to post_path(@post)
     else
+      @post.post_images.build
       flash.now[:alert] = t('defaults.flash_message.not_updated', item: Post.model_name.human)
       render :edit, status: :unprocessable_entity
     end

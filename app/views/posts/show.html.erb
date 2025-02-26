@@ -1,32 +1,36 @@
-<div>
-  <h2><%= @post.user.name %> <%= t('.title') %></h2>
+<div class="container mx-auto max-w-4xl px-4 py-8">
+  <h2 class="text-center"><%= @post.user.name %> <%= t('.title') %></h2>
 
-  <h1>「<%= @post.title %>」</h1>
+  <h1 class="text-center text-2xl font-bold my-4">「<%= @post.title %>」</h1>
 
 <!-- メイン画像 -->
-  <% if @post.image.present? %>
-    <img src="<%= @post.image.url %>" alt="メイン画像">
-  <% else %>
-    <div style="width: 300px; height: 200px; background-color: lightgray; text-align: center; line-height: 200px;">
-      写真
-    </div>
-  <% end %>
+  <div class="flex justify-center my-6">
+    <% if @post.image.present? %>
+      <img src="<%= @post.image.url %>" alt="メイン画像" class="max-w-full">
+    <% else %>
+      <div style="width: 300px; height: 200px; background-color: lightgray; text-align: center; line-height: 200px;">
+        写真
+      </div>
+    <% end %>
+  </div>
 
   <!-- 投稿内容 -->
-  <p><%= @post.body %></p>
+  <p class="my-6 text-center"><%= @post.body %></p>
 
   <!-- サブ画像 -->
   <% if @post.post_images.present? %>
-    <% @post.post_images.each do |post_image| %>
-      <img src="<%= post_image.image.url %>" alt="サブ画像">
-      <% if post_image.caption.present? %>
-        <p><%= post_image.caption %></p>
+    <div class="flex flex-col items-center my-6">
+      <% @post.post_images.each do |post_image| %>
+        <img src="<%= post_image.image.url %>" alt="サブ画像" class="max-w-full mb-2">
+        <% if post_image.caption.present? %>
+          <p class="mb-4 text-center"><%= post_image.caption %></p>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   <% end %>
 
   <!-- Xシェアボタン -->
-  <div class="text-gray-600">
+  <div class="flex justify-center my-6">
     <% encode_text = URI.encode_www_form_component("【KORESUKI】\nわたしの好き「#{@post.title}」を投稿しました！") %>
     <% twitter_share_url = "https://twitter.com/intent/tweet?url=#{CGI.escape(post_url(@post))}&text=#{encode_text}%0A%0A&hashtags=KORESUKI" %>
       <%= link_to twitter_share_url, target: '_blank', rel: 'noopener', class: 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded' do %>
@@ -36,7 +40,7 @@
 
   <!-- コメントフォーム -->
   <div class="mt-8">
-    <h3 class="text-xl font-bold mb-4"><%= t('comments.create.title') %></h3>
+    <h3 class="text-xl font-bold mb-4 text-center"><%= t('comments.create.title') %></h3>
     <% if user_signed_in? %>
       <%= render 'comments/form', post: @post %>
     <% end %>
@@ -48,7 +52,7 @@
 
   <!-- 編集・削除（投稿者のみ)-->
   <% if user_signed_in? && current_user.own?(@post) %>
-    <div>
+    <div class="flex justify-center gap-4 mt-6">
       <%= link_to t('helpers.submit.edit'), edit_post_path(@post), class: 'btn btn-primary' %>
       <%= link_to t('helpers.submit.delete'), post_path(@post), data: { turbo_method: :delete, turbo_confirm: t('helpers.confirm.delete') },
                                                                 class: 'btn btn-danger' %>

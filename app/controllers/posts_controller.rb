@@ -15,11 +15,13 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-    @post.post_images.build
+    4.times { @post.post_images.build } # 4つの空のフォームを作成
   end
 
   def edit
-    @post.post_images.build
+    # 常に4つのフォームを表示するため、不足分のオブジェクトを追加
+    # 既存の画像,説明文がある場合はそれを保持し、合計が4つになるように
+    (4 - @post.post_images.size).times { @post.post_images.build }
   end
 
   def create
@@ -28,7 +30,9 @@ class PostsController < ApplicationController
       flash[:notice] = t('defaults.flash_message.created', item: Post.model_name.human)
       redirect_to posts_path
     else
-      @post.post_images.build
+      # バリデーション失敗時、常に4つのフォームを表示するため不足分を追加
+      # 送信されたデータは保持しつつ、合計が4つになるように
+      (4 - @post.post_images.size).times { @post.post_images.build }
       flash.now[:alert] = t('defaults.flash_message.not_created', item: Post.model_name.human)
       render :new, status: :unprocessable_entity
     end
@@ -39,7 +43,7 @@ class PostsController < ApplicationController
       flash[:notice] = t('defaults.flash_message.updated', item: Post.model_name.human)
       redirect_to post_path(@post)
     else
-      @post.post_images.build
+      (4 - @post.post_images.size).times { @post.post_images.build }
       flash.now[:alert] = t('defaults.flash_message.not_updated', item: Post.model_name.human)
       render :edit, status: :unprocessable_entity
     end

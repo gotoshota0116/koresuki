@@ -58,7 +58,13 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body, :image, post_images_attributes: %i[id image caption _destroy])
+    params.require(:post).permit(
+      :title,
+      :body,
+      :image,
+      post_images_attributes: %i[id image caption ],
+      post_videos_attributes: %i[id youtube_url caption ]
+    )
   end
 
   def set_post

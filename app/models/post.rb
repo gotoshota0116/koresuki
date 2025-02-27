@@ -6,6 +6,8 @@ class Post < ApplicationRecord
   has_many :notifications, as: :notifiable, dependent: :destroy
   has_many :post_images, dependent: :destroy
   accepts_nested_attributes_for :post_images, allow_destroy: true, reject_if: :all_blank
+  has_many :post_videos, dependent: :destroy
+  accepts_nested_attributes_for :post_videos, allow_destroy: true, reject_if: :all_blank
 
   mount_uploader :image, ImageUploader
 

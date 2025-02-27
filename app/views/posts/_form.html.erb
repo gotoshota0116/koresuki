@@ -27,48 +27,6 @@
       </div>
     <% end %>
   </div>
-  <div>
-    <%= f.fields_for :post_images do |post_image_form| %>
-      <div class="mb-4">
-        <%= post_image_form.label :image, class: 'block text-sm font-medium text-gray-700' %>
-        <%= post_image_form.file_field :image,
-                                       class: 'mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500' %>
-      </div>
-      <div class="mb-4">
-        <%= post_image_form.label :caption, class: 'block text-sm font-medium text-gray-700' %>
-        <%= post_image_form.text_field :caption,
-                                       class: 'mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500' %>
-      </div>
-    <% end %>
-  </div>
-    <div>
-    <%= f.fields_for :post_images do |post_image_form| %>
-      <div class="mb-4">
-        <%= post_image_form.label :image, class: 'block text-sm font-medium text-gray-700' %>
-        <%= post_image_form.file_field :image,
-                                       class: 'mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500' %>
-      </div>
-      <div class="mb-4">
-        <%= post_image_form.label :caption, class: 'block text-sm font-medium text-gray-700' %>
-        <%= post_image_form.text_field :caption,
-                                       class: 'mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500' %>
-      </div>
-    <% end %>
-  </div>
-      <div>
-    <%= f.fields_for :post_images do |post_image_form| %>
-      <div class="mb-4">
-        <%= post_image_form.label :image, class: 'block text-sm font-medium text-gray-700' %>
-        <%= post_image_form.file_field :image,
-                                       class: 'mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500' %>
-      </div>
-      <div class="mb-4">
-        <%= post_image_form.label :caption, class: 'block text-sm font-medium text-gray-700' %>
-        <%= post_image_form.text_field :caption,
-                                       class: 'mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500' %>
-      </div>
-    <% end %>
-  </div>
   <!-- 投稿ボタン -->
   <div class="flex justify-center">
   <%= f.submit t('helpers.submit.create'), class: 'bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md shadow-md transition duration-300' %>

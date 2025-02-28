@@ -5,7 +5,6 @@ class PostVideo < ApplicationRecord
 
 
   def split_id_from_youtube_url
-    # YoutubeならIDのみ抽出
-    youtube_url.split('/').last
+    self.youtube_url = youtube_url.split('/').last
   end
 end

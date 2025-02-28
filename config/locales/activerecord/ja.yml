@@ -17,4 +17,7 @@ ja:
       post_image:
         image: サブ画像
         caption: サブ画像の説明文
+      post_video:
+        youtube_url: YouTube共有URL（YouTube動画の共有ボタンからコピーしたURLを入力してください）
+        caption: YouTube動画の説明文
     # errors.models: バリデーションエラー

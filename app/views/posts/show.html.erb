@@ -44,6 +44,9 @@
               allow: 'encrypted-media',
               allowfullscreen: true,
               class: 'w-full' %>
+          <% if post_video.caption.present? %>
+            <p class="mb-4 text-center"><%= post_video.caption %></p>
+          <% end %>
         </div>
       </div>
     <% end %>

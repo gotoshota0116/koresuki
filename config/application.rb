@@ -28,6 +28,7 @@ module Myapp
     config.time_zone = 'Tokyo'
 
     config.generators do |g|
+      g.decorator false
       g.helper false
       g.test_framework false
       g.skip_routes true

@@ -7,19 +7,19 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
-    prepare_meta_tags(@post)
+    @post = Post.find(params[:id]).decorate
+    @post.prepare_nested_forms
     @comment = Comment.new
     @comments = @post.comments.includes(:user).order(created_at: :desc)
   end
 
   def new
-    @post = Post.new
-    prepare_nested_forms
+    @post = Post.new.decorate
+    @post.prepare_nested_forms
   end
 
   def edit
-    prepare_nested_forms
+    @post.prepare_nested_forms
   end
 
   def create
@@ -28,7 +28,8 @@ class PostsController < ApplicationController
       flash[:notice] = t('defaults.flash_message.created', item: Post.model_name.human)
       redirect_to posts_path
     else
-      prepare_nested_forms
+      @post = @post.decorate
+      @post.prepare_nested_forms
       flash.now[:alert] = t('defaults.flash_message.not_created', item: Post.model_name.human)
       render :new, status: :unprocessable_entity
     end
@@ -39,7 +40,7 @@ class PostsController < ApplicationController
       flash[:notice] = t('defaults.flash_message.updated', item: Post.model_name.human)
       redirect_to post_path(@post)
     else
-      prepare_nested_forms
+      @post.prepare_nested_forms
       flash.now[:alert] = t('defaults.flash_message.not_updated', item: Post.model_name.human)
       render :edit, status: :unprocessable_entity
     end
@@ -64,19 +65,7 @@ class PostsController < ApplicationController
   end
 
   def set_post
-    @post = current_user.posts.find(params[:id])
-  end
-
-  # サブ画像、youtubeリンクのフォームを生成する
-  def prepare_nested_forms
-    ensure_nested_form_items(@post.post_images)
-    ensure_nested_form_items(@post.post_videos)
-  end
-
-  # 常に4つのフォームを表示するため、不足分のオブジェクトを追加
-  # 既存の入力があれば保持し、合計が4つになるようにbuild
-  def ensure_nested_form_items(association, count = 4)
-    (count - association.size).times { association.build }
+    @post = current_user.posts.find(params[:id]).decorate
   end
 
   def prepare_meta_tags(post)

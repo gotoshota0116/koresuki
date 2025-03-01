@@ -1,13 +1,16 @@
 class PostDecorator < Draper::Decorator
   delegate_all
 
-  # Define presentation-specific methods here. Helpers are accessed through
-  # `helpers` (aka `h`). You can override attributes, for example:
-  #
-  #   def created_at
-  #     helpers.content_tag :span, class: 'time' do
-  #       object.created_at.strftime("%a %m/%d/%y")
-  #     end
-  #   end
+# サブ画像、youtubeリンクのフォームを生成する
+def prepare_nested_forms
+  ensure_nested_form_items(object.post_images)
+  ensure_nested_form_items(object.post_videos)
+end
+
+# 常に4つのフォームを表示するため、不足分のオブジェクトを追加
+# 既存の入力があれば保持し、合計が4つになるようにbuild
+def ensure_nested_form_items(association, count = 4)
+  (count - association.size).times { association.build }
+end
 
 end

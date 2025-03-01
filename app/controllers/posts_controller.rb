@@ -15,13 +15,11 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-    4.times { @post.post_images.build } # 4つの空のフォームを作成
+    prepare_nested_forms
   end
 
   def edit
-    # 常に4つのフォームを表示するため、不足分のオブジェクトを追加
-    # 既存の画像,説明文がある場合はそれを保持し、合計が4つになるように
-    (4 - @post.post_images.size).times { @post.post_images.build }
+    prepare_nested_forms
   end
 
   def create
@@ -30,9 +28,7 @@ class PostsController < ApplicationController
       flash[:notice] = t('defaults.flash_message.created', item: Post.model_name.human)
       redirect_to posts_path
     else
-      # バリデーション失敗時、常に4つのフォームを表示するため不足分を追加
-      # 送信されたデータは保持しつつ、合計が4つになるように
-      (4 - @post.post_images.size).times { @post.post_images.build }
+      prepare_nested_forms
       flash.now[:alert] = t('defaults.flash_message.not_created', item: Post.model_name.human)
       render :new, status: :unprocessable_entity
     end
@@ -43,7 +39,7 @@ class PostsController < ApplicationController
       flash[:notice] = t('defaults.flash_message.updated', item: Post.model_name.human)
       redirect_to post_path(@post)
     else
-      (4 - @post.post_images.size).times { @post.post_images.build }
+      prepare_nested_forms
       flash.now[:alert] = t('defaults.flash_message.not_updated', item: Post.model_name.human)
       render :edit, status: :unprocessable_entity
     end
@@ -58,11 +54,29 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body, :image, post_images_attributes: %i[id image caption _destroy])
+    params.require(:post).permit(
+      :title,
+      :body,
+      :image,
+      post_images_attributes: %i[id image caption],
+      post_videos_attributes: %i[id youtube_url caption]
+    )
   end
 
   def set_post
     @post = current_user.posts.find(params[:id])
+  end
+
+  # サブ画像、youtubeリンクのフォームを生成する
+  def prepare_nested_forms
+    ensure_nested_form_items(@post.post_images)
+    ensure_nested_form_items(@post.post_videos)
+  end
+
+  # 常に4つのフォームを表示するため、不足分のオブジェクトを追加
+  # 既存の入力があれば保持し、合計が4つになるようにbuild
+  def ensure_nested_form_items(association, count = 4)
+    (count - association.size).times { association.build }
   end
 
   def prepare_meta_tags(post)

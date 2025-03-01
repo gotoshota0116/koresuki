@@ -9,6 +9,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id]).decorate
     @post.prepare_nested_forms
+    prepare_meta_tags(@post)
     @comment = Comment.new
     @comments = @post.comments.includes(:user).order(created_at: :desc)
   end

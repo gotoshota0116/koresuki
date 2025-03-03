@@ -1,4 +1,4 @@
-<%= form_with mode, class: 'space-y-4' do |f| %>
+<%= form_with model: @post, class: 'space-y-4' do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <div>
     <%= f.label :title, class: 'block text-sm font-medium text-gray-700' %>

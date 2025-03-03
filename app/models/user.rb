@@ -30,7 +30,4 @@ class User < ApplicationRecord
     likes.find_by(likeable: likeable)&.destroy
   end
 
-  def like?(likeable)
-    likes.exists?(likeable: likeable)
-  end
 end

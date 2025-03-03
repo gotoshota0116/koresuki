@@ -1,6 +1,6 @@
 <% if user_signed_in? %>
   <div class='ms-auto'>
-    <% if current_user.like?(likeable) %>
+    <% if @current_user_likes && @current_user_likes[likeable.id].present? %>
       <%= render 'likes/unlike_button', { likeable: likeable } %>
     <% else %>
       <%= render 'likes/like_button', { likeable: likeable } %>

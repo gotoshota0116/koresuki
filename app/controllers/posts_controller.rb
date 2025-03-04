@@ -4,11 +4,12 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.includes(:user).order(created_at: :desc)
-    @current_user_likes = current_user.likes.where(likeable_type: 'Post').index_by(&:likeable_id)
+    @current_user_likes = current_user&.likes&.where(likeable_type: 'Post')&.index_by(&:likeable_id) || {}
   end
 
   def show
     @post = Post.find(params[:id])
+    prepare_meta_tags(@post)
     @comment = Comment.new
     @comments = @post.comments.includes(:user).order(created_at: :desc)
   end

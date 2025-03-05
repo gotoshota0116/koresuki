@@ -29,5 +29,4 @@ class User < ApplicationRecord
   def unlike(likeable)
     likes.find_by(likeable: likeable)&.destroy
   end
-
 end

@@ -6,7 +6,7 @@
 <!-- メイン画像 -->
   <div class="flex justify-center my-6">
     <% if @post.image.present? %>
-      <img src="<%= @post.image.url %>" alt="メイン画像" class="max-w-full">
+      <%= image_tag @post.image.url, alt: "メイン画像", class: "max-w-full" %>
     <% else %>
       <div style="width: 300px; height: 200px; background-color: lightgray; text-align: center; line-height: 200px;">
         写真
@@ -21,7 +21,7 @@
   <% if @post.post_images.present? %>
     <div class="flex flex-col items-center my-6">
       <% @post.post_images.each do |post_image| %>
-        <img src="<%= post_image.image.url %>" alt="サブ画像" class="max-w-full mb-2">
+        <%= image_tag post_image.image.url, alt: "サブ画像", class: "max-w-full mb-2" %>
         <% if post_image.caption.present? %>
           <p class="mb-4 text-center"><%= post_image.caption %></p>
         <% end %>

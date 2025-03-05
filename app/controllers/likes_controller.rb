@@ -6,7 +6,7 @@ class LikesController < ApplicationController
     current_user.like(@likeable) # いいねを作成
     @likeable.create_notification(current_user, :liked) # 通知を作成
     # create後の_unlike_buttonをレンダリングするたため、@current_user_likesを定義
-    @current_user_likes = current_user&.likes&.where(likeable_type: 'Post')&.index_by(&:likeable_id) || {}
+    @current_user_likes = current_user&.likes&.where(likeable_type: ['Post', 'Comment'])&.index_by(&:likeable_id) || {}
   end
 
     # destroy.turbo_stream.erbで、unlike-button-#{@likeable.id}を更新する

@@ -12,6 +12,7 @@ class PostsController < ApplicationController
     prepare_meta_tags(@post)
     @comment = Comment.new
     @comments = @post.comments.includes(:user).order(created_at: :desc)
+    @current_user_likes = current_user&.likes&.where(likeable_type: 'Comment')&.index_by(&:likeable_id) || {}
   end
 
   def new

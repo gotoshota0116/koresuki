@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[edit update destroy]
 
   def index
-    @posts = Post.includes(:user).order(created_at: :desc)
+    @posts = Post.includes(:user, :post_videos).order(created_at: :desc)
     @current_user_likes = current_user.present? ? current_user.likes.where(likeable_type: 'Post').index_by(&:likeable_id) : {}
   end
 

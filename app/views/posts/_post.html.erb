@@ -15,10 +15,10 @@
       <% elsif post.post_videos.present? %>
         <div class="w-full aspect-video">
           <%= image_tag "https://img.youtube.com/vi/#{post.post_videos.first.youtube_url.to_s[0..10]}/hqdefault.jpg",
-               width: '100%',
-               height: '100%',
-               class: 'rounded-lg',
-               alt: "YouTube動画のサムネイル" %>
+                        width: '100%',
+                        height: '100%',
+                        class: 'rounded-lg',
+                        alt: 'YouTube動画のサムネイル' %>
         </div>
       <% else %>
         <div class="w-full h-48 bg-gray-300 flex items-center justify-center rounded-lg">

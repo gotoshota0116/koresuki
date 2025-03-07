@@ -19,7 +19,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   process :convert_heic_to_jpg, if: :heic?
 
   version :mini do
-    process resize_to_fill: [400, 350]
+    process resize_to_fill: [400, 300]
     process :convert_heic_to_jpg, if: :heic?
   end
 

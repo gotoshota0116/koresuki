@@ -6,7 +6,7 @@ class PostsFinder < BaseFinder
   
   def execute
     search_keyword
-    @recordp
+    @record
   end
   
   private

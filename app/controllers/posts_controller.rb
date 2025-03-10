@@ -3,7 +3,8 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[edit update destroy]
 
   def index
-    @posts = Post.includes(:user, :post_videos).order(created_at: :desc)
+    @search_posts_form = SearchPostsForm.new(search_post_params) # 検索条件を保持
+    @posts = PostsFinder.new(@search_posts_form).search.includes(:user, :post_videos).order(created_at: :desc) # 　検索を実行する
     @current_user_likes = current_user.present? ? current_user.likes.where(likeable_type: 'Post').index_by(&:likeable_id) : {}
   end
 
@@ -55,6 +56,10 @@ class PostsController < ApplicationController
   end
 
   private
+
+  def search_post_params
+    params.fetch(:query, {}).permit(:keyword)
+  end
 
   def post_params
     params.require(:post).permit(

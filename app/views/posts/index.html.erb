@@ -2,12 +2,14 @@
   <div class="flex justify-center">
     <div class="w-full lg:w-10/12">
       <!-- 検索フォーム -->
-      <form>
-        <div class="flex mb-3">
-          <input type="search" placeholder="<%= t('.search_placeholder') %>" autocomplete="on" class="flex-grow px-4 py-2 border rounded-l">
-          <input type="submit" value="<%= t('.search_submit') %>" class="px-4 py-2 border rounded-r">
+      <%= form_with model: @search_posts_form, scope: :q, url: posts_path, method: :get, local: true do |f| %>
+        <div>
+          <%= f.search_field :keyword, value: @search_posts_form.keyword, placeholder: "キーワードで検索" %>
         </div>
-      </form>
+        <div>
+          <%= f.submit '検索' %>
+        </div>
+      <% end %>
     </div>
   </div>
 

@@ -17,8 +17,6 @@ Rails.application.routes.draw do
 
   resources :notifications, only: %i[index destroy]
 
-  resources :search, only: [:index]
-
   get 'ogp/ogp.png', to: 'ogp_images#show', as: :ogp_image
 
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?

@@ -1,7 +1,7 @@
-class PostsFinder < BaseFinder
+class PostsFinder
   def initialize(q)
+    @q = q
     @record = Post.all
-    super(q)
   end
   
   def execute
@@ -19,4 +19,8 @@ class PostsFinder < BaseFinder
     @record = @record.where("title LIKE ? OR body LIKE ?", keyword, keyword)
   end
   
+  # like検索
+  def like_search_condition(word)
+    "%#{ActiveRecord::Base.sanitize_sql_like(word)}%"
+  end
 end

@@ -2,9 +2,9 @@
   <div class="flex justify-center">
     <div class="w-full lg:w-10/12">
       <!-- 検索フォーム -->
-      <%= form_with model: @search_posts_form, scope: :q, url: posts_path, method: :get do |f| %>
+      <%= form_with model: @search_posts_form, scope: :query, url: posts_path, method: :get do |f| %>
         <div>
-          <%= f.search_field :keyword, value: @search_posts_form.keyword, placeholder: "キーワードで検索" %>
+          <%= f.search_field :keyword, value: @search_posts_form.keyword, placeholder: 'キーワードで検索' %>
         </div>
         <div>
           <%= f.submit '検索' %>

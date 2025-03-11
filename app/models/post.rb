@@ -21,9 +21,13 @@ class Post < ApplicationRecord
     # find_or_initialize_by　既存のレコードを取得,存在しない場合は新しく作成
     # いいねを複数回押しても1回分の通知しか作成されないように
     notification = Notification.find_or_initialize_by(
+      # current_userが入る
       visitor_id: visitor.id,
+      # 投稿者が入る
       visited_id: user.id,
+      # 通知の対象、ポストが入る
       notifiable: self,
+      # いいね、コメントが入る
       action: action
     )
 

@@ -10,17 +10,17 @@ class Comment < ApplicationRecord
   validates :body, presence: true, length: { maximum: 300 }
 
   def create_notification(visitor, action)
-    # いいね、コメントしたユーザーと投稿者が同じ場合は通知を作成しない
-    return if visitor.id == post.user.id
+    # いいねユーザーとコメント作成者が同じ場合は通知を作成しない
+    return if visitor.id == user.id
 
     Notification.create!(
       # current_userが入る
       visitor_id: visitor.id,
-      # 投稿者
-      visited_id: post.user.id,
-      # コメントが入る
+      # コメントしたユーザー
+      visited_id: user.id,
+      # 通知の対象、コメントが入る
       notifiable: self,
-      # いいねかコメントが入る
+      # いいねが入る
       action: action
     )
   end

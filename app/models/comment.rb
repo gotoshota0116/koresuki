@@ -11,13 +11,13 @@ class Comment < ApplicationRecord
 
   def create_notification(visitor, action)
     # いいねユーザーとコメント作成者が同じ場合は通知を作成しない
-    return if visitor.id == self.user.id
+    return if visitor.id == user.id
 
     Notification.create!(
       # current_userが入る
       visitor_id: visitor.id,
       # コメントしたユーザー
-      visited_id: self.user.id,
+      visited_id: user.id,
       # 通知の対象、コメントが入る
       notifiable: self,
       # いいねが入る

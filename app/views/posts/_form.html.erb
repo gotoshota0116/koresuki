@@ -17,7 +17,7 @@
   <div data-controller="nested-form">
       <!-- サブ画像 -->
     <div class="mb-6">
-      <h3 class="font-medium text-lg mb-2">サブ画像</h3>
+      <h3 class="font-medium text-lg mb-2"><%= t('.post_images')%></h3>
       <!-- テンプレート - 新規追加用 -->
       <template data-nested-form-target="template" data-type="post_images">
         <div class="nested-form-wrapper border p-4 rounded-md mb-4">
@@ -40,14 +40,14 @@
       </div>
       <div class="mt-2">
         <button data-action="nested-form#add" data-type="post_images" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md">
-          サブ画像を追加
+          <%= t('helpers.submit.addition') %>
         </button>
       </div>
     </div>
 
     <!-- YouTube動画 -->
     <div class="mb-6">
-      <h3 class="font-medium text-lg mb-2">YouTube動画</h3>
+      <h3 class="font-medium text-lg mb-2"><%= t('.post_videos')%></h3>
       <!-- テンプレート - 新規追加用 -->
       <template data-nested-form-target="template" data-type="post_videos">
         <div class="nested-form-wrapper border p-4 rounded-md mb-4">
@@ -70,7 +70,7 @@
       </div>
       <div class="mt-2">
         <button data-action="nested-form#add" data-type="post_videos" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md">
-          YouTube動画を追加
+          <%= t('helpers.submit.addition') %>
         </button>
       </div>
     </div>

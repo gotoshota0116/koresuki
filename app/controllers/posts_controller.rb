@@ -17,12 +17,10 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = Post.new.decorate
-    @post.prepare_nested_forms
+    @post = Post.new
   end
 
   def edit
-    @post.prepare_nested_forms
   end
 
   def create
@@ -31,8 +29,7 @@ class PostsController < ApplicationController
       flash[:notice] = t('defaults.flash_message.created', item: Post.model_name.human)
       redirect_to posts_path
     else
-      @post = @post.decorate
-      @post.prepare_nested_forms
+      @post = @post
       flash.now[:alert] = t('defaults.flash_message.not_created', item: Post.model_name.human)
       render :new, status: :unprocessable_entity
     end
@@ -43,7 +40,6 @@ class PostsController < ApplicationController
       flash[:notice] = t('defaults.flash_message.updated', item: Post.model_name.human)
       redirect_to post_path(@post)
     else
-      @post.prepare_nested_forms
       flash.now[:alert] = t('defaults.flash_message.not_updated', item: Post.model_name.human)
       render :edit, status: :unprocessable_entity
     end
@@ -72,7 +68,7 @@ class PostsController < ApplicationController
   end
 
   def set_post
-    @post = current_user.posts.find(params[:id]).decorate
+    @post = current_user.posts.find(params[:id])
   end
 
   def prepare_meta_tags(post)

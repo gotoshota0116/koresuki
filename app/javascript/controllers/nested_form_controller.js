@@ -3,12 +3,14 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["template", "container"]
   
+  // コントローラーが呼ばれたら実行される railsでいうと before_action,initialize
   connect() {
     console.log("Nested form controller connected")
   }
   
+  // addメソッド　追加ボタン
   add(event) {
-    event.preventDefault()
+    event.preventDefault() // Railsでいうと remote: true
     
     // 親要素のdata-nested-form-target属性を取得
     const containerType = event.currentTarget.dataset.type
@@ -22,8 +24,9 @@ export default class extends Controller {
     container.insertAdjacentHTML('beforeend', content)
   }
   
+  // removeメソッド 削除ボタン
   remove(event) {
-    event.preventDefault()
+    event.preventDefault() // Railsでいうと remote: true
     
     const wrapper = event.target.closest('.nested-form-wrapper')
     

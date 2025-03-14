@@ -66,8 +66,8 @@ class PostsController < ApplicationController
       :title,
       :body,
       :image,
-      post_images_attributes: %i[id image caption],
-      post_videos_attributes: %i[id youtube_url caption]
+      post_images_attributes: [:id, :image, :caption, :_destroy],
+      post_videos_attributes: [:id, :youtube_url, :caption, :_destroy]
     )
   end
 

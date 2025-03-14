@@ -8,8 +8,8 @@ class PostDecorator < Draper::Decorator
   end
 
   # 常に4つのフォームを表示するため、不足分のオブジェクトを追加
-  # 既存の入力があれば保持し、合計が4つになるようにbuild
-  def ensure_nested_form_items(association, count = 4)
+  # 既存の入力があれば保持し、合計が指定数になるようにbuild
+  def ensure_nested_form_items(association, count = 0)
     (count - association.size).times { association.build }
   end
 end

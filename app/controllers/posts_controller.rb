@@ -20,8 +20,7 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @post = current_user.posts.build(post_params)
@@ -29,7 +28,6 @@ class PostsController < ApplicationController
       flash[:notice] = t('defaults.flash_message.created', item: Post.model_name.human)
       redirect_to posts_path
     else
-      @post = @post
       flash.now[:alert] = t('defaults.flash_message.not_created', item: Post.model_name.human)
       render :new, status: :unprocessable_entity
     end
@@ -62,8 +60,8 @@ class PostsController < ApplicationController
       :title,
       :body,
       :image,
-      post_images_attributes: [:id, :image, :caption, :_destroy],
-      post_videos_attributes: [:id, :youtube_url, :caption, :_destroy]
+      post_images_attributes: %i[id image caption _destroy],
+      post_videos_attributes: %i[id youtube_url caption _destroy]
     )
   end
 

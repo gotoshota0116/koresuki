@@ -1,0 +1,12 @@
+<div class="mb-4">
+  <%= form.label :youtube_url, class: 'block text-sm font-medium text-gray-700' %>
+  <%= form.text_field :youtube_url, class: 'mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500' %>
+</div>
+<div class="mb-4">
+  <%= form.label :caption, class: 'block text-sm font-medium text-gray-700' %>
+  <%= form.text_field :caption, class: 'mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500' %>
+</div>
+<!-- 削除ボタン -->
+<div class="text-right">
+  <button data-action="nested-form#remove" class="bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-3 rounded-md"><%= t('helpers.submit.delete') %></button>
+</div>

@@ -15,12 +15,16 @@ ja:
       no_posts: 掲示板がありません
       search_placeholder: 検索ワード
       search_submit: 検索
+      place_holder: キーワードで検索
     new:
       title: 新規投稿
     edit:
       title: 投稿編集
     show:
       title: さんのSUKI
+    form:
+      post_images: サブ画像
+      post_videos: Youtube動画
   profiles:
     show:
       title: さんのプロフィール
@@ -48,6 +52,7 @@ ja:
       update: 更新
       edit: 編集
       delete: 削除
+      addition: 追加
       xshare: Xシェア
     confirm:
       delete: 本当に削除しますか？

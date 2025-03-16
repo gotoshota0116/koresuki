@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_03_15_135343) do
+ActiveRecord::Schema[7.1].define(version: 2025_03_16_125020) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -55,6 +55,16 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_15_135343) do
     t.index ["notifiable_type", "notifiable_id"], name: "index_notifications_on_notifiable"
     t.index ["visited_id"], name: "index_notifications_on_visited_id"
     t.index ["visitor_id"], name: "index_notifications_on_visitor_id"
+  end
+
+  create_table "post_categories", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "post_id", null: false
+    t.uuid "category_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_post_categories_on_category_id"
+    t.index ["post_id", "category_id"], name: "index_post_categories_on_post_id_and_category_id", unique: true
+    t.index ["post_id"], name: "index_post_categories_on_post_id"
   end
 
   create_table "post_images", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -107,6 +117,8 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_15_135343) do
   add_foreign_key "comments", "users"
   add_foreign_key "notifications", "users", column: "visited_id"
   add_foreign_key "notifications", "users", column: "visitor_id"
+  add_foreign_key "post_categories", "categories"
+  add_foreign_key "post_categories", "posts"
   add_foreign_key "post_images", "posts"
   add_foreign_key "post_videos", "posts"
   add_foreign_key "posts", "users"

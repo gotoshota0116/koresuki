@@ -52,7 +52,7 @@ class PostsController < ApplicationController
   private
 
   def search_post_params
-    params.fetch(:query, {}).permit(:keyword)
+    params.fetch(:query, {}).permit(:keyword, :category)
   end
 
   def post_params

@@ -7,6 +7,9 @@
           <%= f.search_field :keyword, value: @search_posts_form.keyword, placeholder: t('.place_holder') %>
         </div>
         <div>
+          <%= f.collection_select :category, Category.all, :id, :name, value: @search_posts_form.category, include_blank: true %>
+        </div>
+        <div>
           <%= f.submit t('.search_submit') %>
         </div>
       <% end %>

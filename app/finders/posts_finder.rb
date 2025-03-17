@@ -8,6 +8,7 @@ class PostsFinder
   # 検索を実行する
   def search
     search_keyword
+    search_category
     @record
   end
 
@@ -25,4 +26,13 @@ class PostsFinder
   def like_search_condition(word)
     "%#{ActiveRecord::Base.sanitize_sql_like(word)}%"
   end
+
+  def search_category
+    return if @q.category.blank?
+
+    category = Category.find(@q.category)
+    @record = @record.where(categories: { id: category.id })
+  end
 end
+
+

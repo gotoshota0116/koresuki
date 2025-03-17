@@ -4,4 +4,5 @@ class SearchPostsForm
   include ActiveModel::Attributes
 
   attribute :keyword, :string
+  attribute :category, :string
 end

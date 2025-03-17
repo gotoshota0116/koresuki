@@ -1,5 +1,14 @@
 <%= form_with model: @post, class: 'space-y-4' do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
+  <h3 class="font-medium text-mg mb-2"><%= t('.categories') %></h3>
+  <div class="flex flex-wrap gap-4 mb-4">
+    <%= f.collection_check_boxes :category_ids, Category.all, :id, :name do |b| %>
+      <div class="flex items-center">
+        <%= b.check_box(class: "mr-2") %>
+        <%= b.label(class: "text-gray-700") %>
+      </div>
+    <% end %>
+  </div>
   <div>
     <%= f.label :title, class: 'block text-sm font-medium text-gray-700' %>
     <%= f.text_field :title, class: 'mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500' %>
@@ -10,14 +19,14 @@
   </div>
   <div>
     <%= f.label :image, class: 'block text-sm font-medium text-gray-700' %>
-    <%= f.file_field :image, class: 'mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500' %>
+    <%= f.file_field :image, accept: 'image/jpg,image/jpeg,image/png,image/gif,image/heic', class: 'mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500' %>
   </div>
 
   <!-- Stimulusコントローラーを適用 -->
   <div data-controller="nested-form">
       <!-- サブ画像 -->
     <div class="mb-6">
-      <h3 class="font-medium text-lg mb-2"><%= t('.post_images') %></h3>
+      <h3 class="font-medium text-mg mb-2"><%= t('.post_images') %></h3>
       <!-- テンプレート - 新規追加用 -->
       <template data-nested-form-target="template" data-type="post_images">
         <div class="nested-form-wrapper border p-4 rounded-md mb-4">
@@ -47,7 +56,7 @@
 
     <!-- YouTube動画 -->
     <div class="mb-6">
-      <h3 class="font-medium text-lg mb-2"><%= t('.post_videos') %></h3>
+      <h3 class="font-medium text-mg mb-2"><%= t('.post_videos') %></h3>
       <!-- テンプレート - 新規追加用 -->
       <template data-nested-form-target="template" data-type="post_videos">
         <div class="nested-form-wrapper border p-4 rounded-md mb-4">

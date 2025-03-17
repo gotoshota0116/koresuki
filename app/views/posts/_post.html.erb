@@ -25,6 +25,15 @@
           <span class="text-gray-600 text-lg">写真</span>
         </div>
       <% end %>
+      <% if post.categories.present? %>
+        <div class="mt-2 space-y-1">
+          <% post.categories.each do |category| %>
+            <div class="inline-block px-2 py-1 bg-gray-100 rounded-md text-sm">
+              <%= category.name %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
     </div>
     <div class="p-4">
       <%= render 'likes/like_buttons', { likeable: post } %>

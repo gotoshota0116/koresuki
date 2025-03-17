@@ -1,5 +1,12 @@
 <%= form_with model: @post, class: 'space-y-4' do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
+  <h3 class="font-medium text-lg mb-2"><%= t('.categories') %></h3>
+    <%= f.collection_check_boxes :category_ids, Category.all, :id, :name do |b| %>
+    <div class="flex items-center">
+      <%= b.check_box(class: "mr-2") %>
+      <%= b.label(class: "text-gray-700") %>
+    </div>
+    <% end %>
   <div>
     <%= f.label :title, class: 'block text-sm font-medium text-gray-700' %>
     <%= f.text_field :title, class: 'mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500' %>

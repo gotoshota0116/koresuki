@@ -60,6 +60,7 @@ class PostsController < ApplicationController
       :title,
       :body,
       :image,
+      { category_ids: [] } ,
       post_images_attributes: %i[id image caption _destroy],
       post_videos_attributes: %i[id youtube_url caption _destroy]
     )

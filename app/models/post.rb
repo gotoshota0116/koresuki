@@ -22,15 +22,13 @@ class Post < ApplicationRecord
     # いいねしたユーザーと投稿者が同じ場合は通知を作成しない
     return if visitor.id == user.id
 
-    # find_or_initialize_by　既存のレコードを取得,存在しない場合は新しく作成
+    # find_or_create_by　既存のレコードを取得,存在しない場合は新しく作成
     # いいねを複数回押しても1回分の通知しか作成されないように
-    notification = Notification.find_or_initialize_by(
+    Notification.find_or_create_by(
       visitor_id: visitor.id, # current_user
       visited_id: user.id, # 投稿者
       notifiable: self, # 通知元、like
       action: action # liked
     )
-
-    notification.save
   end
 end

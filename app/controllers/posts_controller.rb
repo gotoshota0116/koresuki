@@ -52,7 +52,7 @@ class PostsController < ApplicationController
   private
 
   def search_post_params
-    params.fetch(:query, {}).permit(:keyword)
+    params.fetch(:query, {}).permit(:keyword, :category)
   end
 
   def post_params
@@ -60,7 +60,7 @@ class PostsController < ApplicationController
       :title,
       :body,
       :image,
-      { category_ids: [] } ,
+      { category_ids: [] },
       post_images_attributes: %i[id image caption _destroy],
       post_videos_attributes: %i[id youtube_url caption _destroy]
     )

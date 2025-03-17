@@ -34,5 +34,3 @@ class PostsFinder
     @record = @record.where(categories: { id: category.id })
   end
 end
-
-

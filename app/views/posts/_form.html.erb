@@ -19,7 +19,7 @@
   </div>
   <div>
     <%= f.label :image, class: 'block text-sm font-medium text-gray-700' %>
-    <%= f.file_field :image, class: 'mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500' %>
+    <%= f.file_field :image, accept: 'image/jpg,image/jpeg,image/png,image/gif,image/heic', class: 'mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500' %>
   </div>
 
   <!-- Stimulusコントローラーを適用 -->

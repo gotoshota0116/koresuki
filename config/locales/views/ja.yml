@@ -65,4 +65,8 @@ ja:
       updated: "%{item}を更新しました"
       not_updated: "%{item}を更新できませんでした"
       deleted: "%{item}を削除しました"
+  errors:
+    messages:
+      extension_allowlist_error: 許可されていないファイル形式です
+
 

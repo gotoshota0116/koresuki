@@ -15,6 +15,7 @@ class Post < ApplicationRecord
 
   validates :title, presence: true
   validates :body, presence: true
+  validates :categories, presence: true
 
   # 投稿にいいね作成時呼び出し
   def create_notification(visitor, action)

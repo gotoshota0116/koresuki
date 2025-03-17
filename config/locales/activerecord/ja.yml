@@ -12,6 +12,7 @@ ja:
         title: SUKIのタイトル
         body: SUKIの理由
         image: メイン画像（Xシェア、みんなのSUKIに反映されます）
+        categories: カテゴリ
       comment:
         body: コメント
       post_image:
@@ -20,3 +21,9 @@ ja:
       post_video:
         youtube_url: YouTube動画URL（共有ボタンからコピーしたURLを入力してください）
         caption: 説明文
+    errors:
+      models:
+        post:
+          attributes:
+            categories:
+              blank: "を選択してください"

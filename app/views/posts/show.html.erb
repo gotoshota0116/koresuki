@@ -15,7 +15,7 @@
   </div>
 
   <!-- 投稿内容 -->
-  <p class="my-6 text-center"><%= @post.body %></p>
+  <p class="my-6 text-center"><%= simple_format(@post.body) %></p>
 
   <!-- サブ画像 -->
   <% if @post.post_images.present? %>

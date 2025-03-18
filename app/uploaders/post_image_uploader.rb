@@ -17,6 +17,7 @@ class PostImageUploader < CarrierWave::Uploader::Base
 
   process resize_to_fit: [500, 500]
   process :convert_to_webp
+  process :optimize
 
   private
 
@@ -30,5 +31,13 @@ class PostImageUploader < CarrierWave::Uploader::Base
   # 内部的に呼び出されるメソッド,filenameをオーバーライドしている
   def filename
     "#{super.chomp(File.extname(super))}.webp" if original_filename.present?
+  end
+
+  def optimize
+    manipulate! do |img|
+      img.strip # メタデータ削除
+      img.quality 80
+      img
+    end
   end
 end

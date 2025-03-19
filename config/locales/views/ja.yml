@@ -59,6 +59,7 @@ ja:
     confirm:
       delete: 本当に削除しますか？
   defaults:
+    # viewでsanitizeメソッド使用
     flash_message:
       created: "%{item}を作成しました"
       not_created: "%{item}を作成出来ませんでした"

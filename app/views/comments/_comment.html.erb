@@ -4,7 +4,7 @@
     <span class="text-gray-500 text-sm"><%= l comment.created_at, format: :long %></span>
   </div>
 
-  <p class="text-gray-700"><%= comment.body %></p>
+  <p class="text-gray-700"><%= simple_format(comment.body) %></p>
 
     <div class="p-4">
       <%= render 'likes/like_buttons', { likeable: comment } %>

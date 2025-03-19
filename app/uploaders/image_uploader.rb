@@ -17,10 +17,12 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   process resize_to_fit: [1200, 630]
   process :convert_heic_to_jpg, if: :heic?
+  process :optimize
 
   version :mini do
     process resize_to_fill: [400, 300]
     process :convert_heic_to_jpg, if: :heic?
+    process :optimize
   end
 
   private
@@ -43,5 +45,13 @@ class ImageUploader < CarrierWave::Uploader::Base
     base_name = File.basename(super, '.*')
     extension = File.extname(super).downcase == '.heic' ? 'jpg' : File.extname(super).downcase.delete('.')
     "#{base_name}.#{extension}"
+  end
+
+  def optimize
+    manipulate! do |img|
+      img.strip         # メタデータ削除
+      img.quality 80    # 画質を80に設定
+      img
+    end
   end
 end

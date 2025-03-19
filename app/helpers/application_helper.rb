@@ -10,17 +10,17 @@ module ApplicationHelper
   # application_helper.rb、display_meta_tags(default_meta_tags)に変更必要
 
   #   {
-  #     site: 'KORESUKI',
-  #     title: 'KORESUKI',
+  #     site: 'シェアスキ！
+  #     title: シェアスキ！',
   #     reverse: true,
   #     charset: 'utf-8',
-  #     description: '「KORESUKIは自分の「好き」を投稿するサービスです。
+  #     description: '「シェアスキ！は自分の「好き」を投稿するサービスです。
   #     他のユーザーと『好き』を共有し、交流を広げ、新たなつながりを生み出します。」',
   #     canonical: request.original_url,
   #     og: {
-  #       site_name: 'KORESUKI',
-  #       title: 'KORESUKI',
-  #       description: '「KORESUKIは自分の「好き」を投稿するサービスです。
+  #       site_name: 'シェアスキ！',
+  #       title: 'シェアスキ！',
+  #       description: '「シェアスキ！は自分の「好き」を投稿するサービスです。
   #       他のユーザーと「好き」を共有し、交流を広げ、新たなつながりを生み出します。」',
   #       type: 'website',
   #       url: request.original_url,

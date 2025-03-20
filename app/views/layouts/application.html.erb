@@ -20,7 +20,7 @@
     <% end %>
 
     <% flash.each do |key, message| %>
-    <p class="<%= flash_class(key) %>"><%= message %></p>
+    <p class="<%= flash_class(key) %>"><%= sanitize(message) %></p>
     <% end %>
 
     <%= yield %>

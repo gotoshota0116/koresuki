@@ -13,8 +13,8 @@ class Post < ApplicationRecord
 
   mount_uploader :image, ImageUploader
 
-  validates :title, presence: true
-  validates :body, presence: true
+  validates :title, presence: true, length: { maximum: 255 }
+  validates :body, presence: true, length: { maximum: 65_535 }
   validates :categories, presence: true
 
   # 投稿にいいね作成時呼び出し

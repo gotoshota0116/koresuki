@@ -73,3 +73,4 @@ ja:
   errors:
     messages:
       extension_allowlist_error: '許可されていないファイル形式です'
+      max_size_error: 'がファイルサイズ制限を超えています。10MB以下のファイルをアップロードしてください'

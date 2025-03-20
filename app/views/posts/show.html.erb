@@ -56,7 +56,7 @@
   <!-- Xシェアボタン -->
   <div class="flex justify-center my-6">
     <% encode_text = URI.encode_www_form_component("【シェアスキ！】\nわたしの好き「#{@post.title}」を投稿しました！") %>
-    <% twitter_share_url = "https://twitter.com/intent/tweet?url=#{CGI.escape(post_url(@post))}&text=#{encode_text}%0A%0A&hashtags=シェアスキ！" %>
+    <% twitter_share_url = "https://twitter.com/intent/tweet?url=#{CGI.escape(post_url(@post))}&text=#{encode_text}%0A%0A&hashtags=シェアスキ" %>
       <%= link_to twitter_share_url, target: '_blank', rel: 'noopener', class: 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded' do %>
       <span><%= t('helpers.submit.xshare') %></span>
     <% end %>

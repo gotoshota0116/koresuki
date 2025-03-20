@@ -12,7 +12,7 @@ class PostImageUploader < CarrierWave::Uploader::Base
   end
 
   def size_range
-    1.byte..10.megabytes
+    (1.byte)..(10.megabytes)
   end
 
   def extension_allowlist

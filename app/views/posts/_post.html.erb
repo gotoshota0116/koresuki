@@ -2,7 +2,7 @@
   <%= link_to post_path(post), class: 'block' do %>
     <div class="border rounded-lg bg-white hover:shadow-md transition-shadow duration-100">
       <div class="p-4">
-        <span class="font-semibold"><%= post.user.name %>さんの SUKI</span>
+        <span class="font-semibold"><%= post.user.name %><%= t('.owner_suki') %></span>
       </div>
       <div class="px-4">
         <h4 class="text-lg font-bold text-center">
@@ -22,7 +22,7 @@
           </div>
         <% else %>
           <div class="h-48 bg-gray-300 flex items-center justify-center rounded-lg">
-            <span class="text-gray-600 text-lg">写真</span>
+            <span class="text-gray-600 text-lg"><%= t('.no_image') %></span>
           </div>
         <% end %>
         <% if post.categories.present? %>

@@ -2,7 +2,7 @@ exclude:
   - '**/vendor/**/*'
   - '**/node_modules/**/*'
 
-EnableDefaultLinters: true  # ✅ ルートレベルに配置（linters: の外）
+EnableDefaultLinters: true
 
 linters:
   Rubocop:

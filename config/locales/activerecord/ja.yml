@@ -9,9 +9,9 @@ ja:
     # モデルの属性
     attributes:
       post:
-        title: SUKIのタイトル
-        body: SUKIの理由
-        image: メイン画像（Xシェア、みんなのSUKIに反映されます）
+        title: タイトル
+        body: 推しポイント！
+        image: メイン画像（みんなのスキ、Xシェアに反映されます）
         categories: カテゴリ
       post_images:
         image: サブ画像
@@ -32,6 +32,6 @@ ja:
         post:
           attributes:
             categories:
-              blank: "を選択してください"
+              blank: 'を選択してください'
         post_image:
-          blank: "を選択してください"
+          blank: 'を選択してください'

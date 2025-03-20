@@ -1,8 +1,8 @@
 ja:
   # ビューファイル
   header:
-    all_suki: みんなのSUKI
-    post_suki: SUKI投稿
+    all_suki: みんなのスキ
+    post_suki: スキ新規投稿
     mypage: マイページ
     logout: ログアウト
   footer:
@@ -12,16 +12,19 @@ ja:
   posts:
     index:
       title: 投稿一覧
-      no_posts: 掲示板がありません
+      no_posts: '掲示板がありません'
       search_placeholder: 検索ワード
       search_submit: 検索
       place_holder: キーワードで検索
+    post:
+      owner_suki: さんのスキ！
+      no_image: 画像未設定
     new:
       title: 新規投稿
     edit:
       title: 投稿編集
     show:
-      title: さんのSUKI
+      title: さんのスキ！
     form:
       categories: カテゴリ選択
       post_images: サブ画像
@@ -45,7 +48,7 @@ ja:
   notifications:
     index:
       title: 通知
-      no_notifications: 通知がありません
+      no_notifications: '通知がありません'
   # 共通
   helpers:
     sharesuki: シェアスキ！
@@ -57,7 +60,7 @@ ja:
       addition: 追加
       xshare: Xシェア
     confirm:
-      delete: 本当に削除しますか？
+      delete: '本当に削除しますか？'
   defaults:
     # viewでsanitizeメソッド使用
     flash_message:
@@ -69,4 +72,4 @@ ja:
       deleted: "%{item}を削除しました"
   errors:
     messages:
-      extension_allowlist_error: 許可されていないファイル形式です
+      extension_allowlist_error: '許可されていないファイル形式です'

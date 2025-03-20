@@ -7,7 +7,7 @@ class Comment < ApplicationRecord
 
   has_many :notifications, as: :notifiable, dependent: :destroy
 
-  validates :body, presence: true, length: { maximum: 300 }
+  validates :body, presence: true, length: { maximum: 65_535}
 
   # 　呼び出される時
   # 1コメントに対していいね作成時 2コメント作成時（else)

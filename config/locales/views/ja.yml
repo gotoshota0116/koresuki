@@ -13,9 +13,8 @@ ja:
     index:
       title: 投稿一覧
       no_posts: '掲示板がありません'
-      search_placeholder: 検索ワード
       search_submit: 検索
-      place_holder: キーワードで検索
+      place_holder: 検索ワードを入力（ユーザー名・タイトル・推しポイント）
     post:
       owner_suki: さんのスキ！
       no_image: 画像未設定

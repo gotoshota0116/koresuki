@@ -5,16 +5,14 @@ Rails.application.routes.draw do
 
   root 'staticpages#top'
 
-  # post,commentで共通のpathを使用するため、一番post,commentにそれぞれネストしない
-  # 共通のpathを使うのは、同じviewでpost,commentのlikeを表示するため
-  resources :likes, only: %i[create destroy]
-
   resources :posts do
     resources :comments, only: %i[create edit update destroy]
   end
 
+  resources :likes, only: %i[create destroy]
+  resources :bookmarks, only: %i[create destroy]
+  
   resource :profile, only: %i[show edit update]
-
   resources :notifications, only: %i[index destroy]
 
   get 'ogp/ogp.png', to: 'ogp_images#show', as: :ogp_image

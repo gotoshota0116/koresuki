@@ -19,7 +19,7 @@ class PostsFinder
     return if @q.keyword.blank?
 
     keyword = like_search_condition(@q.keyword)
-    @record = @record.where('title LIKE ? OR body LIKE ?', keyword, keyword)
+    @record = @record.joins(:user).where('posts.title LIKE ? OR posts.body LIKE ? OR users.name LIKE ?', keyword, keyword, keyword)
   end
 
   # like検索

@@ -31,4 +31,17 @@ class User < ApplicationRecord
   def unlike(likeable)
     likes.find_by(likeable: likeable)&.destroy
   end
+
+  #bookmarkコントローラーで使用
+  def bookmark(post)
+    bookmarks.create(post: post)
+  end
+
+  def unbookmark(post)
+    bookmark_posts.destroy(post)
+  end
+
+  def bookmark?(post)
+    bookmarks.exists?(post_id: post.id)
+  end
 end

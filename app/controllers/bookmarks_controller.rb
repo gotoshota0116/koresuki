@@ -4,6 +4,7 @@ class BookmarksController < ApplicationController
 		@post = Post.find(params[:post_id])
 		current_user.bookmark(@post)
 		# create.turbo_streamをレンダリング
+		@current_user_bookmarks = current_user.present? ? current_user.bookmarks.index_by(&:post_id) : {}
 	end
 
 	def destroy

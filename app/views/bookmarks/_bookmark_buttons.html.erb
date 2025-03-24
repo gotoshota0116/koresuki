@@ -1,6 +1,6 @@
 <% if user_signed_in? %>
   <div class='ms-auto'>
-    <% if current_user.bookmark?(post) %>
+    <% if @current_user_bookmarks[post.id].present? %>
       <%= render 'bookmarks/unbookmark_button', { post: post } %>
     <% else %>
       <%= render 'bookmarks/bookmark_button', { post: post } %>

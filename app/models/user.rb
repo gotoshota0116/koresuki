@@ -12,7 +12,6 @@ class User < ApplicationRecord
   has_many :passive_notifications, class_name: 'Notification', inverse_of: :visited, foreign_key: 'visited_id', dependent: :destroy
   has_many :bookmarks, dependent: :destroy
 
-
   # 　下記プロフィール画面で使用予定
   has_many :liked_posts, through: :likes, source: :likeable, source_type: 'Post', dependent: :destroy
   has_many :liked_comments, through: :likes, source: :likeable, source_type: 'Comment', dependent: :destroy
@@ -33,7 +32,7 @@ class User < ApplicationRecord
     likes.find_by(likeable: likeable)&.destroy
   end
 
-  #bookmarkコントローラーで使用
+  # bookmarkコントローラーで使用
   def bookmark(post)
     bookmarks.create(post: post)
   end
@@ -41,5 +40,4 @@ class User < ApplicationRecord
   def unbookmark(post)
     bookmark_posts.destroy(post)
   end
-
 end

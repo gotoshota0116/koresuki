@@ -1,7 +1,8 @@
 <div class="max-w-2xl mx-auto mt-8 p-6 bg-white rounded-lg shadow-md">
-  <h1 class="text-2xl font-bold mb-6">
-
-  <%= image_tag @user.avatar.url %><%= @user.name %> <%= t('.title') %></h1>
+   <% if @user.avatar.present? %>
+    <h1 class="text-2xl font-bold mb-6">
+    <%= image_tag @user.avatar.url %><%= @user.name %> <%= t('.title') %></h1>
+  <% end %>
 
   <div class="space-y-4">
     <div class="border-b pb-4">

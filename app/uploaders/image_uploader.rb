@@ -16,40 +16,18 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   def extension_allowlist
-    %w[jpg jpeg gif png heic]
+    %w[jpg jpeg gif png ]
   end
 
   process resize_to_fit: [1200, 630]
-  process :convert_heic_to_jpg, if: :heic?
   process :optimize
 
   version :mini do
     process resize_to_fill: [400, 300]
-    process :convert_heic_to_jpg, if: :heic?
     process :optimize
   end
 
   private
-
-  def heic?(file)
-    file.extension.downcase == 'heic'
-  end
-
-  def convert_heic_to_jpg
-    manipulate! do |img|
-      img.format('jpg')
-      img
-    end
-  end
-
-  # 内部的に呼び出されるメソッド,filenameをオーバーライドしている
-  def filename
-    return if super.blank? # CarrierWave のデフォルトの filename が存在するか確認
-
-    base_name = File.basename(super, '.*')
-    extension = File.extname(super).downcase == '.heic' ? 'jpg' : File.extname(super).downcase.delete('.')
-    "#{base_name}.#{extension}"
-  end
 
   def optimize
     manipulate! do |img|
@@ -58,4 +36,26 @@ class ImageUploader < CarrierWave::Uploader::Base
       img
     end
   end
+
+  # def heic?(file)
+  #   file.extension.downcase == 'heic'
+  # end
+
+  # def convert_heic_to_jpg
+  #   manipulate! do |img|
+  #     img.format('jpg')
+  #     img
+  #   end
+  # end
+
+  # 内部的に呼び出されるメソッド,filenameをオーバーライドしている
+  # def filename
+  #   return if super.blank? # CarrierWave のデフォルトの filename が存在するか確認
+
+  #   base_name = File.basename(super, '.*')
+  #   extension = File.extname(super).downcase == '.heic' ? 'jpg' : File.extname(super).downcase.delete('.')
+  #   "#{base_name}.#{extension}"
+  # end
+
+
 end

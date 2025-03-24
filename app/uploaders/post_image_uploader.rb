@@ -16,7 +16,7 @@ class PostImageUploader < CarrierWave::Uploader::Base
   end
 
   def extension_allowlist
-    %w[jpg jpeg gif png heic webp]
+    %w[jpg jpeg gif png webp]
   end
 
   process resize_to_fit: [500, 500]

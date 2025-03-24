@@ -10,6 +10,7 @@ class Post < ApplicationRecord
   accepts_nested_attributes_for :post_videos, allow_destroy: true, reject_if: :all_blank
   has_many :post_categories, dependent: :destroy
   has_many :categories, through: :post_categories
+  has_many :bookmarks, dependent: :destroy
 
   mount_uploader :image, ImageUploader
 

@@ -35,8 +35,15 @@
           </div>
         <% end %>
       </div>
-      <div class="p-4">
-        <%= render 'likes/like_buttons', { likeable: post } %>
+      <div class="p-2 flex justify-center items-center">
+        <div class="flex gap-6 items-center">
+          <div>
+            <%= render 'likes/like_buttons', { likeable: post } %>
+          </div>
+          <div>
+            <%= render 'bookmarks/bookmark_buttons', { post: post } %>
+          </div>
+        </div>
       </div>
     </div>
   <% end %>

@@ -6,6 +6,7 @@ class PostsController < ApplicationController
     @search_posts_form = SearchPostsForm.new(search_post_params) # 検索条件を保持
     @posts = PostsFinder.new(@search_posts_form).search.includes(:user, :post_videos, :categories).order(created_at: :desc) # 　検索を実行する
     @current_user_likes = current_user.present? ? current_user.likes.where(likeable_type: 'Post').index_by(&:likeable_id) : {}
+    @current_user_bookmarks = current_user.present? ? current_user.bookmarks.index_by(&:post_id) : {}
   end
 
   def show

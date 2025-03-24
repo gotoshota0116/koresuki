@@ -17,9 +17,8 @@ module NotificationsHelper
     tag.svg(xmlns: 'http://www.w3.org/2000/svg',
             fill: fill,
             viewBox: '0 0 24 24',
-            'stroke-width': '1.5',
             stroke: 'currentColor',
-            class: 'size-6') do
+            class: 'size-7') do
       tag.path('stroke-linecap': 'round',
                'stroke-linejoin': 'round',
                d: 'M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 ' \

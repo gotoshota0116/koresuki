@@ -17,6 +17,8 @@ class User < ApplicationRecord
   has_many :liked_comments, through: :likes, source: :likeable, source_type: 'Comment', dependent: :destroy
   has_many :bookmark_posts, through: :bookmarks, source: :post
 
+  mount_uploader :avatar, AvatarUploader
+
   validates :name, presence: true, length: { maximum: 30 }
 
   def own?(object)

@@ -1,5 +1,10 @@
 <div class="container mx-auto max-w-4xl px-4 py-8">
-  <h2 class="text-center"><%= @post.user.name %> <%= t('.title') %></h2>
+  <div class="flex items-center">
+    <% if @post.user.avatar.present? %>
+      <%= image_tag @post.user.avatar.url, class: 'w-16 h-16 object-cover rounded-full mr-3' %>
+    <% end %>
+    <span class="font-semibold"><%= @post.user.name %><%= t('.title') %></span>
+  </div>
 
   <h1 class="text-center text-2xl font-bold my-4">「<%= @post.title %>」</h1>
 

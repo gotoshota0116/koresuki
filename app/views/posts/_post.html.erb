@@ -2,7 +2,12 @@
   <%= link_to post_path(post), class: 'block' do %>
     <div class="border rounded-lg bg-white hover:shadow-md transition-shadow duration-100">
       <div class="p-4">
-        <span class="font-semibold"><%= post.user.name %><%= t('.owner_suki') %></span>
+        <div class="flex items-center">
+          <% if post.user.avatar.present? %>
+            <%= image_tag post.user.avatar.url, class: 'w-12 h-12 object-cover rounded-full mr-3' %>
+          <% end %>
+          <span class="font-semibold"><%= post.user.name %></span>
+        </div>
       </div>
       <div class="px-4">
         <h4 class="text-lg font-bold text-center">

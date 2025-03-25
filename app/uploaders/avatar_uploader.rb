@@ -1,4 +1,4 @@
-class PostImageUploader < CarrierWave::Uploader::Base
+class AvatarUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
   if Rails.env.production?
@@ -19,7 +19,7 @@ class PostImageUploader < CarrierWave::Uploader::Base
     %w[jpg jpeg gif png webp]
   end
 
-  process resize_to_fit: [500, 500]
+  process resize_to_fit: [256, 256]
   process :convert_to_webp
   process :optimize
 

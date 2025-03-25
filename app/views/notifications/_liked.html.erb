@@ -1,4 +1,7 @@
 <div class="flex items-center">
+  <% if  notification.visitor.avatar.present? %>
+    <%= image_tag notification.visitor.avatar.url, class: 'w-8 h-8 object-cover rounded-full mr-3' %>
+  <% end %>
   <span class="font-semibold"><%= notification.visitor.name %></span>
   <span class="ml-2">
     <% if notification.notifiable_type == 'Post' %>

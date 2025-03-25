@@ -1,4 +1,7 @@
 <div class="flex items-center">
+  <% if  notification.visitor.avatar.present? %>
+    <%= image_tag notification.visitor.avatar.url, class: 'w-8 h-8 object-cover rounded-full mr-3' %>
+  <% end %>
   <span class="font-semibold"><%= notification.visitor.name %></span>
   <span class="ml-2">
     があなたの投稿「<%= link_to notification.notifiable.post.title, post_path(notification.notifiable.post), class: 'text-blue-600 hover:text-blue-800 hover:underline' %>」にコメントしました

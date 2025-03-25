@@ -1,4 +1,4 @@
-<div class="bg-white p-4 rounded-lg shadow <%= notification.checked? ? 'opacity-75' : '' %>">
+<div class="bg-white p-4 rounded-lg shadow">
   <!-- いいねかコメントでレンダリング先をわける -->
   <%= render "notifications/#{notification.action}", notification: notification %>
 </div>

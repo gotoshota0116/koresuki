@@ -19,7 +19,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
     %w[jpg jpeg gif png webp]
   end
 
-  process resize_to_fit: [300, 300]
+  process resize_to_fit: [256, 256]
   process :convert_to_webp
   process :optimize
 

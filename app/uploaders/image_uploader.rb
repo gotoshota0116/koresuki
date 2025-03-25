@@ -16,7 +16,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   def extension_allowlist
-    %w[jpg jpeg gif png ]
+    %w[jpg jpeg gif png]
   end
 
   process resize_to_fit: [1200, 630]
@@ -56,6 +56,4 @@ class ImageUploader < CarrierWave::Uploader::Base
   #   extension = File.extname(super).downcase == '.heic' ? 'jpg' : File.extname(super).downcase.delete('.')
   #   "#{base_name}.#{extension}"
   # end
-
-
 end

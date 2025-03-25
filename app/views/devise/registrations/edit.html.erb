@@ -5,7 +5,7 @@
 
   <div class="field">
     <%= f.label :avatar %><br>
-    <%= f.file_field :avatar,accept: 'image/jpg,image/jpeg,image/png,image/gif,image/webp' %>
+    <%= f.file_field :avatar, accept: 'image/jpg,image/jpeg,image/png,image/gif,image/webp' %>
   </div>
 
   <div class="field">
@@ -43,4 +43,3 @@
 
 <%= button_to t('.cancel_my_account'), registration_path(resource_name),
               data: { confirm: t('.are_you_sure'), turbo_confirm: t('.are_you_sure') }, method: :delete %></div>
-

@@ -50,6 +50,15 @@ class PostsController < ApplicationController
     redirect_to posts_path
   end
 
+  # オートコンプリート
+  def search
+    @keyword = params[:keyword]
+    @posts = Post.joins(:user).where('posts.title LIKE ? OR posts.body LIKE ? OR users.name LIKE ?', "%#{@keyword}%", "%#{@keyword}%",
+                                     "%#{@keyword}%")
+
+    render layout: false
+  end
+
   private
 
   def search_post_params

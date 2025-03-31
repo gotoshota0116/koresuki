@@ -1,0 +1,7 @@
+<% if @posts.any? %>
+  <% @posts.each do |post| %>
+    <li class="py-2 px-3 hover:bg-gray-100 cursor-pointer" role="option" data-autocomplete-value="<%= post.title %>">
+      <%= post.user.name %> <%= post.title %>
+    </li>
+  <% end %>
+<% end %>

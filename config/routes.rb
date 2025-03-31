@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   root 'staticpages#top'
 
   resources :posts do
+    collection do
+      get :search
+    end
     resources :comments, only: %i[create edit update destroy]
   end
 

@@ -4,8 +4,14 @@
       <!-- 検索フォーム -->
       <%= form_with model: @search_posts_form, scope: :query, url: posts_path, method: :get do |f| %>
         <div class="flex flex-wrap items-center gap-3">
-          <div class="flex-grow">
-            <%= f.search_field :keyword, value: @search_posts_form.keyword, placeholder: t('.place_holder'), class: 'w-full px-3 py-2 border rounded' %>
+          <div class="flex-grow relative" data-controller="autocomplete" data-autocomplete-url-value="/posts/search" data-autocomplete-query-param-value="keyword">
+            <%= f.search_field :keyword, value: @search_posts_form.keyword, placeholder: t('.place_holder'),
+                                         class: 'w-full px-3 py-2 border rounded',
+                                         data: { autocomplete_target: 'input' } %>
+            <!-- オートコンプリート検索候補を表示 -->
+            <ul class="absolute z-10 w-full bg-white rounded"
+                data-autocomplete-target="results"
+                style="max-height: 15rem; overflow-y: auto;"></ul>
           </div>
           <div class="w-48">
             <%= f.collection_select :category, Category.all, :id, :name, { value: @search_posts_form.category, include_blank: 'カテゴリを選択' },

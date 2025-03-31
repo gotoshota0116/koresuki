@@ -53,8 +53,9 @@ class PostsController < ApplicationController
   # オートコンプリート
   def search
     @keyword = params[:keyword]
-    @posts = Post.joins(:user).where('posts.title LIKE ? OR posts.body LIKE ? OR users.name LIKE ?', "%#{@keyword}%", "%#{@keyword}%", "%#{@keyword}%").limit(10)
-    
+    @posts = Post.joins(:user).where('posts.title LIKE ? OR posts.body LIKE ? OR users.name LIKE ?', "%#{@keyword}%", "%#{@keyword}%",
+                                     "%#{@keyword}%")
+
     render layout: false
   end
 

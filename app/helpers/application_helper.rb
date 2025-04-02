@@ -1,4 +1,6 @@
 module ApplicationHelper
+  include Pagy::Frontend
+
   def flash_class(key)
     case key.to_sym # key が文字列でも対応できるように to_sym で変換
     when :notice then 'bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-md shadow-md mb-4'

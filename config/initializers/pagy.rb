@@ -10,9 +10,10 @@
 # You can set any pagy variable as a Pagy::DEFAULT. They can also be overridden per instance by just passing them to
 # Pagy.new|Pagy::Countless.new|Pagy::Calendar::*.new or any of the #pagy* controller methods
 # Here are the few that make more sense as DEFAULTs:
-# Pagy::DEFAULT[:limit]       = 20                    # default
-# Pagy::DEFAULT[:size]        = 7                     # default
-# Pagy::DEFAULT[:ends]        = true                  # default
+
+Pagy::DEFAULT[:limit]       = 6                    # 1ページに表示する投稿の最大数
+Pagy::DEFAULT[:size]        = 7                     # リンクの最大数
+Pagy::DEFAULT[:ends]        = true                  #　最後のページのリンクを表示する
 # Pagy::DEFAULT[:page_param]  = :page                 # default
 # Pagy::DEFAULT[:count_args]  = []                    # example for non AR ORMs
 # Pagy::DEFAULT[:max_pages]   = 3000                  # example

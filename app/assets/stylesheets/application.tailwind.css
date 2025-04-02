@@ -1,3 +1,31 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .pagy {
+	@apply flex justify-center items-center w-full mt-8 mb-8 text-xl space-x-1;
+  }
+  /* リンクボタン */
+  .pagy a:not(.gap) {
+    @apply block rounded-lg px-4 py-2 text-base bg-gray-200;
+  }
+  /* ホバー */
+  .pagy a:not(.gap):hover {
+    @apply bg-gray-300;
+  }
+  /* 前へ */
+  .pagy a:not(.gap):not([href]) {
+    @apply text-gray-300 bg-gray-100 cursor-default;
+  }
+  /* 現在のページ */
+  .pagy a:not(.gap).current {
+    @apply text-white bg-blue-500;
+  }
+  /* .pagy label {
+    @apply inline-block whitespace-nowrap bg-gray-200 rounded-lg px-4 py-2;
+  }
+  .pagy label input {
+    @apply bg-gray-100 border-none rounded-md;
+  } */
+}

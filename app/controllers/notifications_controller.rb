@@ -5,6 +5,7 @@ class NotificationsController < ApplicationController
                                  .includes(:visitor, { notifiable: %i[post comment] })
                                  .order(created_at: :desc)
     @notifications.where(checked: false).update_all(checked: true)
+    @pagy, @notifications = pagy(@notifications, limit: 12)
   end
 
   def destroy

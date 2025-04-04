@@ -73,13 +73,13 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
-  config.action_mailer.default_url_options = { host: 'https://koresuki.onrender.com', protocol: 'https' }
+  config.action_mailer.default_url_options = { host: 'https://sharesuki.com', protocol: 'https' }
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address: 'smtp.gmail.com',
     port: 587,
-    domain: 'koresuki.onrender.com',
+    domain: 'sharesuki.com',
     user_name: Rails.application.credentials.dig(:gmail, :username), # クレデンシャルから取得
     password: Rails.application.credentials.dig(:gmail, :app_password), # アプリパスワード
     authentication: 'plain',
@@ -101,10 +101,11 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # Enable DNS rebinding protection and other `Host` header attacks.
-  # config.hosts = [
-  #   "example.com",     # Allow requests from example.com
-  #   /.*\.example\.com/ # Allow requests from subdomains like `www.example.com`
-  # ]
+  config.hosts = [
+     "sharesuki.com",     # Allow requests from example.com
+     /.*\.sharesuki\.com/,# Allow requests from subdomains like `www.example.com`
+     "koresuki.onrender.com"
+    ]
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
 end

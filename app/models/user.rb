@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
-         :confirmable
+         :confirmable, :omniauthable, omniauth_providers: [:google_oauth2]
 
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy

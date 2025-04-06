@@ -79,6 +79,8 @@ ja:
         we_need_your_current_password_to_confirm_your_changes: 変更を反映するには現在のパスワードを入力してください
       new:
         sign_up: アカウント登録
+        didn_t_receive_confirmation_instructions: アカウント確認のメールが届かない場合はこちら
+        google_sign_up: Googleでログイン
       signed_up: アカウント登録が完了しました。
       signed_up_but_inactive: ログインするためには、アカウントを有効化してください。
       signed_up_but_locked: アカウントがロックされているためログインできません。

@@ -31,12 +31,6 @@
   </div>
 <% end %>
 
-<!--<%= render "devise/shared/links" %> -->
-
-<%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
-  <%= link_to t('.didn_t_receive_confirmation_instructions'), new_confirmation_path(resource_name) %><br />
-<% end %>
-
 <%= button_to user_google_oauth2_omniauth_authorize_path, method: :post, data: { turbo: false },
     class: "flex items-center justify-center gap-2 px-4 py-2 w-full max-w-xs mx-auto border border-gray-300 rounded-lg shadow-sm hover:bg-gray-100 transition" do %>
   <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
@@ -47,3 +41,5 @@
   </svg>
   <span><%= t('.google_sign_up') %></span>
 <% end %>
+
+<%= link_to t('.didn_t_receive_confirmation_instructions'), new_confirmation_path(resource_name) %><br />

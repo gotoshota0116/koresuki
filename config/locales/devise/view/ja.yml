@@ -80,7 +80,7 @@ ja:
       new:
         sign_up: アカウント登録
         didn_t_receive_confirmation_instructions: アカウント確認のメールが届かない場合はこちら
-        google_sign_up: Googleでログイン
+        google_sign_up: Googleで登録
       signed_up: アカウント登録が完了しました。
       signed_up_but_inactive: ログインするためには、アカウントを有効化してください。
       signed_up_but_locked: アカウントがロックされているためログインできません。
@@ -93,6 +93,10 @@ ja:
       already_signed_out: 既にログアウト済みです。
       new:
         sign_in: ログイン
+        sign_up: アカウント登録
+        forgot_your_password: パスワードを忘れた場合はこちら
+        didn_t_receive_confirmation_instructions: アカウント確認のメールが届かない場合はこちら
+        google_sign_in: Googleでログイン
       signed_in: ログインしました。
       signed_out: ログアウトしました。
 

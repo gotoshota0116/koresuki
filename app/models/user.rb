@@ -20,12 +20,12 @@ class User < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
 
   validates :name, presence: true, length: { maximum: 30 }
+  validates :uid, uniqueness: { scope: :provider }, allow_nil: true
 
   def own?(object)
     id == object&.user_id
   end
 
-  # likesコントローラーで使用
   def like(likeable)
     likes.create(likeable: likeable)
   end
@@ -34,12 +34,36 @@ class User < ApplicationRecord
     likes.find_by(likeable: likeable)&.destroy
   end
 
-  # bookmarkコントローラーで使用
   def bookmark(post)
     bookmarks.create(post: post)
   end
 
   def unbookmark(post)
     bookmark_posts.destroy(post)
+  end
+
+  def self.from_omniauth(auth)
+  
+    user = where(provider: auth.provider, uid: auth.uid).first # google認証しているユーザーを検索
+
+    return user if user.present?
+
+    user = find_by(email: auth.info.email)# 既存の `email` を持つユーザーを検索（メール & パスワード登録済みユーザー）
+    if user
+      # 既存ユーザーに Google 認証情報を紐付ける
+      user.update(provider: auth.provider, uid: auth.uid)
+    else
+      user = new(
+        provider: auth.provider,
+        uid: auth.uid,
+        email: auth.info.email,
+        name: auth.info.name,
+        password: Devise.friendly_token[0, 20]
+        # user.avatar = auth.info.image
+      )
+      user.skip_confirmation! #confirmed_at: Time.current
+      user.save!
+    end
+    user
   end
 end

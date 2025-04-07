@@ -43,12 +43,11 @@ class User < ApplicationRecord
   end
 
   def self.from_omniauth(auth)
-  
     user = where(provider: auth.provider, uid: auth.uid).first # google認証しているユーザーを検索
 
     return user if user.present?
 
-    user = find_by(email: auth.info.email)# 既存の `email` を持つユーザーを検索（メール & パスワード登録済みユーザー）
+    user = find_by(email: auth.info.email) # 既存の `email` を持つユーザーを検索（メール & パスワード登録済みユーザー）
     if user
       # 既存ユーザーに Google 認証情報を紐付ける
       user.update(provider: auth.provider, uid: auth.uid)
@@ -61,7 +60,7 @@ class User < ApplicationRecord
         password: Devise.friendly_token[0, 20]
         # user.avatar = auth.info.image
       )
-      user.skip_confirmation! #confirmed_at: Time.current
+      user.skip_confirmation! # confirmed_at: Time.current
       user.save!
     end
     user

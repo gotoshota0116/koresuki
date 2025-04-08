@@ -1,6 +1,20 @@
 require "rails_helper"
 
 RSpec.describe User do
+  it { should have_many(:posts).dependent(:destroy) }
+  it { should have_many(:comments).dependent(:destroy) }
+  it { should have_many(:likes).dependent(:destroy) }
+  it { should have_many(:active_notifications)
+      .class_name('Notification')
+      .with_foreign_key('visitor_id')
+      .inverse_of(:visitor)
+      .dependent(:destroy) }
+  it { should have_many(:passive_notifications)
+      .class_name('Notification')
+      .with_foreign_key('visited_id')
+      .inverse_of(:visited)
+      .dependent(:destroy) }
+  it { should have_many(:bookmarks).dependent(:destroy) }
 
 	describe "バリデーション成功" do
 		context "name,email,password,password_confirmationを正しく入力した場合" do
@@ -54,7 +68,7 @@ RSpec.describe User do
 
     context "providerとuidが重複した場合" do
       it "バリデーションが発生し、エラーメッセージが表示されること" do
-        user1 = create(:user, confirmed_at: Time.current, provider: "google_auth2", uid: "12345")
+        user1 = create(:user, provider: "google_auth2", uid: "12345")
         user2 = build(:user, provider: "google_auth2", uid: "12345")
         expect(user2).to be_invalid
         expect(user2.errors[:uid]).to include("はすでに存在します")

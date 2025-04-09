@@ -100,6 +100,36 @@ RSpec.describe User do
         create(:comment, post: post)
         expect { user.destroy }.to change(Comment, :count).by(-1)
       end
+
+      it '関連するLikeした投稿も削除される' do
+        user = create(:user)
+        post = create(:post, user: user)
+        create(:like, user: user, likeable: post)
+        expect { user.destroy }.to change(Like, :count).by(-1)
+      end
+
+      it '関連するLikeしたコメントも削除される' do
+        user = create(:user)
+        post = create(:post, user: user)
+        comment = create(:comment, post: post)
+        create(:like, user: user, likeable: comment)
+        expect { user.destroy }.to change(Like, :count).by(-1)
+      end
+
+      it '関連するbookmarkした投稿も削除される' do
+        user = create(:user)
+        post = create(:post, user: user)
+        create(:bookmark, user: user, post: post)
+        expect { user.destroy }.to change(Bookmark, :count).by(-1)
+      end
+
+      it '関連する通知も削除される' do
+        post_owner = create(:user)
+        liker = create(:user)
+        post = create(:post, user: post_owner)
+        create(:notification, visitor: liker, visited: post_owner, notifiable: post, action: 'liked')
+        expect { post_owner.destroy }.to change(Notification, :count).by(-1)
+      end
     end
   end
 end

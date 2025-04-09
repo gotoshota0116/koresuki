@@ -3,6 +3,5 @@ FactoryBot.define do
     # association :user
 
     association :likeable
-
   end
 end

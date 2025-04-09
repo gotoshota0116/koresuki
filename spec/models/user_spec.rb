@@ -127,7 +127,7 @@ RSpec.describe User do
         post_owner = create(:user)
         liker = create(:user)
         post = create(:post, user: post_owner)
-        notification = create(:notification, visitor: liker, visited: post_owner, notifiable: post, action: 'liked')
+        create(:notification, visitor: liker, visited: post_owner, notifiable: post, action: 'liked')
         expect { post_owner.destroy }.to change(Notification, :count).by(-1)
       end
     end

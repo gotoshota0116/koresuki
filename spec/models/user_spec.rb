@@ -108,12 +108,19 @@ RSpec.describe User do
         expect { user.destroy }.to change(Like, :count).by(-1)
       end
 
-      it '関連するLikeしたコメントも削除される', focus: true do
+      it '関連するLikeしたコメントも削除される' do
         user = create(:user)
         post = create(:post, user: user)
         comment = create(:comment, post: post)
         create(:like, user: user, likeable: comment)
         expect { user.destroy }.to change(Like, :count).by(-1)
+      end
+
+      it '関連するbookmarkした投稿も削除される'  do
+        user = create(:user)
+        post = create(:post, user: user)
+        create(:bookmark, user: user, post: post)
+        expect { user.destroy }.to change(Bookmark, :count).by(-1)
       end
     end
   end

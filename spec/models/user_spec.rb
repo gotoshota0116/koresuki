@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe User do
+  subject(:user) { described_class.new }
+
   it { is_expected.to have_many(:posts).dependent(:destroy) }
   it { is_expected.to have_many(:comments).dependent(:destroy) }
   it { is_expected.to have_many(:likes).dependent(:destroy) }

@@ -77,7 +77,9 @@ group :development, :test do
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec'
 
+  gem 'factory_bot_rails'
   gem 'faker'
+  gem 'rspec-rails', '~> 7.0.0'
 end
 
 group :development do
@@ -104,4 +106,6 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem 'capybara'
   gem 'selenium-webdriver'
+
+  gem 'shoulda-matchers', '~> 6.0'
 end

@@ -68,3 +68,6 @@ RSpec/MultipleExpectations:
 
 RSpec/NestedGroups:
   Max: 3 # `describe` や `context` のネストを3段階まで許可
+
+RSpec/ContextWording:
+  Enabled: false # contextの記述スタイルの強制を無効化

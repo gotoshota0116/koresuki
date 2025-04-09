@@ -76,4 +76,13 @@ RSpec.describe User do
     end
   end
 
+  describe "アソシエーション :destroyの挙動" , focus: true do
+    context "Userを削除すると" do
+      it "関連するPostも削除される" do
+        user = create(:user)
+        create(:post, user: user)
+        expect { user.destroy }.to change(Post, :count).by(-1)
+      end
+    end
+  end
 end

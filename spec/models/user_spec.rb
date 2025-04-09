@@ -6,7 +6,7 @@ RSpec.describe User do
   it { is_expected.to have_many(:likes).dependent(:destroy) }
 
   it {
-    expect(subject).to have_many(:active_notifications)
+    expect(user).to have_many(:active_notifications)
       .class_name('Notification')
       .with_foreign_key('visitor_id')
       .inverse_of(:visitor)
@@ -14,7 +14,7 @@ RSpec.describe User do
   }
 
   it {
-    expect(subject).to have_many(:passive_notifications)
+    expect(user).to have_many(:passive_notifications)
       .class_name('Notification')
       .with_foreign_key('visited_id')
       .inverse_of(:visited)
@@ -85,20 +85,18 @@ RSpec.describe User do
   end
 
   describe 'アソシエーション :destroyの挙動' do
-    context 'Userを削除すると' do
+    context 'Userを削除した場合' do
       it '関連するPostも削除される' do
         user = create(:user)
         create(:post, user: user)
-        expect { user.destroy }.to change { Post.count }.by(-1)
+        expect { user.destroy }.to change(Post, :count).by(-1)
       end
-    end
 
-    context 'Userを削除すると' do
       it '関連するCommentも削除される' do
         user = create(:user)
         post = create(:post, user: user)
         create(:comment, post: post)
-        expect { user.destroy }.to change { Comment.count }.by(-1)
+        expect { user.destroy }.to change(Comment, :count).by(-1)
       end
     end
   end

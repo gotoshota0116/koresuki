@@ -23,15 +23,15 @@ RSpec.describe Post do
       end
     end
 
-		# context 'サブ画像を入力した場合', focus: true  do
-    #   it '投稿が作成されること' do
-    #     post = build(:post)
-		# 		post_image = build(:post_image, post: post)
-		# 		post.post_images << post_image
-    #     expect(post).to be_valid
-    #     expect(post.errors).to be_empty
-    #   end
-    # end
+		context 'サブ画像、説明文を入力した場合', focus: true  do
+      it '投稿が作成されること' do
+        post = build(:post)
+				post_image = build(:post_image, post: post)
+				post.post_images << post_image
+        expect(post).to be_valid
+        expect(post.errors).to be_empty
+      end
+    end
 
 		context 'Youtube動画、説明文を入力した場合' do
       it '投稿が作成されること' do
@@ -95,7 +95,7 @@ RSpec.describe Post do
 				expect { post.destroy }.to change(Comment, :count).by(-1)
       end
 
-      it '関連するlikesも削除される',focus: true do
+      it '関連するlikesも削除される' do
         post = create(:post)
         create(:like, likeable: post)
         expect { post.destroy }.to change(Like, :count).by(-1)
@@ -109,11 +109,11 @@ RSpec.describe Post do
         expect { post.destroy }.to change(Notification, :count).by(-1)
       end
 
-      # it '関連するpost_imagesも削除される' do
-      #   post = create(:post)
-      #   create(:post_image, post: post)
-      #   expect { post.destroy }.to change(PostImage, :count).by(-1)
-      # end
+      it '関連するpost_imagesも削除される', focus: true  do
+        post = create(:post)
+        create(:post_image, post: post)
+        expect { post.destroy }.to change(PostImage, :count).by(-1)
+      end
 
       it '関連するpost_videosも削除される' do
         post = create(:post)
@@ -126,7 +126,7 @@ RSpec.describe Post do
         expect { post.destroy }.to change(PostCategory, :count).by(-1)
       end
 
-      it '関連するbookmarksも削除される',focus: true do
+      it '関連するbookmarksも削除される' do
         post = create(:post)
         create(:bookmark, post: post)
         expect { post.destroy }.to change(Bookmark, :count).by(-1)

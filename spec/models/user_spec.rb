@@ -38,17 +38,17 @@ RSpec.describe User do
   describe 'バリデーション失敗' do
     context 'nameが空白の場合' do
       it 'バリデーションエラーが発生し、エラーメッセージが表示されること' do
-        user = build(:user, name: 'a' * 256)
+        user = build(:user, name: '')
         expect(user).to be_invalid
-        expect(user.errors[:name]).to include('は255文字以内で入力してください')
+        expect(user.errors[:name]).to include('を入力してください')
       end
     end
 
     context 'nameが255文字を超える場合' do
       it 'バリデーションエラーが発生し、エラーメッセージが表示されること' do
-        user = build(:user, name: '')
+        user = build(:user, name: 'a' * 256)
         expect(user).to be_invalid
-        expect(user.errors[:name]).to include('を入力してください')
+        expect(user.errors[:name]).to include('は255文字以内で入力してください')
       end
     end
 

@@ -44,7 +44,7 @@ RSpec.describe Post do
     end
   end
 
-	describe 'バリデーション失敗' ,focus: true do
+	describe 'バリデーション失敗' do
     context 'titleが空白の場合' do
       it 'バリデーションエラーが発生し、エラーメッセージが表示されること' do
 				post =build(:post, title: '')
@@ -86,4 +86,52 @@ RSpec.describe Post do
       end
     end
 	end
+
+	describe 'アソシエーション :destroyの挙動' do
+    context 'Postを削除した場合' do
+      it '関連するコメントも削除される' do
+        post = create(:post)
+				create(:comment, post: post)
+				expect { post.destroy }.to change(Comment, :count).by(-1)
+      end
+
+      it '関連するlikesも削除される' do
+        post = create(:post)
+        create(:like, likeable: post)
+        expect { post.destroy }.to change(Like, :count).by(-1)
+      end
+
+      it '関連するnotificationsも削除される' do
+        post_owner = create(:user)
+        liker = create(:user)
+        post = create(:post, user: post_owner)
+        create(:notification, visitor: liker, visited: post_owner, notifiable: post, action: 'liked')
+        expect { post.destroy }.to change(Notification, :count).by(-1)
+      end
+
+      # it '関連するpost_imagesも削除される' do
+      #   post = create(:post)
+      #   create(:post_image, post: post)
+      #   expect { post.destroy }.to change(PostImage, :count).by(-1)
+      # end
+
+      it '関連するpost_videosも削除される' do
+        post = create(:post)
+        create(:post_video, post: post)
+        expect { post.destroy }.to change(PostVideo, :count).by(-1)
+      end
+
+      it '関連するpost_categoriesも削除される' do
+        post = create(:post)
+        expect { post.destroy }.to change(PostCategory, :count).by(-1)
+      end
+
+      it '関連するbookmarksも削除される' do
+        post = create(:post)
+        create(:bookmark, post: post, user: post.user)
+        expect { post.destroy }.to change(Bookmark, :count).by(-1)
+      end
+    end
+	end
+
 end

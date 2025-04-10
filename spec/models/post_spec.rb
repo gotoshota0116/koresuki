@@ -33,7 +33,7 @@ RSpec.describe Post do
     #   end
     # end
 
-		context 'Youtube動画、説明文を入力した場合', focus: true  do
+		context 'Youtube動画、説明文を入力した場合' do
       it '投稿が作成されること' do
         post = build(:post)
 				post_video = build(:post_video)
@@ -43,4 +43,47 @@ RSpec.describe Post do
       end
     end
   end
+
+	describe 'バリデーション失敗' ,focus: true do
+    context 'titleが空白の場合' do
+      it 'バリデーションエラーが発生し、エラーメッセージが表示されること' do
+				post =build(:post, title: '')
+        expect(post).to be_invalid
+        expect(post.errors[:title]).to include('を入力してください')
+      end
+    end
+
+    context 'titleが255文字を超える場合' do
+      it 'バリデーションエラーが発生し、エラーメッセージが表示されること' do
+				post = build(:post, title: 'a' * 256)
+        expect(post).to be_invalid
+				expect(post.errors[:title]).to include('は255文字以内で入力してください')
+      end
+    end
+
+    context 'bodyが空白の場合' do
+      it 'バリデーションエラーが発生し、エラーメッセージが表示されること' do
+				post = build(:post, body: '')
+        expect(post).to be_invalid
+        expect(post.errors[:body]).to include('を入力してください')
+      end
+    end
+
+    context 'bodyが65_535文字を超える場合' do
+      it 'バリデーションエラーが発生し、エラーメッセージが表示されること' do
+				post = build(:post, body: 'a' * 65_536)
+        expect(post).to be_invalid
+				expect(post.errors[:body]).to include('は65535文字以内で入力してください')
+      end
+    end
+
+    context 'カテゴリが未選択の場合' do
+      it 'バリデーションエラーが発生し、エラーメッセージが表示されること' do
+				post = build(:post)
+				post.categories.clear
+        expect(post).to be_invalid
+        expect(post.errors[:categories]).to include('を選択してください')
+      end
+    end
+	end
 end

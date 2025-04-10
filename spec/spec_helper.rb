@@ -92,6 +92,6 @@ RSpec.configure do |config|
   #   # as the one that triggered the failure.
   #   Kernel.srand config.seed
   config.after(:all) do
-    FileUtils.rm_rf(Dir["#{Rails.root.join("public/uploads/#{Rails.env}/")}"]) if Rails.env.test?
+    FileUtils.rm_rf(Dir[Rails.root.join("public/uploads/#{Rails.env}/").to_s]) if Rails.env.test?
   end
 end

@@ -95,7 +95,7 @@ RSpec.describe Post do
 				expect { post.destroy }.to change(Comment, :count).by(-1)
       end
 
-      it '関連するlikesも削除される' do
+      it '関連するlikesも削除される',focus: true do
         post = create(:post)
         create(:like, likeable: post)
         expect { post.destroy }.to change(Like, :count).by(-1)
@@ -126,12 +126,11 @@ RSpec.describe Post do
         expect { post.destroy }.to change(PostCategory, :count).by(-1)
       end
 
-      it '関連するbookmarksも削除される' do
+      it '関連するbookmarksも削除される',focus: true do
         post = create(:post)
-        create(:bookmark, post: post, user: post.user)
+        create(:bookmark, post: post)
         expect { post.destroy }.to change(Bookmark, :count).by(-1)
       end
     end
 	end
-
 end

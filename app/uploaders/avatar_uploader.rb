@@ -7,8 +7,20 @@ class AvatarUploader < CarrierWave::Uploader::Base
     storage :file # 開発・テスト環境ではローカルに保存
   end
 
+  def cache_dir
+    if Rails.env.test?
+      "uploads/#{Rails.env}/tmp/#{mounted_as}/#{model.id}"
+    else
+      "uploads/tmp/#{mounted_as}/#{model.id}"
+    end
+  end
+
   def store_dir
-    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+    if Rails.env.test?
+      "uploads/#{Rails.env}/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+    else
+      "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+    end
   end
 
   def size_range

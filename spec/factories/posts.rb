@@ -5,7 +5,7 @@ FactoryBot.define do
     body { 'test_body' }
 
     after(:build) do |post|
-      post.categories << build(:category) #　関連づけもされる
+      post.categories << build(:category) # 　関連づけもされる
     end
   end
 end

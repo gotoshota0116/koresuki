@@ -12,15 +12,13 @@ RSpec.describe Notification do
         expect(notification).to be_valid
         expect(notification.errors).to be_empty
       end
-    end
 
-	context 'すべての属性が正しく設定されている場合' do
-		it 'コメント通知が作成されること' do
-		  notification = build(:notification, action: 'commented')
-		  expect(notification).to be_valid
-		  expect(notification.errors).to be_empty
-		end
-	  end
+      it 'コメント通知が作成されること' do
+        notification = build(:notification, action: 'commented')
+        expect(notification).to be_valid
+        expect(notification.errors).to be_empty
+      end
+    end
   end
 
   describe 'バリデーション失敗' do
@@ -33,11 +31,11 @@ RSpec.describe Notification do
     end
 
     context 'checkedが空白の場合' do
-		it 'バリデーションエラーが発生し、エラーメッセージが表示されること' do
-		  notification = build(:notification, checked: nil)
-		  expect(notification).to be_invalid
-		  expect(notification.errors[:checked]).to include('は一覧にありません')
-		end
-	  end
+      it 'バリデーションエラーが発生し、エラーメッセージが表示されること' do
+        notification = build(:notification, checked: nil)
+        expect(notification).to be_invalid
+        expect(notification.errors[:checked]).to include('は一覧にありません')
+      end
+    end
   end
 end

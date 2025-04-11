@@ -36,20 +36,19 @@ RSpec.describe Comment do
 
   describe 'アソシエーション :destroyの挙動' do
     context 'コメントを削除した場合' do
-	    it '関連するlikesも削除される' do
-		    comment = create(:comment)
-		  	create(:like, likeable: comment)
-		  	expect { comment.destroy }.to change(Like, :count).by(-1)
-	    end
+      it '関連するlikesも削除される' do
+        comment = create(:comment)
+        create(:like, likeable: comment)
+        expect { comment.destroy }.to change(Like, :count).by(-1)
+      end
 
       it '関連するnotificationsも削除される' do
         comment_user = create(:user)
         comment = create(:comment, user: comment_user)
-				like_user = create(:user)
+        like_user = create(:user)
         create(:notification, visitor: like_user, visited: comment_user, notifiable: comment, action: 'commented')
         expect { comment.destroy }.to change(Notification, :count).by(-1)
       end
-		end
-	end
-
+    end
+  end
 end

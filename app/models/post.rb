@@ -2,7 +2,6 @@ class Post < ApplicationRecord
   belongs_to :user
   has_many :comments, dependent: :destroy
   has_many :likes, as: :likeable, dependent: :destroy
-  has_many :liked_users, through: :likes, source: :user
   has_many :notifications, as: :notifiable, dependent: :destroy
   has_many :post_images, dependent: :destroy
   accepts_nested_attributes_for :post_images, allow_destroy: true, reject_if: :all_blank

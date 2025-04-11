@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Comment,focus: true do
+RSpec.describe Comment do
   it { is_expected.to belong_to(:user) }
   it { is_expected.to belong_to(:post) }
   it { is_expected.to have_many(:likes).dependent(:destroy) }

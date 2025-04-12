@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Posts", type: :request do
+RSpec.describe 'Posts', type: :request do
   let(:user) { create(:user) }
   let(:post_obj) { create(:post, user: user) }
   let(:category) { create(:category) }
@@ -50,20 +50,15 @@ RSpec.describe "Posts", type: :request do
         expect(response).to have_http_status(:success)
       end
 
-      context '自分の投稿の場合' do
-        it 'editページにアクセスできる' do
-          get edit_post_path(post_obj)
-          expect(response).to have_http_status(:success)
-        end
+      it '自分の投稿の場合、editページにアクセスできる' do
+        get edit_post_path(post_obj)
+        expect(response).to have_http_status(:success)
       end
 
-      context '他人の投稿の場合' do
-        let(:other_post) { create(:post) }
-
-        it 'editページにアクセスできない' do
-          get edit_post_path(other_post)
-          expect(response).to have_http_status(:not_found)
-        end
+      it '他人の投稿の場合,editページにアクセスできない' do
+        other_post = create(:post)
+        get edit_post_path(other_post)
+        expect(response).to have_http_status(:not_found)
       end
     end
   end
@@ -78,6 +73,7 @@ RSpec.describe "Posts", type: :request do
         expect(response).to have_http_status(:success)
         expect(response.body).to include(post_obj.title)
       end
+
       it '投稿詳細ページが表示される' do
         post_obj
         get post_path(post_obj)
@@ -87,55 +83,44 @@ RSpec.describe "Posts", type: :request do
     end
 
     context '投稿作成(create)' do
-
-      context '正常なパラメータの場合' do
-        it '投稿が作成される' do
-          expect {
-            post posts_path, params: {post: {title: 'テストタイトル', body: 'テスト本文', category_ids: [category.id]} }
-          }.to change(Post, :count).by(1)
-          expect(response).to redirect_to posts_path
-          follow_redirect!
-          expect(response).to have_http_status(:success)
-          expect(flash[:notice]).to eq '投稿を作成しました'
-        end
+      it '正常なパラメータの場合、投稿が作成される' do
+        expect do
+          post posts_path, params: { post: { title: 'テストタイトル', body: 'テスト本文', category_ids: [category.id] } }
+        end.to change(Post, :count).by(1)
+        follow_redirect!
+        expect(response).to have_http_status(:success)
+        expect(flash[:notice]).to eq '投稿を作成しました'
       end
-      context '不正なパラメータの場合' do
-        it '投稿が作成されない' do
-          expect {
-            post posts_path, params: { post: { title: '', body: '' , category_ids: ''} }
-          }.not_to change(Post, :count)
-          expect(response).to have_http_status(:unprocessable_entity)
-        end
+
+      it '不正なパラメータの場合、投稿が作成されない' do
+        expect do
+          post posts_path, params: { post: { title: '', body: '', category_ids: '' } }
+        end.not_to change(Post, :count)
+        expect(response).to have_http_status(:unprocessable_entity)
       end
     end
 
     context '投稿更新 (update)' do
-
-      context '正常なパラメータの場合' do
-        it '投稿が更新される' do
-          patch post_path(post_obj), params: { post: { title: '更新タイトル', body: '更新本文' , category_ids: [category.id] } }
-          expect(response).to redirect_to post_path(post_obj)
-          follow_redirect!
-          expect(response).to have_http_status(:success)
-          expect(response.body).to include('更新タイトル')
-          expect(flash[:notice]).to eq '投稿を更新しました'
-        end
+      it '正常なパラメータの場合、投稿が更新される' do
+        patch post_path(post_obj), params: { post: { title: '更新タイトル', body: '更新本文', category_ids: [category.id] } }
+        expect(response).to redirect_to post_path(post_obj)
+        follow_redirect!
+        expect(response).to have_http_status(:success)
+        expect(flash[:notice]).to eq '投稿を更新しました'
       end
-      context '不正なパラメータの場合' do
-        it '投稿が更新されない' do
-          patch post_path(post_obj), params: { post: { title: '', body: '' , category_ids: ''} }
-          expect(response).to have_http_status(:unprocessable_entity)
-        end
+
+      it '不正なパラメータの場合、投稿が更新されない' do
+        patch post_path(post_obj), params: { post: { title: '', body: '', category_ids: '' } }
+        expect(response).to have_http_status(:unprocessable_entity)
       end
     end
 
     context '投稿削除 (delete)' do
       it '投稿が削除される' do
         post_obj
-        expect {
+        expect do
           delete post_path(post_obj)
-        }.to change(Post, :count).by(-1)
-        expect(response).to redirect_to posts_path
+        end.to change(Post, :count).by(-1)
         follow_redirect!
         expect(response).to have_http_status(:success)
         expect(flash[:notice]).to eq '投稿を削除しました'

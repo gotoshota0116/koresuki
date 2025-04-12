@@ -1,11 +1,11 @@
 require 'rails_helper'
 
-RSpec.describe "Sessions", type: :request do
-  describe "ログイン成功" do
+RSpec.describe 'Sessions', type: :request do
+  describe 'ログイン成功' do
     let(:user) { create(:user) }
 
     context 'email、passwordを正しく入力した場合' do
-      it "ログインに成功する" do
+      it 'ログインに成功する' do
         post user_session_path, params: {
           user: {
             email: user.email,
@@ -20,7 +20,7 @@ RSpec.describe "Sessions", type: :request do
     end
   end
 
-  describe "ログイン失敗" do
+  describe 'ログイン失敗' do
     let(:user) { create(:user) }
 
     context 'emailが間違っている場合' do

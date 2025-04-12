@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Posts", type: :request, focus: true do
+RSpec.describe "Posts", type: :request do
   let(:user) { create(:user) }
   let(:post_obj) { create(:post, user: user) }
   let(:category) { create(:category) }

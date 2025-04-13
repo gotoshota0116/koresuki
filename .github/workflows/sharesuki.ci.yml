@@ -1,4 +1,4 @@
-name: Rails CI
+name: CI
 
 on:
   pull_request:
@@ -6,7 +6,23 @@ on:
     branches: [main]
 
 jobs:
-  build:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.2.6
+          bundler-cache: true
+
+      - name: Run RuboCop
+        run: bundle exec rubocop --parallel --format progress
+
+  test:
     runs-on: ubuntu-latest
 
     services:
@@ -31,13 +47,13 @@ jobs:
       RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
 
     steps:
-      - name: Git checkout
+      - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Install ImageMagick
         run: sudo apt-get update && sudo apt-get install -y imagemagick
 
-      - name: Setup Ruby 3.2.6
+      - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.2.6
@@ -59,6 +75,3 @@ jobs:
 
       - name: Run tests
         run: bundle exec rspec --format progress --force-color
-
-      - name: Run RuboCop
-        run: bundle exec rubocop --parallel --format progress

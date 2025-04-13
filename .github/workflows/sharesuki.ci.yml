@@ -1,0 +1,56 @@
+name: Rails CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:15
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: sharesuki_test
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    env:
+      RAILS_ENV: test
+      BUNDLE_JOBS: 4
+      BUNDLE_RETRY: 3
+      RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
+
+    steps:
+      - name: Git checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Ruby 3.2.6
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.2.6
+          bundler-cache: true
+
+      - name: Setup Database
+        run: |
+          cp -v config/database.yml.ci config/database.yml
+          bundle exec rails db:create db:schema:load
+        env:
+          RAILS_ENV: test
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+
+      - name: Run tests
+        run: bundle exec rspec --format progress --force-color
+
+      - name: Run RuboCop
+        run: bundle exec rubocop --parallel --format progress

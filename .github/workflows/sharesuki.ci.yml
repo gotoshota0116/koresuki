@@ -34,6 +34,9 @@ jobs:
       - name: Git checkout
         uses: actions/checkout@v4
 
+      - name: Install ImageMagick
+        run: sudo apt-get update && sudo apt-get install -y imagemagick
+
       - name: Setup Ruby 3.2.6
         uses: ruby/setup-ruby@v1
         with:
@@ -48,6 +51,11 @@ jobs:
           RAILS_ENV: test
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
+
+      - name: Precompile assets
+        run: bundle exec rails assets:precompile
+        env:
+          RAILS_ENV: test
 
       - name: Run tests
         run: bundle exec rspec --format progress --force-color

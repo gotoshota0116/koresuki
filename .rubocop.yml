@@ -9,6 +9,8 @@ AllCops:
     - "db/migrate/*"
     - "config/*.rb"
     - "node_modules/**/*" # Node.js のファイルを無視
+    - "vendor/**/*" #
+    - "vendor/bundle/**/*"
 
 # 有効にする拡張機能
 require:

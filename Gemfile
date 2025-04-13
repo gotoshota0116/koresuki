@@ -76,6 +76,7 @@ group :development, :test do
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec'
+  gem 'rubocop-rake', require: false
 
   gem 'factory_bot_rails'
   gem 'faker'

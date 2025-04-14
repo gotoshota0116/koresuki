@@ -22,5 +22,8 @@ Rails.application.routes.draw do
 
   get 'ogp/ogp.png', to: 'ogp_images#show', as: :ogp_image
 
+  get "policy", to: "static_pages#policy", as: "privacy_policy"
+  get "terms", to: "static_pages#terms", as: "terms"
+
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 end

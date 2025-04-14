@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
-  root 'staticpages#top'
+  root 'static_pages#top'
 
   resources :posts do
     collection do
@@ -21,6 +21,9 @@ Rails.application.routes.draw do
   resources :notifications, only: %i[index destroy]
 
   get 'ogp/ogp.png', to: 'ogp_images#show', as: :ogp_image
+
+  get "policy", to: "static_pages#policy", as: "privacy_policy"
+  get "terms", to: "static_pages#terms", as: "terms"
 
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 end

@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
-  root 'staticpages#top'
+  root 'static_pages#top'
 
   resources :posts do
     collection do

@@ -16,6 +16,5 @@ CarrierWave.configure do |config|
   }
 
   # ファイルを非公開にする（署名付きURLでアクセス）
-  config.fog_public = true
-  config.fog_attributes = {'x-amz-acl' => nil}
+  config.fog_public = false
 end

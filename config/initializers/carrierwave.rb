@@ -16,5 +16,5 @@ CarrierWave.configure do |config|
   }
 
   # ファイルを非公開にする（署名付きURLでアクセス）
-  config.fog_public = false
+  config.fog_public = true
 end

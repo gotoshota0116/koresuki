@@ -1,93 +1,95 @@
-<%= form_with model: @post, class: 'space-y-4' do |f| %>
-  <%= render 'shared/error_messages', object: f.object %>
-  <h3 class="font-medium text-mg mb-2"><%= t('.categories') %></h3>
-  <div class="flex flex-wrap gap-4 mb-4">
-    <%= f.collection_check_boxes :category_ids, Category.all, :id, :name do |b| %>
-      <div class="flex items-center">
-        <%= b.check_box(class: 'mr-2') %>
-        <%= b.label(class: 'text-gray-700') %>
-      </div>
-    <% end %>
-  </div>
-  <div>
-    <%= f.label :title, class: 'block text-sm font-medium text-gray-700' %>
-    <%= f.text_field :title, class: 'mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500' %>
-  </div>
-  <div>
-    <%= f.label :body, class: 'block text-sm font-medium text-gray-700' %>
-    <%= f.text_area :body, class: 'mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500', rows: '10' %>
-  </div>
-  <div>
-    <%= f.label :image, class: 'block text-sm font-medium text-gray-700' %>
-    <%= f.file_field :image, accept: 'image/jpg,image/jpeg,image/png,image/gif',
-                             class: 'mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500' %>
-  </div>
-
-  <!-- Stimulusコントローラーを適用 -->
-  <div data-controller="nested-form">
-      <!-- サブ画像 -->
-    <div class="mb-6">
-      <h3 class="font-medium text-mg mb-2"><%= t('.post_images') %></h3>
-      <!-- テンプレート - 新規追加用 -->
-      <template data-nested-form-target="template" data-type="post_images">
-        <div class="nested-form-wrapper border p-4 rounded-md mb-4">
-          <%= f.fields_for :post_images, PostImage.new, child_index: 'NEW_RECORD' do |post_image_form| %>
-            <%= render 'post_image_fields', form: post_image_form %>
-          <% end %>
+<div class="border rounded-lg bg-gray-50 m p-10 ">
+  <%= form_with model: @post, class: 'space-y-4' do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+    <h3 class="text-md"><%= t('.categories') %></h3>
+    <div class="flex flex-wrap gap-4 mt-2">
+      <%= f.collection_check_boxes :category_ids, Category.all, :id, :name do |b| %>
+        <div class="flex items-center">
+          <%= b.check_box(class: 'mr-2') %>
+          <%= b.label(class: 'text-gray-700') %>
         </div>
-      </template>
-      <!-- 既存のフォームと新規追加されるフォームのコンテナ -->
-      <div data-nested-form-target="container" data-type="post_images">
-        <%= f.fields_for :post_images do |post_image_form| %>
-          <div class="nested-form-wrapper border p-4 rounded-md mb-4">
-            <!-- 既存レコードの場合は_destroyフィールドを追加 -->
-            <% if post_image_form.object.persisted? %>
-              <%= post_image_form.hidden_field :_destroy %>
-            <% end %>
-            <%= render 'post_image_fields', form: post_image_form %>
-          </div>
-        <% end %>
-      </div>
-      <div class="mt-2">
-        <button data-action="nested-form#add" data-type="post_images" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md">
-          <%= t('helpers.submit.addition') %>
-        </button>
-      </div>
+      <% end %>
     </div>
-
-    <!-- YouTube動画 -->
-    <div class="mb-6">
-      <h3 class="font-medium text-mg mb-2"><%= t('.post_videos') %></h3>
-      <!-- テンプレート - 新規追加用 -->
-      <template data-nested-form-target="template" data-type="post_videos">
-        <div class="nested-form-wrapper border p-4 rounded-md mb-4">
-          <%= f.fields_for :post_videos, PostVideo.new, child_index: 'NEW_RECORD' do |post_video_form| %>
-          <%= render 'post_video_fields', form: post_video_form %>
+    <div>
+      <%= f.label :title, class: 'block text-md text-gray-700' %>
+      <%= f.text_field :title, class: 'mt-2 block w-full border border-gray-300 rounded-md shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500' %>
+    </div>
+    <div>
+      <%= f.label :body, class: 'block text-md  text-gray-700' %>
+      <%= f.text_area :body, class: 'mt-2 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500', rows: '10' %>
+    </div>
+    <div>
+      <%= f.label :image, class: 'block text-md text-gray-700' %>
+      <%= f.file_field :image, accept: 'image/jpg,image/jpeg,image/png,image/gif',
+                               class: 'mt-2 block w-full border border-gray-300 rounded-md shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500 bg-white' %>
+    </div>
+  
+    <!-- Stimulusコントローラーを適用 -->
+    <div data-controller="nested-form">
+        <!-- サブ画像 -->
+      <div class="mb-6">
+        <h3 class=" text-md mb-2"><%= t('.post_images') %></h3>
+        <!-- テンプレート - 新規追加用 -->
+        <template data-nested-form-target="template" data-type="post_images">
+          <div class="nested-form-wrapper border p-4 rounded-md mb-4">
+            <%= f.fields_for :post_images, PostImage.new, child_index: 'NEW_RECORD' do |post_image_form| %>
+              <%= render 'post_image_fields', form: post_image_form %>
+            <% end %>
+          </div>
+        </template>
+        <!-- 既存のフォームと新規追加されるフォームのコンテナ -->
+        <div data-nested-form-target="container" data-type="post_images">
+          <%= f.fields_for :post_images do |post_image_form| %>
+            <div class="nested-form-wrapper border p-4 rounded-md mb-4">
+              <!-- 既存レコードの場合は_destroyフィールドを追加 -->
+              <% if post_image_form.object.persisted? %>
+                <%= post_image_form.hidden_field :_destroy %>
+              <% end %>
+              <%= render 'post_image_fields', form: post_image_form %>
+            </div>
           <% end %>
         </div>
-      </template>
-      <!-- 既存のフォームと新規追加されるフォームのコンテナ -->
-      <div data-nested-form-target="container" data-type="post_videos">
-        <%= f.fields_for :post_videos do |post_video_form| %>
+        <div class="mt-2">
+          <button data-action="nested-form#add" data-type="post_images" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md">
+            <%= t('helpers.submit.addition') %>
+          </button>
+        </div>
+      </div>
+  
+      <!-- YouTube動画 -->
+      <div class="mb-6">
+        <h3 class=" text-md mb-2"><%= t('.post_videos') %></h3>
+        <!-- テンプレート - 新規追加用 -->
+        <template data-nested-form-target="template" data-type="post_videos">
           <div class="nested-form-wrapper border p-4 rounded-md mb-4">
-            <!-- 既存レコードの場合は_destroyフィールドを追加 -->
-            <% if post_video_form.object.persisted? %>
-              <%= post_video_form.hidden_field :_destroy %>
-            <% end %>
+            <%= f.fields_for :post_videos, PostVideo.new, child_index: 'NEW_RECORD' do |post_video_form| %>
             <%= render 'post_video_fields', form: post_video_form %>
+            <% end %>
           </div>
-        <% end %>
-      </div>
-      <div class="mt-2">
-        <button data-action="nested-form#add" data-type="post_videos" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md">
-          <%= t('helpers.submit.addition') %>
-        </button>
+        </template>
+        <!-- 既存のフォームと新規追加されるフォームのコンテナ -->
+        <div data-nested-form-target="container" data-type="post_videos">
+          <%= f.fields_for :post_videos do |post_video_form| %>
+            <div class="nested-form-wrapper border p-4 rounded-md mb-4">
+              <!-- 既存レコードの場合は_destroyフィールドを追加 -->
+              <% if post_video_form.object.persisted? %>
+                <%= post_video_form.hidden_field :_destroy %>
+              <% end %>
+              <%= render 'post_video_fields', form: post_video_form %>
+            </div>
+          <% end %>
+        </div>
+        <div class="mt-2">
+          <button data-action="nested-form#add" data-type="post_videos" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md">
+            <%= t('helpers.submit.addition') %>
+          </button>
+        </div>
       </div>
     </div>
-  </div>
-
-  <!-- 投稿ボタン -->
-  <div class="flex justify-center">
-    <%= f.submit t('helpers.submit.create'), class: 'bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md shadow-md transition duration-300' %>
-  </div>
-<% end %>
+  
+    <!-- 投稿ボタン -->
+    <div class="flex justify-center">
+      <%= f.submit t('helpers.submit.create'), class: 'bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md shadow-md transition duration-300' %>
+    </div>
+  <% end %>
+</div>

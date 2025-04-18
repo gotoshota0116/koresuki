@@ -28,11 +28,9 @@
   <!-- 掲示板一覧 -->
   <div>
     <% if @posts.present? %>
-      <div class="space-y-4">
-        <div class="flex flex-wrap -mx-2">
+        <div class="flex flex-wrap">
           <%= render @posts %>
         </div>
-      </div>
     <% else %>
       <div class="text-center"><%= t('.no_posts') %></div>
     <% end %>

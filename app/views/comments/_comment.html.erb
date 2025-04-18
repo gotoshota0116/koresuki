@@ -1,20 +1,27 @@
 <div class="bg-white p-4 rounded-lg shadow mb-4">
   <div class="flex justify-between items-center mb-2">
-    <span class="font-bold"><%= comment.user.name %></span>
-    <span class="text-gray-500 text-sm"><%= l comment.created_at, format: :long %></span>
+    <div class="flex items-center">
+      <% if comment.user.avatar.present? %>
+        <%= image_tag comment.user.avatar.url, class: 'w-8 h-8 object-cover rounded-full mr-3' %>
+      <% end %>
+      <span class="font-bold"><%= comment.user.name %></span>
+    </div>
+  
+    <span class="text-gray-500 text-sm">
+      <%= l comment.created_at, format: :long %>
+    </span>
   </div>
 
   <p class="text-gray-700"><%= simple_format(comment.body) %></p>
 
-    <div class="p-4">
+  <div class= "flex justify-end items-center">
+    <div class = "pb-1 pr-3">
       <%= render 'likes/like_buttons', { likeable: comment } %>
     </div>
-
-  <% if current_user&.own?(comment) %>
-    <div class="mt-2 text-right">
+    <% if current_user&.own?(comment) %>
       <%= link_to t('comments.destroy.title'), post_comment_path(comment.post, comment),
-                  data: { turbo_method: :delete, turbo_confirm: t('helpers.confirm.delete') },
-                  class: 'text-red-500 hover:text-red-700' %>
-    </div>
-  <% end %>
+                    data: { turbo_method: :delete, turbo_confirm: t('helpers.confirm.delete') },
+                    class: 'text-red-500 ml-2 ' %>
+    <% end %>
+  </div>
 </div>

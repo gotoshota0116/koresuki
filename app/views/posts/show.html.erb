@@ -31,7 +31,7 @@
           <div class="flex flex-col items-center x-[420]">
             <%= image_tag post_image.image.url, alt: 'サブ画像', class: 'w-full object-cover rounded-lg mb-2' %>
             <% if post_image.caption.present? %>
-              <p class="text-center bg-white p-3 mt-3 rounded-lg shadow">
+              <p class="w-full text-center bg-white p-3 mt-1 rounded-lg shadow">
                 <%= post_image.caption %>
               </p>
             <% end %>
@@ -43,7 +43,7 @@
     <% if @post.post_videos.present? %>
       <div class="my-6">
         <% @post.post_videos.each do |post_video| %>
-          <div class="flex justify-center mb-4">
+          <div class="flex flex-wrap justify-center mb-4">
             <div class="w-full max-w-xl">
               <%= content_tag 'iframe', nil,
                             width: '100%',
@@ -55,7 +55,9 @@
                             allowfullscreen: true,
                             class: 'w-full' %>
               <% if post_video.caption.present? %>
-                <p class="mb-4 text-center"><%= post_video.caption %></p>
+                <p class="text-center bg-white p-3 mt-3 rounded-lg shadow">
+                  <%= post_video.caption %>
+                </p>
               <% end %>
             </div>
           </div>
@@ -63,7 +65,7 @@
       </div>
     <% end %>
     <!-- Xシェアボタン -->
-    <div class="flex justify-center my-6">
+    <div class="flex justify-center my-12">
       <% encode_text = URI.encode_www_form_component("【シェアスキ！】\nわたしの好き「#{@post.title}」を投稿しました！") %>
       <% twitter_share_url = "https://twitter.com/intent/tweet?url=#{CGI.escape(post_url(@post))}&text=#{encode_text}%0A%0A&hashtags=シェアスキ" %>
       <%= link_to twitter_share_url, target: '_blank', rel: 'noopener', class: 'bg-slate-900 hover:bg-slate-600 text-white py-2 px-10 rounded-full flex items-center gap-2' do %>

@@ -22,7 +22,7 @@
     </script>
   </head>
 
-  <body>
+  <body class="bg-rose-100 flex flex-col min-h-screen">
     <% if user_signed_in? %>
       <%= render 'shared/header' %>
     <% else %>
@@ -33,7 +33,9 @@
     <p class="<%= flash_class(key) %>"><%= sanitize(message) %></p>
     <% end %>
 
-    <%= yield %>
+    <main class="flex-grow">
+      <%= yield %>
+    </main>
     <%= render 'shared/footer' %>
   </body>
 </html>

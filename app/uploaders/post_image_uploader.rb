@@ -31,7 +31,7 @@ class PostImageUploader < CarrierWave::Uploader::Base
     %w[jpg jpeg gif png webp]
   end
 
-  process resize_to_fit: [500, 500]
+  process resize_to_fill: [420, 320]
   process :convert_to_webp
   process :optimize
 

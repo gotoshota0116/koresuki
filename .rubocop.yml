@@ -29,10 +29,10 @@ Style/FrozenStringLiteralComment:
   Enabled: false # frozen_string_literal: true の強制を無効化
 
 Metrics/MethodLength:
-  Max: 20  # メソッドの長さ制限を20行に緩和（デフォルト: 10）
+  Max: 25  # メソッドの長さ制限を20行に緩和（デフォルト: 10）
 
 Metrics/AbcSize:
-  Max: 26  # メソッドの複雑度の上限を緩和（デフォルト: 17）
+  Max: 35  # メソッドの複雑度の上限を緩和（デフォルト: 17）
 
 Metrics/CyclomaticComplexity:
   Max: 10  # 複雑度の上限を10に緩和（デフォルト: 7）

@@ -23,6 +23,7 @@ ja:
       title: 投稿編集
     show:
       title: さんのスキ！
+      body: 推しポイント！
     form:
       categories: カテゴリ選択
       post_images: サブ画像

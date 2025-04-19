@@ -1,6 +1,8 @@
 <div class="max-w-6xl mx-auto my-16">
   <div class="border rounded-lg bg-gray-50 p-16">
-    <h2 class="text-center text-2xl font-bold mb-8"><%= t('.title', resource: devise_i18n_fix_model_name_case(resource.model_name.human, i18n_key: 'registrations.edit.title')) %></h2>
+    <h2 class="text-center text-2xl font-bold mb-8"><%= t('.title',
+                                                          resource: devise_i18n_fix_model_name_case(resource.model_name.human,
+                                                                                                    i18n_key: 'registrations.edit.title')) %></h2>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
       <%= render 'devise/shared/error_messages', resource: resource %>

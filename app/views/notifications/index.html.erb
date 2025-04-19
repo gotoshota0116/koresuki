@@ -1,13 +1,15 @@
-<div class="container mx-auto px-4 py-8">
-  <h2 class="text-2xl font-bold mb-6"><%= t('.title') %></h2>
-  <% if @notifications.present? %>
-    <%= link_to '全削除', notification_path(@notifications), data: { turbo_method: :delete, turbo_confirm: t('helpers.confirm.delete') }, class: 'btn btn-light' %>
-    <div class="space-y-4">
-      <%= render @notifications %>
-    </div>
-  <% else %>
-    <p class="text-gray-500"><%= t('.no_notifications') %></p>
-  <% end %>
+<div class="max-w-6xl mx-auto my-16">
+  <div class="border rounded-lg bg-gray-50 p-10 ">
+    <h2 class="text-2xl font-bold text-center mb-6"><%= t('.title') %></h2>
+    <% if @notifications.present? %>
+      <%= link_to '全削除', notification_path(@notifications), data: { turbo_method: :delete, turbo_confirm: t('helpers.confirm.delete') }, class: 'btn btn-light mb-4' %>
+      <div class="space-y-4">
+        <%= render @notifications %>
+      </div>
+    <% else %>
+      <p class="text-gray-500"><%= t('.no_notifications') %></p>
+    <% end %>
 
-  <%== pagy_nav(@pagy) %>
+    <%== pagy_nav(@pagy) %>
+  </div>
 </div>

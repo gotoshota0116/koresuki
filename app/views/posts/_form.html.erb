@@ -3,7 +3,7 @@
   <h3 class="text-md"><%= t('.categories') %></h3>
   <div class="flex flex-wrap gap-4 mt-2">
     <%= f.collection_check_boxes :category_ids, Category.all, :id, :name do |b| %>
-      <div class="flex items-center">
+      <div class="flex items-center text-sm sm:text-base">
         <%= b.check_box(class: 'mr-2') %>
         <%= b.label(class: 'text-gray-700') %>
       </div>

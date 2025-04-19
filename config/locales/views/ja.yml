@@ -2,7 +2,7 @@ ja:
   # ビューファイル
   header:
     all_suki: みんなのスキ
-    post_suki: スキ新規投稿
+    post_suki: スキ新規作成
     mypage: マイページ
     logout: ログアウト
   footer:
@@ -18,7 +18,7 @@ ja:
     post:
       no_image: 画像未設定
     new:
-      title: 新規投稿
+      title: スキ新規作成
     edit:
       title: 投稿編集
     show:

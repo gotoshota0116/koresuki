@@ -9,6 +9,10 @@ ja:
     contact: お問い合わせ
     terms: 利用規約
     privacy: プライバシーポリシー
+  static_pages:
+    top:
+      index_description: みんなの「スキ！」をのぞいてみましょう！会員登録すると、いいね・お気に入りが使えます！
+      new_description: あなたの「スキ！」を投稿しましょう！投稿はXでシェアできます！
   posts:
     index:
       title: 投稿一覧

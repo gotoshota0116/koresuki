@@ -1,6 +1,8 @@
 <div class="max-w-6xl mx-auto my-16">
   <div class="border rounded-lg bg-gray-50 p-4 sm:p-10 ">
-    <h2 class="text-2xl font-bold text-center mb-6"><%= t('.title') %></h2>
+    <h2 class="text-2xl text-center font-bold mb-6 ">
+      <%= t('.title') %>
+    </h2>
     <% if @notifications.present? %>
       <%= link_to '全削除', notification_path(@notifications), data: { turbo_method: :delete, turbo_confirm: t('helpers.confirm.delete') },
                                                             class: 'btn btn-light mb-4' %>

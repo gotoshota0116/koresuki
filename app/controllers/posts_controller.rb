@@ -86,7 +86,7 @@ class PostsController < ApplicationController
     image_url = if post.image.present?
                   post.image.url.to_s
                 else
-                  "#{request.base_url}/ogp/ogp.png?text=#{CGI.escape(post.title)}"
+                  "#{request.base_url}/ogp/ogp.jpg?text=#{CGI.escape(post.title)}"
                 end
 
     set_meta_tags og: {

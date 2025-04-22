@@ -3,7 +3,7 @@ class OgpCreator
   BASE_IMAGE_PATH = './app/assets/images/title_ogp_image.jpg'
   GRAVITY = 'center'
   TEXT_POSITION = '0,0'
-  FONT = './app/assets/fonts/CP_Revenge.ttf'
+  FONT = './app/assets/fonts/nikumaru.otf'
   FONT_SIZE = 70
   INDENTION_COUNT = 18
   ROW_LIMIT = 8

@@ -10,7 +10,6 @@ class OgpCreator
   FONT_COLOR = 'rgb(33, 30, 30)'
   LINE_SPACE = 25
 
-
   def self.build(text)
     text = prepare_text(text)
     image = MiniMagick::Image.open(BASE_IMAGE_PATH)
@@ -25,7 +24,7 @@ class OgpCreator
   end
 
   def self.prepare_text(text)
-    text = "#{text}"
+    text = text.to_s
     text.to_s.scan(/.{1,#{INDENTION_COUNT}}/o)[0...ROW_LIMIT].join("\n")
   end
 end

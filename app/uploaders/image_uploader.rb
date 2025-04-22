@@ -45,11 +45,6 @@ class ImageUploader < CarrierWave::Uploader::Base
   process resize_to_fit: [1200, 630]
   process :optimize
 
-  version :mini do
-    process resize_to_fill: [400, 300]
-    process :optimize
-  end
-
   private
 
   def optimize

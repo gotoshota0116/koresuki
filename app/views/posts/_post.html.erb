@@ -14,7 +14,7 @@
         </h4>
       <div class="my-3">
         <% if post.image.present? %>
-          <%= image_tag post.image.mini.url, class: 'object-cover rounded-lg' %>
+          <%= image_tag post.image.url, class: 'w-[400px] h-[300px] object-cover rounded-lg' %>
         <% elsif post.post_videos.present? %>
           <div class="w-full aspect-video">
             <%= image_tag "https://img.youtube.com/vi/#{post.post_videos.first.youtube_url.to_s[0..10]}/hqdefault.jpg",

@@ -14,7 +14,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   # cloudFront URLを生成
-  def url(*args)
+  def url(*_args)
     "#{asset_host}/#{store_dir}/#{identifier}"
   end
 

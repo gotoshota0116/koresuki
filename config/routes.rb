@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   resource :profile, only: %i[show edit update]
   resources :notifications, only: %i[index destroy]
 
-  get 'ogp/ogp.png', to: 'ogp_images#show', as: :ogp_image
+  get 'ogp/ogp.jpg', to: 'ogp_images#show', as: :ogp_image
 
   get "policy", to: "static_pages#policy", as: "privacy_policy"
   get "terms", to: "static_pages#terms", as: "terms"

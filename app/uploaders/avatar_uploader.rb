@@ -7,6 +7,17 @@ class AvatarUploader < CarrierWave::Uploader::Base
     storage :file # 開発・テスト環境ではローカルに保存
   end
 
+  # cloudFront導入
+  def initialize(*)
+    super
+    self.asset_host = 'https://d9oksf3mcywir.cloudfront.net'
+  end
+
+  # cloudFront URLを生成
+  def url(*args)
+    "#{asset_host}/#{store_dir}/#{identifier}"
+  end
+
   def cache_dir
     if Rails.env.test?
       "uploads/#{Rails.env}/tmp/#{mounted_as}/#{model.id}"

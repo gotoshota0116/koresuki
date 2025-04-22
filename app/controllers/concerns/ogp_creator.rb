@@ -1,6 +1,6 @@
 class OgpCreator
   require 'mini_magick'
-  BASE_IMAGE_PATH = './app/assets/images/koresuki-ogp.jpg'
+  BASE_IMAGE_PATH = './app/assets/images/title_ogp_image.jpg'
   GRAVITY = 'center'
   TEXT_POSITION = '0,0'
   FONT = './app/assets/fonts/CP_Revenge.ttf'

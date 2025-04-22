@@ -9,31 +9,30 @@ module ApplicationHelper
     end
   end
 
-  # application_helper.rb、display_meta_tags(default_meta_tags)に変更必要
-
-  #   {
-  #     site: 'シェアスキ！
-  #     title: シェアスキ！',
-  #     reverse: true,
-  #     charset: 'utf-8',
-  #     description: '「シェアスキ！は自分の「好き」を投稿するサービスです。
-  #     他のユーザーと『好き』を共有し、交流を広げ、新たなつながりを生み出します。」',
-  #     canonical: request.original_url,
-  #     og: {
-  #       site_name: 'シェアスキ！',
-  #       title: 'シェアスキ！',
-  #       description: '「シェアスキ！は自分の「好き」を投稿するサービスです。
-  #       他のユーザーと「好き」を共有し、交流を広げ、新たなつながりを生み出します。」',
-  #       type: 'website',
-  #       url: request.original_url,
-  #       image: image_url('#'),
-  #       local: 'ja-JP'
-  #     },
-  #     twitter: {
-  #       card: 'summary_large_image',
-  #       site: '@gshota_0116',
-  #       image: image_url('#')
-  #     }
-  #   }
-  # end
+  def default_meta_tags
+    {
+      site: 'シェアスキ！
+      title: シェアスキ！',
+      reverse: true,
+      charset: 'utf-8',
+      description: '「シェアスキ！」は自分の「好き」を投稿・共有できるサービスです。
+      他のユーザーと「好き」を通じてつながり、交流を深めることで、新たな出会いや発見が生まれます。',
+      canonical: request.original_url,
+      og: {
+        site_name: 'シェアスキ！',
+        title: 'シェアスキ！',
+        description: 'シェアスキ！は自分の「好き」を投稿・共有できるサービスです。
+        他のユーザーと「好き」を通じてつながり、交流を深めることで、新たな出会いや発見が生まれます。',
+        type: 'website',
+        url: request.original_url,
+        image: image_url('ogp_image.jpg'),
+        local: 'ja-JP'
+      },
+      twitter: {
+        card: 'summary_large_image',
+        site: '@gshota_0116',
+        image: image_url('ogp_image.jpg')
+      }
+    }
+  end
 end

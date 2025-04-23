@@ -9,8 +9,21 @@
       <% end %>
       <%= link_to t('header.all_suki'), posts_path, class: 'px-4' %>
       <%= link_to t('header.post_suki'), new_post_path, class: 'px-4 ' %>
-      <%= link_to t('header.mypage'), profile_path, class: 'px-4 ' %>
-      <%= link_to t('header.logout'), destroy_user_session_path, data: { turbo_method: :delete }, class: 'px-4 ' %>
     </nav>
+    <div class="dropdown dropdown-end">
+      <div tabindex="0" role="button" class="btn mx-1 rounded-full">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="rose-400" class="size-5 sm:size-7 stroke-rose-400">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+      </div>
+      <ul tabindex="0" class="dropdown-content menu bg-gray-50 rounded-3xl z-[1] w-52 p-2 shadow-lg">
+        <li>
+          <%= link_to t('header.mypage'), profile_path, class: 'p-2 sm:p-4  rounded-2xl' %>
+        </li>
+        <li>
+          <%= link_to t('header.logout'), destroy_user_session_path, data: { turbo_method: :delete }, class: 'p-2 sm:p-4 rounded-2xl' %>
+        </li>
+      </ul>
+    </div>
   </div>
 </header>

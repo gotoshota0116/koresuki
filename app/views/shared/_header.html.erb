@@ -1,7 +1,9 @@
 <header>
-  <div class="navbar bg-rose-400 py-4 text-sm sm:text-base ">
+  <div class="navbar bg-rose-400 py-3 text-sm sm:text-base ">
     <div class="flex-1">
-      <a><%= link_to t('helpers.sharesuki'), root_path %></a>
+      <%= link_to  root_path do %>
+        <%= image_tag 'header_logo.svg', class: 'w-40', alt: 'シェアスキ！ロゴ' %>
+      <% end %>
     </div>
     <nav class="sm:space-x-16">
       <%= link_to posts_path, class: "flex flex-col items-center gap-1" do %>

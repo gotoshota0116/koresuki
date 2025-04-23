@@ -22,7 +22,7 @@
     </script>
   </head>
 
-  <body class="flex flex-col min-h-screen bg-[url('/assets/background_image.jpg')] bg-cover bg-center bg-no-repeat">
+  <body style="background-image: url('<%= asset_path('background_image.jpg') %>');" class="flex flex-col min-h-screen bg-cover bg-center bg-no-repeat">
     <% if user_signed_in? %>
       <%= render 'shared/header' %>
     <% else %>

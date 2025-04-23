@@ -18,7 +18,7 @@ module NotificationsHelper
             fill: fill,
             viewBox: '0 0 24 24',
             'stroke-width': '1.5',
-            'stroke': '#ffe4e6',
+            stroke: '#ffe4e6',
             class: 'size-8 sm:size-12') do
       tag.path('stroke-linecap': 'round',
                'stroke-linejoin': 'round',

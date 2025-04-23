@@ -1,16 +1,48 @@
 <header>
-  <div class="navbar bg-rose-400 py-6 text-sm sm:text-base ">
+  <div class="navbar bg-rose-400 py-3 text-sm sm:text-base ">
     <div class="flex-1">
-      <a><%= link_to t('helpers.sharesuki'), root_path %></a>
-    </div>
-    <nav class="sm:space-x-8">
-      <%= link_to notifications_path, class: 'px-4' do %>
-        <%= notification_bell_icon %>
+      <%= link_to root_path do %>
+        <%= image_tag 'header_logo.svg', class: 'w-40', alt: 'シェアスキ！ロゴ' %>
       <% end %>
-      <%= link_to t('header.all_suki'), posts_path, class: 'px-4' %>
-      <%= link_to t('header.post_suki'), new_post_path, class: 'px-4 ' %>
-      <%= link_to t('header.mypage'), profile_path, class: 'px-4 ' %>
-      <%= link_to t('header.logout'), destroy_user_session_path, data: { turbo_method: :delete }, class: 'px-4 ' %>
+    </div>
+    <nav class="sm:space-x-16">
+      <%= link_to posts_path, class: 'flex flex-col items-center gap-1' do %>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="size-8 sm:size-12 stroke-rose-100">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+        </svg>
+        <div class="text-sm sm:text-base text-neutral-600">
+          <span><%= t('header.all_suki') %></span>
+        </div>
+      <% end %>
+      <%= link_to new_post_path, class: 'flex flex-col items-center gap-1' do %>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="size-8 sm:size-12 stroke-rose-100">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m3.75 9v6m3-3H9m1.5-12H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+        </svg>
+         <div class="text-sm sm:text-base text-neutral-600">
+          <span><%= t('header.post_suki') %></span>
+        </div>
+      <% end %>
+      <%= link_to notifications_path, class: 'flex flex-col items-center gap-1' do %>
+        <%= notification_bell_icon %>
+        <div class="text-sm sm:text-base text-neutral-600">
+          <span><%= t('header.notification') %></span>
+        </div>
+      <% end %>
     </nav>
+    <div class="dropdown dropdown-end">
+      <div tabindex="0" role="button" class="btn mr-1 sm:mr-3 ml-1 sm:ml-16 rounded-full">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="rose-400" class="size-5 sm:size-7 stroke-rose-400">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+      </div>
+      <ul tabindex="0" class="dropdown-content menu bg-gray-50 rounded-3xl z-[1] w-52 p-2 shadow-lg">
+        <li>
+          <%= link_to t('header.mypage'), profile_path, class: 'p-2 sm:p-4  rounded-2xl' %>
+        </li>
+        <li>
+          <%= link_to t('header.logout'), destroy_user_session_path, data: { turbo_method: :delete }, class: 'p-2 sm:p-4 rounded-2xl' %>
+        </li>
+      </ul>
+    </div>
   </div>
 </header>

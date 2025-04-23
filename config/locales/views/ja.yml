@@ -2,7 +2,10 @@ ja:
   # ビューファイル
   header:
     all_suki: みんなのスキ
-    post_suki: スキ新規作成
+    post_suki: スキ作成
+    notification: 通知
+    sign_up: 会員登録
+    sign_in: ログイン
     mypage: マイページ
     logout: ログアウト
   footer:

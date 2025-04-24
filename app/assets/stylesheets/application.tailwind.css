@@ -16,11 +16,11 @@
   }
   /* 前へ */
   .pagy a:not(.gap):not([href]) {
-    @apply text-gray-300 bg-gray-100 cursor-default;
+    @apply text-white bg-sky-500 hover:bg-sky-600 cursor-default;
   }
   /* 現在のページ */
   .pagy a:not(.gap).current {
-    @apply text-white bg-blue-500;
+    @apply text-black bg-gray-300;
   }
   /* .pagy label {
     @apply inline-block whitespace-nowrap bg-gray-200 rounded-lg px-4 py-2;

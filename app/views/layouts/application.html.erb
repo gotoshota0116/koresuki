@@ -22,20 +22,28 @@
     </script>
   </head>
 
-  <body style="background-image: url('<%= asset_path('background_image.jpg') %>');" class="flex flex-col min-h-screen bg-cover bg-center bg-no-repeat">
-    <% if user_signed_in? %>
-      <%= render 'shared/header' %>
-    <% else %>
-      <%= render 'shared/header_before_login' %>
-    <% end %>
+  <body data-controller="loading" style="background-image: url('<%= asset_path('background_image.jpg') %>');" class="flex flex-col min-h-screen bg-cover bg-center bg-no-repeat">
+      <!-- ローディングアニメーション -->
+        <div data-loading-target="spinner" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-white bg-opacity-50 ">
+          <div class="h-[120px] w-[120px] flex items-center justify-center">
+            <span class="loading loading-dots text-info w-full h-full"></span>
+          </div>
+        </div>
 
-    <% flash.each do |key, message| %>
-    <p class="<%= flash_class(key) %>"><%= sanitize(message) %></p>
-    <% end %>
+        <% if user_signed_in? %>
+          <%= render 'shared/header' %>
+        <% else %>
+          <%= render 'shared/header_before_login' %>
+        <% end %>
 
-    <main class="flex-grow">
-      <%= yield %>
-    </main>
-    <%= render 'shared/footer' %>
+        <% flash.each do |key, message| %>
+        <p class="<%= flash_class(key) %>"><%= sanitize(message) %></p>
+        <% end %>
+
+        <main class=" flex-grow">
+          <%= yield %>
+        </main>
+        <%= render 'shared/footer' %>
+      </div>
   </body>
 </html>

@@ -12,12 +12,6 @@
       <div class="flex justify-center my-6">
         <%= image_tag @post.image.url, alt: 'メイン画像', class: 'max-w-full' %>
       </div>
-    <% else %>
-      <div class="flex justify-center my-6">
-        <div style="width: 300px; height: 200px; background-color: lightgray; text-align: center; line-height: 200px;">
-          写真
-        </div>
-      </div>
     <% end %>
     <!-- 投稿内容 -->
     <h3 class="text-xl font-bold ml-2 mb-2"><%= t('.body') %></h3>

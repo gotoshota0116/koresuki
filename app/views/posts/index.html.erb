@@ -3,10 +3,10 @@
   <div class="flex justify-center my-8">
     <div class="w-full lg:w-10/12 m-2">
       <%= form_with model: @search_posts_form, scope: :query, url: posts_path, method: :get do |f| %>
-        <div class="flex flex-wrap items-center gap-3">
+        <div class="flex flex-wrap items-center gap-3 ">
           <div class="flex-grow relative" data-controller="autocomplete" data-autocomplete-url-value="/posts/search" data-autocomplete-query-param-value="keyword">
             <%= f.search_field :keyword, value: @search_posts_form.keyword, placeholder: t('.place_holder'),
-                                         class: 'w-full px-3 py-2 border rounded text-sm sm:text-base',
+                                         class: 'w-full px-3 py-2 border rounded text-sm sm:text-base shadow-sm',
                                          data: { autocomplete_target: 'input' } %>
             <!-- オートコンプリート検索候補を表示 -->
             <ul class="absolute z-10 w-full bg-white rounded"
@@ -15,10 +15,10 @@
           </div>
           <div class="w-48">
             <%= f.collection_select :category, Category.all, :id, :name, { value: @search_posts_form.category, include_blank: 'カテゴリを選択' },
-                                    { class: 'w-full px-3 py-2 border rounded' } %>
+                                    { class: 'w-full px-3 py-2 border rounded shadow-sm' } %>
           </div>
           <div>
-            <%= f.submit t('.search_submit'), class: 'px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600' %>
+            <%= f.submit t('.search_submit'), class: 'px-4 py-2 bg-sky-500 text-white rounded hover:bg-sky-600 shadow-lg' %>
           </div>
         </div>
       <% end %>

@@ -16,7 +16,7 @@
   }
   /* 前へ */
   .pagy a:not(.gap):not([href]) {
-    @apply text-white bg-sky-500 hover:bg-sky-600 cursor-default;
+    @apply text-white bg-sky-500 hover:bg-sky-600 cursor-default shadow-sm;
   }
   /* 現在のページ */
   .pagy a:not(.gap).current {

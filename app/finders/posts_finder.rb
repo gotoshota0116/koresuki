@@ -20,7 +20,7 @@ class PostsFinder
 
     keyword = like_search_condition(@q.keyword)
     @record = @record.joins(:user).where('posts.title LIKE ? OR posts.body LIKE ? OR users.name LIKE ?', keyword, keyword, keyword)
-  end
+  enda
 
   # like検索
   def like_search_condition(word)
@@ -31,6 +31,6 @@ class PostsFinder
     return if @q.category.blank?
 
     category = Category.find(@q.category)
-    @record = @record.where(categories: { id: category.id })
+    @record = @record.joins(:categories).where(categories: { id: category.id })
   end
 end

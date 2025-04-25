@@ -20,7 +20,7 @@ class PostsFinder
 
     keyword = like_search_condition(@q.keyword)
     @record = @record.joins(:user).where('posts.title LIKE ? OR posts.body LIKE ? OR users.name LIKE ?', keyword, keyword, keyword)
-  enda
+  end
 
   # like検索
   def like_search_condition(word)

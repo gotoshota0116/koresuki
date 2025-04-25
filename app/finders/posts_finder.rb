@@ -31,6 +31,6 @@ class PostsFinder
     return if @q.category.blank?
 
     category = Category.find(@q.category)
-    @record = @record.where(categories: { id: category.id })
+    @record = @record.joins(:categories).where(categories: { id: category.id })
   end
 end

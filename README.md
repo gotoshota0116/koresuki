@@ -106,8 +106,8 @@
 - 独自ドメイン
 - Cloud Front
 
-## 画面遷移図
+## ■ 画面遷移図
 https://www.figma.com/design/2hNmSXSAEm3FbNaea3VSJd/koresuki?node-id=0-1&t=cbmcmoRIGQeZywTh-1
 
-## ER図系
-[![Image from Gyazo](https://i.gyazo.com/c6955ffce59018b538f8c28a1d8d6140.png)](https://gyazo.com/c6955ffce59018b538f8c28a1d8d6140)
+## ■ ER図
+[![Image from Gyazo](https://i.gyazo.com/fd34be99a6091b09e897c9915bd779de.png)](https://gyazo.com/fd34be99a6091b09e897c9915bd779de)

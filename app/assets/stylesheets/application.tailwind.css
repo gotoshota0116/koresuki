@@ -8,19 +8,19 @@
   }
   /* リンクボタン */
   .pagy a:not(.gap) {
-    @apply block rounded-lg px-4 py-2 text-base bg-gray-200;
+    @apply block rounded-lg px-4 py-2 text-base text-white bg-sky-500 hover:bg-sky-600;
   }
   /* ホバー */
-  .pagy a:not(.gap):hover {
+  /* .pagy a:not(.gap):hover {
     @apply bg-gray-300;
-  }
+  } */
   /* 前へ */
   .pagy a:not(.gap):not([href]) {
-    @apply text-white bg-sky-500 hover:bg-sky-600 cursor-default shadow-sm;
+    @apply text-white bg-sky-500 hover:bg-sky-600 shadow-sm;
   }
   /* 現在のページ */
   .pagy a:not(.gap).current {
-    @apply text-black bg-gray-300;
+    @apply text-white bg-gray-400 hover:bg-gray-500;
   }
   /* .pagy label {
     @apply inline-block whitespace-nowrap bg-gray-200 rounded-lg px-4 py-2;

@@ -32,7 +32,7 @@ ja:
       title: さんのスキ！
       body: 推しポイント！
     form:
-      categories: カテゴリ選択
+      categories: カテゴリ（複数選択可）
       post_images: サブ画像
       post_videos: Youtube動画
   profiles:

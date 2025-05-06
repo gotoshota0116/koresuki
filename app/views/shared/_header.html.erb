@@ -40,6 +40,9 @@
           <%= link_to t('header.mypage'), profile_path, data: { action: 'click->loading#show' }, class: 'p-2 sm:p-4  rounded-2xl' %>
         </li>
         <li>
+          <%= link_to t('header.usage'), usage_path, class: 'p-2 sm:p-4 rounded-2xl' %>
+        </li>
+        <li>
           <%= link_to t('header.logout'), destroy_user_session_path, data: { turbo_method: :delete }, class: 'p-2 sm:p-4 rounded-2xl' %>
         </li>
       </ul>

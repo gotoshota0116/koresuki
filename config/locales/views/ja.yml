@@ -17,6 +17,8 @@ ja:
     top:
       index_description: みんなの「スキ！」をのぞいてみましょう！会員登録すると、いいね・お気に入りが使えます！
       new_description: あなたの「スキ！」を投稿しましょう！投稿はXでシェアできます！
+    usage:
+      title: ご利用ガイド
   posts:
     index:
       title: 投稿一覧

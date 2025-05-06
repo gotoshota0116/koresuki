@@ -24,6 +24,7 @@ Rails.application.routes.draw do
 
   get "policy", to: "static_pages#policy", as: "privacy_policy"
   get "terms", to: "static_pages#terms", as: "terms"
+  get "usage", to: "static_pages#usage", as: "usage"
 
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 end

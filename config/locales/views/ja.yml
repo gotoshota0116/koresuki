@@ -8,6 +8,7 @@ ja:
     sign_in: ログイン
     mypage: マイページ
     logout: ログアウト
+    usage: ご利用ガイド
   footer:
     contact: お問い合わせ
     terms: 利用規約
@@ -16,6 +17,10 @@ ja:
     top:
       index_description: みんなの「スキ！」をのぞいてみましょう！会員登録すると、いいね・お気に入りが使えます！
       new_description: あなたの「スキ！」を投稿しましょう！投稿はXでシェアできます！
+      usage: 詳しい使い方はこちらから
+    usage:
+      title: ご利用ガイド
+      sign_up: 会員登録後
   posts:
     index:
       title: 投稿一覧

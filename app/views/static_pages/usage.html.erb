@@ -7,9 +7,9 @@
         <input type="radio" name="my-accordion-2" checked="checked" />
         <div class="collapse-title text-xl font-medium">みんなのスキ</div>
         <div class="collapse-content">
-          <p>・いいね・ブックマーク機能は、会員登録後にご利用いただけます。</p>
+          <p>・いいね・ブックマーク機能は、<%= link_to t('.sign_up'), new_user_registration_path, class: 'text-blue-500 underline hover:text-blue-700' %>にご利用いただけます。</p>
 		  <p>・いいねを押すと、投稿者に通知が届きます。</p>
-		  <p>・ブックマークをすると、マイページから投稿を見返すことができます（マイページは会員登録後にご利用いただけます）。</p>
+		  <p>・ブックマークをすると、マイページから投稿を見返すことができます（マイページは<%= link_to t('.sign_up'), new_user_registration_path, class: 'text-blue-500 underline hover:text-blue-700' %>にご利用いただけます）。</p>
         </div>
       </div>
   
@@ -47,7 +47,7 @@
         <input type="radio" name="my-accordion-2" />
         <div class="collapse-title text-xl font-medium">スキにコメント</div>
         <div class="collapse-content">
-          <p>・コメントの追加は、会員登録後にご利用いただけます。</p>
+          <p>・コメントの追加は、<%= link_to t('.sign_up'), new_user_registration_path, class: 'text-blue-500 underline hover:text-blue-700' %>にご利用いただけます。</p>
           <p>・「スキの詳細」から、投稿にコメントを追加できます。</p>
           <p>・コメントを投稿・いいねすると、投稿者に通知が届きます。</p>
         </div>
@@ -57,7 +57,7 @@
         <input type="radio" name="my-accordion-2" />
         <div class="collapse-title text-xl font-medium">スキ作成</div>
         <div class="collapse-content">
-          <p>・スキ作成は、会員登録後にご利用いただけます。</p>
+          <p>・スキ作成は、<%= link_to t('.sign_up'), new_user_registration_path, class: 'text-blue-500 underline hover:text-blue-700' %>にご利用いただけます。</p>
 		  <p>・入力必須項目はカテゴリ、タイトル、推しポイントです。</p>
 		  <p>・YouTube動画URLはYouTube動画の共有ボタンからコピーしたURLを入力してください。ブラウザの上部アドレスバーのURLを入力しても反映されませんので、ご注意ください。</p>
         </div>
@@ -67,7 +67,7 @@
         <input type="radio" name="my-accordion-2" />
         <div class="collapse-title text-xl font-medium">通知</div>
         <div class="collapse-content">
-          <p>・通知機能は、会員登録後にご利用いただけます。</p>
+          <p>・通知機能は、<%= link_to t('.sign_up'), new_user_registration_path, class: 'text-blue-500 underline hover:text-blue-700' %>にご利用いただけます。</p>
           <p>・通知が作成される条件</p>
 		    <ul class="list-disc ml-6">
               <li>自分の投稿に他のユーザーがいいねを押したとき。</li>
@@ -81,7 +81,7 @@
         <input type="radio" name="my-accordion-2" />
         <div class="collapse-title text-xl font-medium">マイページ</div>
         <div class="collapse-content">
-          <p>・マイページは、会員登録後にご利用いただけます。</p>
+          <p>・マイページは、<%= link_to t('.sign_up'), new_user_registration_path, class: 'text-blue-500 underline hover:text-blue-700' %>にご利用いただけます。</p>
 		  <p>・自分の投稿一覧・ブックマークした投稿を確認できます。</p>
 		  <p>・ユーザー名の横にある編集ボタンから、ユーザー情報を編集できます。</p>
         </div>

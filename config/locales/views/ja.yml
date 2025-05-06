@@ -19,6 +19,7 @@ ja:
       new_description: あなたの「スキ！」を投稿しましょう！投稿はXでシェアできます！
     usage:
       title: ご利用ガイド
+      sign_up: 会員登録後
   posts:
     index:
       title: 投稿一覧

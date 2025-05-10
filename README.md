@@ -109,7 +109,7 @@
 ## ■ 使用技術
 | カテゴリ | 技術 |
 | ---- | ---- |
-| フロントエンド | Rails 7.1.5.1 / TailwindCSS /  DaisyUI / Stimulus|
+| フロントエンド | Rails 7.1.5.1 / TailwindCSS /  DaisyUI / Hotwire|
 | バックエンド | Rails 7.1.5.1 (Ruby 3.2.6 ) |
 | データベース | PostgreSQL |
 | API | OmniAuth Google OAuth2 |

@@ -12,3 +12,6 @@ application.register("loading", LoadingController)
 
 import NestedFormController from "./nested_form_controller"
 application.register("nested-form", NestedFormController)
+
+import { Autocomplete } from "stimulus-autocomplete"
+application.register("autocomplete", Autocomplete)

@@ -27,7 +27,7 @@ class Post < ApplicationRecord
     Notification.find_or_create_by(
       visitor_id: visitor.id, # current_user
       visited_id: user.id, # 投稿者
-      notifiable: self, # 通知元、like
+      notifiable: self, # 通知元、post
       action: action # liked
     )
   end

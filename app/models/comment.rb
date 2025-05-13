@@ -18,7 +18,7 @@ class Comment < ApplicationRecord
       Notification.find_or_create_by(
         visitor_id: visitor.id, # current_user
         visited_id: user.id, # コメント作成者
-        notifiable: self, # 通知元、like
+        notifiable: self, # 通知元、comment
         action: action # liked
       )
     else # コメント作成時

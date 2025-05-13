@@ -8,13 +8,12 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
+  has_many :bookmarks, dependent: :destroy
   has_many :active_notifications, class_name: 'Notification', inverse_of: :visitor, foreign_key: 'visitor_id', dependent: :destroy
   has_many :passive_notifications, class_name: 'Notification', inverse_of: :visited, foreign_key: 'visited_id', dependent: :destroy
-  has_many :bookmarks, dependent: :destroy
 
-  # 　下記プロフィール画面で使用予定
+  # プロフィール画面
   has_many :liked_posts, through: :likes, source: :likeable, source_type: 'Post', dependent: :destroy
-  has_many :liked_comments, through: :likes, source: :likeable, source_type: 'Comment', dependent: :destroy
   has_many :bookmark_posts, through: :bookmarks, source: :post
 
   mount_uploader :avatar, AvatarUploader

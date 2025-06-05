@@ -3,6 +3,7 @@ FROM ruby:3.2.6
 ENV LANG C.UTF-8
 ENV TZ Asia/Tokyo
 
+# Node.js,Yarn　リポジトリ追加
 RUN apt-get update -qq \
 && apt-get install -y ca-certificates curl gnupg \
 && mkdir -p /etc/apt/keyrings \
@@ -12,12 +13,16 @@ RUN apt-get update -qq \
 && wget --quiet -O - /tmp/pubkey.gpg https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
 && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 
+# 各種パッケージインストール
 RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs yarn vim
 
+# コンテナ内に作業ディレクトリ追加
 RUN mkdir /myapp
 WORKDIR /myapp
 
+# bundlerインストール
 RUN gem install bundler
 RUN gem update --system
 
+# ローカルのファイルを作業ディレクトリにコピー
 COPY . /myapp

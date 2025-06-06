@@ -11,17 +11,19 @@ export default class extends Controller {
   add(event) {
     event.preventDefault()
     
-    // data-type 属性から取得
+    // イベント発火のdata-type
     const containerType = event.currentTarget.dataset.type
-    // templateを取得
+
+    // ターゲットtemplate
     const template = this.templateTargets.find(t => t.dataset.type === containerType)
-    // 追加先のcontainerを取得
-    const container = this.containerTargets.find(c => c.dataset.type === containerType)
-    
-    // テンプレートからHTMLを取得し、一意のIDを生成して置換
+
+     // templateからHTMLを取得
     const content = template.innerHTML.replace(/NEW_RECORD/g, new Date().getTime())
-    
-    // フォームコンテナの一番下に追加
+
+    // 追加先のターゲットcontainer
+    const container = this.containerTargets.find(c => c.dataset.type === containerType)
+
+    // containerの一番下にHTML追加
     container.insertAdjacentHTML('beforeend', content)
   }
   

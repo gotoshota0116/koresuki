@@ -1,8 +1,8 @@
 services:
   db:
     image: postgres:15-alpine
-    platform: linux/arm64
-    restart: always
+    platform: linux/arm64 # m1m2MAC対応
+    restart: always # 自動再起動
     environment:
       TZ: Asia/Tokyo
       POSTGRES_PASSWORD: password
@@ -23,10 +23,11 @@ services:
       context: .
       dockerfile: Dockerfile.dev
     command: bash -c "bundle install && bundle exec rails db:prepare && rm -f tmp/pids/server.pid && ./bin/dev"
-    tty: true
-    stdin_open: true
+    # コンテナが止まるのを防止
+    tty: true # 仮想ターミナル
+    stdin_open: true # 標準入力を開いたままにする
     volumes:
-      - .:/myapp
+      - .:/myapp # コンテナのmyappと同期
       - bundle_data:/usr/local/bundle:cached
       - node_modules:/myapp/node_modules
     environment:
@@ -35,8 +36,9 @@ services:
       - "3000:3000"
     depends_on:
       db:
-        condition: service_healthy
+        condition: service_healthy # db起動後にwebを起動
 
+# 名前付きボリュームを定義
 volumes:
   bundle_data:
   postgresql_data:
